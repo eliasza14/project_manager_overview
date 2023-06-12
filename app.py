@@ -101,7 +101,7 @@ WHERE kimai2_users_teams.teamlead=1;
         dfframe=dfgroup.to_frame()
         st.write(dfframe)
         dfframe = dfframe.rename(columns={'project_name': 'count'})
-        
+        dfframe=dfframe.reset_index()
         # df = px.data.tips()
         # st.write(type(dfframe['count'][0]))
         st.write(dfframe)
