@@ -98,7 +98,7 @@ WHERE kimai2_users_teams.teamlead=1;
 
         dfgroup=dfdata.groupby(['username'])['project_name'].count()
 
-        dfframe=dfgroup.to_frame()
+        dfframe=dfgroup.to_frame().reset_index()
         st.write(dfframe)
         dfframe = dfframe.rename(columns={'project_name': 'count'})
         
