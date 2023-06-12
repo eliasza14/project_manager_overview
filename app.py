@@ -103,19 +103,12 @@ WHERE kimai2_users_teams.teamlead=1;
         dfframe = dfframe.rename(columns={'project_name': 'count'})
         
         # df = px.data.tips()
-        st.write(type(dfframe['count'][0]))
+        # st.write(type(dfframe['count'][0]))
         st.write(dfframe)
-        st.write(dfframe.info())
+        st.write(dfframe['count'])
 
         # Create the pie chart using Plotly Express
-        fig = px.pie(dfframe, values=[5,
-2,
-3,
-1,
-6,
-4,
-2,
-1], names='username')
+        fig = px.pie(dfframe, values=['count'], names='username')
 
         # Create a Streamlit app
         st.title("Tips by Day")
