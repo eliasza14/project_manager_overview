@@ -116,6 +116,7 @@ WHERE kimai2_users_teams.teamlead=1;
 
 
         dfgroup = dfdata.groupby(['username','project_name'])['project_name'].count()
+        st.write(dfgroup)
         dfframe = dfgroup.to_frame().reset_index().rename(columns={'project_name': 'count'})
         st.write(dfframe)
         # Create a Streamlit app
