@@ -3,7 +3,7 @@ import pandas as pd
 import mysql.connector
 import datetime
 from streamlit import session_state
-
+import plotly.express as px
 
 from datetime import timedelta
 
@@ -92,7 +92,16 @@ WHERE kimai2_users_teams.teamlead=1;
         st.write("All Data from Query",dfdata)
         st.write('Your birthday is:', startdate)
         st.write('Your birthday is:', enddate)
+        # Load the tips dataset from Plotly
         
+        df = px.data.tips()
+
+        # Create the pie chart using Plotly Express
+        fig = px.pie(df, values='tip', names='day')
+
+        # Create a Streamlit app
+        st.title("Tips by Day")
+        st.plotly_chart(fig)
        
 
 if __name__ == '__main__':
