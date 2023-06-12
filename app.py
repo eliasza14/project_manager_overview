@@ -96,41 +96,41 @@ WHERE kimai2_users_teams.teamlead=1;
 
 
 
-        # dfgroup=dfdata.groupby(['username'])['project_name'].count()
+        dfgroup=dfdata.groupby(['username'])['project_name'].count()
 
-        # dfframe=dfgroup.to_frame()
-        # st.write(dfframe)
-        # dfframe = dfframe.rename(columns={'project_name': 'count'})
-        
-        # # df = px.data.tips()
-        # # st.write(type(dfframe['count'][0]))
-        # st.write(dfframe)
-    
-        # # Create the pie chart using Plotly Express
-        # fig = px.pie(dfframe, values=['count'], names='username')
-
-        # # Create a Streamlit app
-        # st.title("Tips by Day")
-        # st.plotly_chart(fig)
-
-
-
-        dfgroup = dfdata.groupby(['username','project_name'])['project_id'].count()
-        # st.write
-        dfframe = dfgroup.to_frame().reset_index().rename(columns={'project_id': 'count'})
-        # st.write(dfframe)
-        # Create a Streamlit app
-        st.title("Project Count by User")
-
-        # Display the DataFrame
+        dfframe=dfgroup.to_frame()
         st.write(dfframe)
-
+        dfframe = dfframe.rename(columns={'project_name': 'count'})
+        
+        # df = px.data.tips()
+        # st.write(type(dfframe['count'][0]))
+        st.write(dfframe)
+    
         # Create the pie chart using Plotly Express
-        fig = px.pie(dfframe, values='count', names='username', hover_data=[dfframe['project_name']])
-        fig.update_traces(textposition='inside', textinfo='percent+label')
+        fig = px.pie(dfframe, values=['count'], names='username',hover_data='count')
 
-        # Display the pie chart
+        # Create a Streamlit app
+        st.title("Tips by Day")
         st.plotly_chart(fig)
+
+
+
+        # dfgroup = dfdata.groupby(['username','project_name'])['project_id'].count()
+        # # st.write
+        # dfframe = dfgroup.to_frame().reset_index().rename(columns={'project_id': 'count'})
+        # # st.write(dfframe)
+        # # Create a Streamlit app
+        # st.title("Project Count by User")
+
+        # # Display the DataFrame
+        # st.write(dfframe)
+
+        # # Create the pie chart using Plotly Express
+        # fig = px.pie(dfframe, values='count', names='username', hover_data=[dfframe['project_name']])
+        # fig.update_traces(textposition='inside', textinfo='percent+label')
+
+        # # Display the pie chart
+        # st.plotly_chart(fig)
        
 
 
