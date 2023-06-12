@@ -126,7 +126,8 @@ WHERE kimai2_users_teams.teamlead=1;
         st.write(dfframe)
 
         # Create the pie chart using Plotly Express
-        fig = px.pie(dfframe, values='count', names=['username','project_name'],labels='project_name')
+        fig = px.pie(dfframe, values='count', names='username', hover_data=['project_name'],labels={'project_name':'project'})
+        fig.update_traces(textposition='inside', textinfo='percent+label')
 
         # Display the pie chart
         st.plotly_chart(fig)
