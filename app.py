@@ -100,12 +100,12 @@ WHERE kimai2_users_teams.teamlead=1;
 
         dfframe=dfgroup.to_frame()
         st.write(dfframe)
-        # dfframe = dfframe.rename(columns={'Έναρξη': 'dipla'})
+        dfframe = dfframe.rename(columns={'project_name': 'count'})
         
         # df = px.data.tips()
-
+        st.write(type(dfframe['count'][0]))
         # Create the pie chart using Plotly Express
-        fig = px.pie(dfframe, values='project_name', names='username')
+        fig = px.pie(dfframe, values='count', names='username')
 
         # Create a Streamlit app
         st.title("Tips by Day")
