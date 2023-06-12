@@ -65,7 +65,11 @@ def main():
         st.write("Given startdate and endate",enddate)
 
         st.write("## Results")
-        sql = """SELECT `kimai2_teams`.*,`kimai2_users_teams`.*,`kimai2_projects_teams`.* ,`kimai2_users`.`alias` as name,`kimai2_projects`.`name` as project_name,
+        sql = """SELECT `kimai2_teams`.name as team_name,`kimai2_users_teams`.`user_id`,`kimai2_users_teams`.`team_id`,`kimai2_users_teams`.`teamlead`,
+
+`kimai2_projects_teams`.`project_id`
+
+,`kimai2_users`.`alias` as username,`kimai2_projects`.`name` as project_name,
 `kimai2_projects`.`visible` as active,`kimai2_projects`.`time_budget`,`kimai2_projects`.`start` as start_date, `kimai2_projects`.`end` as end_date,
  (
     SELECT SUM(kimai2_timesheet.duration)
