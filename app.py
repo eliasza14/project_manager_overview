@@ -65,15 +65,23 @@ def main():
         st.write("Given startdate and endate",enddate)
 
         st.write("## Results")
-        sql = """SELECT kimai2_timesheet.*,kimai2_users.alias,kimai2_projects.name as project_name,kimai2_activities.name as activity_name FROM kimai2_timesheet 
-        INNER JOIN kimai2_users ON kimai2_timesheet.user=kimai2_users.id
-        INNER JOIN kimai2_projects ON kimai2_timesheet.project_id=kimai2_projects.id
-        INNER JOIN kimai2_activities ON kimai2_timesheet.activity_id=kimai2_activities.id
+        sql = """SELECT `kimai2_teams`.*,`kimai2_users_teams`.*,`kimai2_projects_teams`.* ,`kimai2_users`.`alias` as name,`kimai2_projects`.`name` as project_name,
+`kimai2_projects`.`visible` as active,`kimai2_projects`.`time_budget`,`kimai2_projects`.`start` as start_date, `kimai2_projects`.`end` as end_date,
+ (
+    SELECT SUM(kimai2_timesheet.duration)
+    FROM kimai2_timesheet
+    WHERE kimai2_timesheet.project_id = kimai2_projects.id
+  ) AS duration
+FROM `kimai2_teams`
+INNER JOIN kimai2_users_teams ON kimai2_teams.id=kimai2_users_teams.team_id
+INNER JOIN kimai2_projects_teams ON kimai2_projects_teams.team_id=kimai2_teams.id
+INNER JOIN kimai2_users ON kimai2_users_teams.user_id=kimai2_users.id
+INNER JOIN kimai2_projects ON kimai2_projects_teams.project_id=kimai2_projects.id
+WHERE kimai2_users_teams.teamlead=1;
         """
-        sql2="WHERE DATE(start_time) >="+"'"+str(startdate)+"'"+"AND DATE(start_time) <="+"'"+ str(enddate)+"'"+""
 
     
-        rows,columnames = run_query(conn,sql+sql2)
+        rows,columnames = run_query(conn,sql)
 
     # st.write(columnames)
         dfdata=pd.DataFrame(rows,columns=columnames)
@@ -81,96 +89,7 @@ def main():
         st.write('Your birthday is:', startdate)
         st.write('Your birthday is:', enddate)
         
-        st.write("## Choose Activity Tag:")
-
-        df1=dfdata.copy()
-        # st.write(df1)
-        regular_search_term =df1.activity_name.unique().tolist()
-        choices = st.multiselect(" ",regular_search_term)
-        df1=df1[df1.activity_name.isin(choices)]
-
-        st.write("## Choose User:")
-
-        regular_search_term =df1.alias.unique().tolist()
-        choices2 = st.multiselect(" ",regular_search_term + ['All'])
-
-
-        if 'All' not in choices2:
-
-            df1=df1[df1.alias.isin(choices2)]
-            st.write(df1)
-
-        else:
-            st.write(df1)
-        #Counts Weekly reports per user activity
-        st.write("## Weekly Report Comments Count:")
-        st.write(df1.groupby(['alias'])['activity_name'].count())
-    
-        st.write("## Show comment of a user in detail:")
-        # List of options for the dropdown menu
-        optionlist =df1.alias.unique().tolist()
-        options = optionlist
-
-        # Display the dropdown menu
-        selected_option = st.selectbox('Choose a user', options)
-
-        # Show the selected option
-        st.write('Selected option:', selected_option)
-        df1 = df1[df1['alias'] == selected_option]
-
-        st.write("## Show comment of a user per specific project:")
-        optionlist =df1.project_name.unique().tolist()
-        options = optionlist
-
-        # Display the dropdown menu
-        selected_option = st.selectbox('Choose a project name', options+ ['All'])
-        if 'All' not in selected_option:
-            df1 = df1[df1['project_name'] == selected_option]
-        
-            
-        # Show the selected option
-        st.write('Selected option:', selected_option)
-        # df1 = df1[df1['alias'] == selected_option]
-
-
-
-        st.text(df1["description"])
-
-        st.write("## Zoom In on Specific Comment:")
-        optionlistcomment =df1.description.unique().tolist()
-        optionscomment = optionlistcomment
-
-        # Display the dropdown menu
-        selected_option = st.selectbox('Choose an option', optionscomment)
-
-        # Show the selected option
-        # st.write('Selected option:', selected_option)
-        df1 = df1[df1['description'] == selected_option]
-        df1=df1.reset_index()
-        # st.write(df1)
-        comment=df1['description'][0]
-        st.text(comment)
-        # st.text(df1["description"])
-
-        # st.write(df1)
-
-        # with st.form("Form Filter"):
-        #     name = st.text_input("Enter your name:")
-        #     email = st.text_input("Enter your email:")
-        #     submit_button2   = st.form_submit_button(label="Submit2")
-        # if submit_button2:
-
-        #     st.write("## Results")
-        #     st.write('Your birthday is:', startdate)
-        #     st.write('Your birthday is:', enddate)
-        #     st.write('name',name)
-        #     st.write('email',email)
-        # if st.session_state.submitted:
-
-        # st.write(f"Name: {name}")
-        # st.write(f"Email: {email}")
-        # st.write(f"Age: {age}")
-        # st.write(f"Favorite color: {color}")
+       
 
 if __name__ == '__main__':
     main()
