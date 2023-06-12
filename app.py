@@ -118,7 +118,7 @@ WHERE kimai2_users_teams.teamlead=1;
         dfgroup = dfdata.groupby(['username','project_name'])['project_id'].count()
         # st.write
         dfframe = dfgroup.to_frame().reset_index().rename(columns={'project_id': 'count'})
-        st.write(dfframe)
+        # st.write(dfframe)
         # Create a Streamlit app
         st.title("Project Count by User")
 
@@ -126,7 +126,7 @@ WHERE kimai2_users_teams.teamlead=1;
         st.write(dfframe)
 
         # Create the pie chart using Plotly Express
-        fig = px.pie(dfframe, values='count', names='username',labels='project_name')
+        fig = px.pie(dfframe, values='count', names=['username','project_name'],labels='project_name')
 
         # Display the pie chart
         st.plotly_chart(fig)
