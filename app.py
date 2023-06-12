@@ -94,10 +94,10 @@ WHERE kimai2_users_teams.teamlead=1;
         st.write('Your birthday is:', enddate)
         # Load the tips dataset from Plotly
         
-        df = px.data.tips()
+        # df = px.data.tips()
 
         # Create the pie chart using Plotly Express
-        fig = px.pie(df, values='tip', names='day')
+        fig = px.pie(dfdata, values='duration', names='username')
 
         # Create a Streamlit app
         st.title("Tips by Day")
