@@ -104,6 +104,9 @@ WHERE kimai2_users_teams.teamlead=1;
         
         # df = px.data.tips()
         st.write(type(dfframe['count'][0]))
+        st.write(dfframe)
+        dfframe.info()
+
         # Create the pie chart using Plotly Express
         fig = px.pie(dfframe, values='count', names='username')
 
