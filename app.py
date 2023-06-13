@@ -155,6 +155,8 @@ WHERE kimai2_users_teams.teamlead=1;
 
             df2=dfdata[dfdata['username'].isin(choices2)]
             st.write(df2)
+        else:
+            st.write(dfdata)
 
 
 
