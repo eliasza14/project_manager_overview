@@ -187,7 +187,7 @@ WHERE kimai2_users_teams.teamlead=1;
         
         """
 
-        for i in range(tabs):
+        for i in range(len(tabs)):
             with tabs[i]:
 
               
