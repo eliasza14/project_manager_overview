@@ -146,15 +146,12 @@ WHERE kimai2_users_teams.teamlead=1;
         regular_search_term =dfdata['username'].unique().tolist()
         choices2 = st.multiselect(" ",regular_search_term + ['All'])
 
-        # Display the dropdown menu
-        selected_option = st.selectbox('Choose a project name', options+ ['All'])
-        if 'All' not in selected_option:
-            df2 = dfdata[dfdata['project_name'] == selected_option]
+
 
         if 'All' not in choices2:
 
             df2=dfdata[dfdata['project_name'].isin(choices2)]
-            st.write(dfdata)
+            st.write(df2)
 
 
 
