@@ -160,13 +160,13 @@ WHERE kimai2_users_teams.teamlead=1;
         #     with tab:
         #         st.header(tab_content["title"])
         #         st.write(tab_content["content"])
-                
+        st.write(df1)
+        st.write(df1['project_id'][0])       
         tabs = st.tabs(df1['project_name'].tolist())
 
         tab_metrics = tabs[0]
 
-        st.write(df1)
-        st.write(df1['project_id'][0])
+
        
 
         for i in range(len(tabs)):
