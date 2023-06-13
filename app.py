@@ -155,19 +155,19 @@ WHERE kimai2_users_teams.teamlead=1;
 
             df2=dfdata[dfdata['username'].isin(choices2)]
             df2['duration']=df2['duration']/3600
-            st.write(df2)
+            # st.write(df2)
             
             #fig2 = px.bar(df2, x="username", y=df2['project_name'].tolist(), title="Wide-Form Input")
-            fig2 = px.bar(df2, x="username", y="duration", color=df2['project_name'].tolist(), title="Long-Form Input")
+            fig2 = px.bar(df2, x="username", y="duration", color=df2['project_name'].tolist(), title="Project Manager Comparison between:"+str(choices2))
             st.plotly_chart(fig2)
         else:
-            st.write(dfdata)
+            # st.write(dfdata)
             df3=dfdata.copy()
             df3['duration']=df3['duration']/3600
-            st.write(df3)
+            # st.write(df3)
             
             #fig2 = px.bar(df2, x="username", y=df2['project_name'].tolist(), title="Wide-Form Input")
-            fig2 = px.bar(df3, x="username", y="duration", color=df3['project_name'].tolist(), title="Long-Form Input")
+            fig2 = px.bar(df3, x="username", y="duration", color=df3['project_name'].tolist(), title="Project Manager Comparison between all")
             st.plotly_chart(fig2)
 
 
