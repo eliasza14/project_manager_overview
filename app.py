@@ -138,7 +138,7 @@ WHERE kimai2_users_teams.teamlead=1;
         df1['duration']=df1['duration']/3600
         # df = px.data.gapminder().query("continent == 'Europe' and year == 2007 and pop > 2.e6")
         fig2 = px.bar(df1, y='duration', x='project_name', text_auto='.2s',
-                    title="Project Manager:"+str(selected_option)+"-Hourly projects duaration")
+                    title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
         st.plotly_chart(fig2)
 
 
