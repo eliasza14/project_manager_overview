@@ -153,26 +153,26 @@ WHERE kimai2_users_teams.teamlead=1;
                 elif tab_list[i] == "Owl":
                     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 
-        def get_tab_content():
-            return [
-                {"title":"Topic A", "content":"Topic A Content"},
-                {"title":"Topic B", "content":"Topic B Content"},
-                {"title":"Topic C", "content":"Topic C Content"},
-            ]
-        # pull tab content from server
-        tab_contents = get_tab_content()
-        #tab_contents = df1
-        # create tabs
-        names = [content["title"] for content in tab_contents]
-        tabs = st.tabs(names)
+        # def get_tab_content():
+        #     return [
+        #         {"title":"Topic A", "content":"Topic A Content"},
+        #         {"title":"Topic B", "content":"Topic B Content"},
+        #         {"title":"Topic C", "content":"Topic C Content"},
+        #     ]
+        # # pull tab content from server
+        # tab_contents = get_tab_content()
+        # #tab_contents = df1
+        # # create tabs
+        # names = [content["title"] for content in tab_contents]
+        # tabs = st.tabs(names)
 
-        # iterate through each tab and build content
-        for tab, tab_content in zip(tabs,tab_contents):
-            with tab:
-                st.header(tab_content["title"])
-                st.write(tab_content["content"])
+        # # iterate through each tab and build content
+        # for tab, tab_content in zip(tabs,tab_contents):
+        #     with tab:
+        #         st.header(tab_content["title"])
+        #         st.write(tab_content["content"])
                 
-        # tabs = st.tabs(["metrics", "plots", "reports"])
+        tabs = st.tabs(["metrics", "plots", "reports"])
 
             
 
