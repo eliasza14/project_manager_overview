@@ -162,6 +162,11 @@ WHERE kimai2_users_teams.teamlead=1;
         #         st.write(tab_content["content"])
                 
         tabs = st.tabs(df1['project_name'].tolist())
+
+        tab_metrics = tabs[0]
+
+       
+
         sql2=""" 
                 SELECT kimai2_projects_teams.*,kimai2_projects.name,kimai2_projects.visible,kimai2_projects.time_budget,kimai2_projects.budget,kimai2_users_teams.user_id,kimai2_users_teams.teamlead,
         (
@@ -187,7 +192,7 @@ WHERE kimai2_users_teams.teamlead=1;
         dfdata2=pd.DataFrame(rows2,columns=columnames2)
         st.write("All Data from Query",dfdata2)
             
-
+        tab_metrics.dfdata2
 
         # tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 
