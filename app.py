@@ -167,28 +167,29 @@ WHERE kimai2_users_teams.teamlead=1;
 
        
 
-        sql2=""" 
-                SELECT kimai2_projects_teams.*,kimai2_projects.name,kimai2_projects.visible,kimai2_projects.time_budget,kimai2_projects.budget,kimai2_users_teams.user_id,kimai2_users_teams.teamlead,
-        (
-            SELECT SUM(kimai2_timesheet.duration)
-            FROM kimai2_timesheet
-            WHERE kimai2_timesheet.user = kimai2_users_teams.user_id
-        ) AS duration,kimai2_users.alias as username,kimai2_teams.name as team_name
-
-        FROM `kimai2_projects_teams` 
-        INNER JOIN kimai2_projects ON kimai2_projects.id=kimai2_projects_teams.project_id 
-        INNER JOIN kimai2_users_teams ON kimai2_users_teams.team_id=kimai2_projects_teams.team_id 
-        INNER JOIN kimai2_timesheet ON kimai2_timesheet.user=kimai2_users_teams.user_id and kimai2_timesheet.project_id=kimai2_projects_teams.project_id 
-        INNER JOIN kimai2_users ON kimai2_users.id=kimai2_users_teams.user_id
-        INNER JOIN kimai2_teams ON kimai2_teams.id=kimai2_projects_teams.team_id
-        where kimai2_projects_teams.project_id="""+str(2)+""" and kimai2_projects_teams.team_id="""+str(2)+"""
-        GROUP BY kimai2_users_teams.user_id;
-        
-        
-        """
+       
 
         for i in range(len(tabs)):
             with tabs[i]:
+                sql2=""" 
+                        SELECT kimai2_projects_teams.*,kimai2_projects.name,kimai2_projects.visible,kimai2_projects.time_budget,kimai2_projects.budget,kimai2_users_teams.user_id,kimai2_users_teams.teamlead,
+                (
+                    SELECT SUM(kimai2_timesheet.duration)
+                    FROM kimai2_timesheet
+                    WHERE kimai2_timesheet.user = kimai2_users_teams.user_id
+                ) AS duration,kimai2_users.alias as username,kimai2_teams.name as team_name
+
+                FROM `kimai2_projects_teams` 
+                INNER JOIN kimai2_projects ON kimai2_projects.id=kimai2_projects_teams.project_id 
+                INNER JOIN kimai2_users_teams ON kimai2_users_teams.team_id=kimai2_projects_teams.team_id 
+                INNER JOIN kimai2_timesheet ON kimai2_timesheet.user=kimai2_users_teams.user_id and kimai2_timesheet.project_id=kimai2_projects_teams.project_id 
+                INNER JOIN kimai2_users ON kimai2_users.id=kimai2_users_teams.user_id
+                INNER JOIN kimai2_teams ON kimai2_teams.id=kimai2_projects_teams.team_id
+                where kimai2_projects_teams.project_id="""+str(df1['project_id'][0])+""" and kimai2_projects_teams.team_id="""+str(2)+"""
+                GROUP BY kimai2_users_teams.user_id;
+                
+                
+                """
 
               
                 rows2,columnames2 = run_query(conn,sql2)
