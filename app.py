@@ -171,7 +171,7 @@ WHERE kimai2_users_teams.teamlead=1;
 
         for i in range(len(tabs)):
             with tabs[i]:
-                st.title("Analysis of "+str(tablist[i])+"Project")
+                st.title("Analysis of "+str(tablist[i])+" Project")
                 dftest=df1[df1['project_name']==str(tablist[i])]
                 projectlist=dftest['project_id'].tolist()
                 teamlist=dftest['team_id'].tolist()
