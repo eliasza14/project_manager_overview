@@ -160,17 +160,18 @@ WHERE kimai2_users_teams.teamlead=1;
         #     with tab:
         #         st.header(tab_content["title"])
         #         st.write(tab_content["content"])
-        st.write(df1)
+        # st.write(df1)
               
         tabs = st.tabs(df1['project_name'].tolist())
         tablist=df1['project_name'].tolist()
         
 
-        st.write(tablist[0])
+        # st.write(tablist[0])
         
 
         for i in range(len(tabs)):
             with tabs[i]:
+                st.title("Analysis of "+str(tablist[i])+"Project")
                 dftest=df1[df1['project_name']==str(tablist[i])]
                 projectlist=dftest['project_id'].tolist()
                 teamlist=dftest['team_id'].tolist()
@@ -199,9 +200,9 @@ WHERE kimai2_users_teams.teamlead=1;
 
                 # st.write(columnames)
                 dfdata2=pd.DataFrame(rows2,columns=columnames2)
-                st.write(projectlist[0])
-                st.write(teamlist[0])
-                st.write("All Data from Query",dfdata2)
+                # st.write(projectlist[0])
+                # st.write(teamlist[0])
+                # st.write("All Data from Query",dfdata2)
 
                        # Create the pie chart using Plotly Express
                 figtab = px.pie(dfdata2, values='duration', names='username', hover_data=[dfdata2['username']])
