@@ -84,6 +84,7 @@ INNER JOIN kimai2_projects ON kimai2_projects_teams.project_id=kimai2_projects.i
 WHERE kimai2_users_teams.teamlead=1;
         """
 
+        
     
         rows,columnames = run_query(conn,sql)
 
@@ -140,19 +141,7 @@ WHERE kimai2_users_teams.teamlead=1;
                     title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
         st.plotly_chart(fig2)
 
-        tab_list =["Cat", "Dog", "Owl"]
-        tabs = [st.empty() for _ in tab_list]
-
-        for i, tab in enumerate(tabs):
-            with tab:
-                st.header(f"A {tab_list[i].lower()}")
-                if tab_list[i] == "Cat":
-                    st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
-                elif tab_list[i] == "Dog":
-                    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
-                elif tab_list[i] == "Owl":
-                    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
-
+        
         # def get_tab_content():
         #     return [
         #         {"title":"Topic A", "content":"Topic A Content"},
@@ -173,7 +162,30 @@ WHERE kimai2_users_teams.teamlead=1;
         #         st.write(tab_content["content"])
                 
         tabs = st.tabs(df1['project_name'].tolist())
+        sql2=""" 
+                SELECT kimai2_projects_teams.*,kimai2_projects.name,kimai2_projects.visible,kimai2_projects.time_budget,kimai2_projects.budget,kimai2_users_teams.user_id,kimai2_users_teams.teamlead,
+        (
+            SELECT SUM(kimai2_timesheet.duration)
+            FROM kimai2_timesheet
+            WHERE kimai2_timesheet.user = kimai2_users_teams.user_id
+        ) AS duration,kimai2_users.alias as username,kimai2_teams.name as team_name
 
+        FROM `kimai2_projects_teams` 
+        INNER JOIN kimai2_projects ON kimai2_projects.id=kimai2_projects_teams.project_id 
+        INNER JOIN kimai2_users_teams ON kimai2_users_teams.team_id=kimai2_projects_teams.team_id 
+        INNER JOIN kimai2_timesheet ON kimai2_timesheet.user=kimai2_users_teams.user_id and kimai2_timesheet.project_id=kimai2_projects_teams.project_id 
+        INNER JOIN kimai2_users ON kimai2_users.id=kimai2_users_teams.user_id
+        INNER JOIN kimai2_teams ON kimai2_teams.id=kimai2_projects_teams.team_id
+        where kimai2_projects_teams.project_id="""+2+""" and kimai2_projects_teams.team_id="""+2+"""
+        GROUP BY kimai2_users_teams.user_id;
+        
+        
+        """
+        rows2,columnames2 = run_query(conn,sql2)
+
+        # st.write(columnames)
+        dfdata2=pd.DataFrame(rows2,columns=columnames2)
+        st.write("All Data from Query",dfdata2)
             
 
 
