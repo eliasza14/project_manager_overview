@@ -176,7 +176,7 @@ WHERE kimai2_users_teams.teamlead=1;
         INNER JOIN kimai2_timesheet ON kimai2_timesheet.user=kimai2_users_teams.user_id and kimai2_timesheet.project_id=kimai2_projects_teams.project_id 
         INNER JOIN kimai2_users ON kimai2_users.id=kimai2_users_teams.user_id
         INNER JOIN kimai2_teams ON kimai2_teams.id=kimai2_projects_teams.team_id
-        where kimai2_projects_teams.project_id="""+2+""" and kimai2_projects_teams.team_id="""+2+"""
+        where kimai2_projects_teams.project_id="""+str(2)+""" and kimai2_projects_teams.team_id="""+str(2)+"""
         GROUP BY kimai2_users_teams.user_id;
         
         
