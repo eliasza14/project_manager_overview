@@ -155,6 +155,9 @@ WHERE kimai2_users_teams.teamlead=1;
 
             df2=dfdata[dfdata['username'].isin(choices2)]
             st.write(df2)
+            
+            fig2 = px.bar(df2, x="username", y=df2['project_name'].tolist(), title="Wide-Form Input")
+            st.plotly_chart(fig3)
         else:
             st.write(dfdata)
 
