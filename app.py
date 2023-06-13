@@ -153,13 +153,27 @@ WHERE kimai2_users_teams.teamlead=1;
                 elif tab_list[i] == "Owl":
                     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 
+        def get_tab_content():
+            return [
+                {"title":"Topic A", "content":"Topic A Content"},
+                {"title":"Topic B", "content":"Topic B Content"},
+                {"title":"Topic C", "content":"Topic C Content"},
+            ]
+        # pull tab content from server
+        tab_contents = get_tab_content()
 
+        # create tabs
+        names = [content["title"] for content in tab_contents]
+        tabs = st.tabs(names)
 
+        # iterate through each tab and build content
+        for tab, tab_content in zip(tabs,tab_contents):
+            with tab:
+                st.header(tab_content["title"])
+                st.write(tab_content["content"])
+                
 
-        new_tab = st.text_input("Tab label", "New Tab")
-        if st.button("Add tab"):
-            st.session_state["tabs"].append(new_tab)
-            st.experimental_rerun()
+        
 
 
         tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
