@@ -155,7 +155,6 @@ WHERE kimai2_users_teams.teamlead=1;
 
 
 
-        import streamlit as st
 
         tab_list = ["📈 Chart", "🗃 Data"]
         tabs = {}
