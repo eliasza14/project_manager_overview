@@ -167,7 +167,7 @@ WHERE kimai2_users_teams.teamlead=1;
         
 
         st.write(tablist[0])
-       
+        st.write(dftest=df1[df1['project_name']==str(tablist[0])])
 
         for i in range(len(tabs)):
             with tabs[i]:
