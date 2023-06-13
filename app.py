@@ -140,12 +140,18 @@ WHERE kimai2_users_teams.teamlead=1;
                     title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
         st.plotly_chart(fig2)
 
-        tab_list =df1['project_name'].tolist()
+        tab_list =["Cat", "Dog", "Owl"]
         tabs = [st.empty() for _ in tab_list]
 
         for i, tab in enumerate(tabs):
             with tab:
                 st.header(f"A {tab_list[i].lower()}")
+                if tab_list[i] == "Cat":
+                    st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+                elif tab_list[i] == "Dog":
+                    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+                elif tab_list[i] == "Owl":
+                    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 
 
 
