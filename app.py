@@ -157,7 +157,7 @@ WHERE kimai2_users_teams.teamlead=1;
             st.write(df2)
             
             #fig2 = px.bar(df2, x="username", y=df2['project_name'].tolist(), title="Wide-Form Input")
-            fig2 = px.bar(long_df, x="username", y="duration", color=df2['project_name'].tolist(), title="Long-Form Input")
+            fig2 = px.bar(df2, x="username", y="duration", color=df2['project_name'].tolist(), title="Long-Form Input")
             st.plotly_chart(fig2)
         else:
             st.write(dfdata)
