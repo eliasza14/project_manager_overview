@@ -141,7 +141,10 @@ WHERE kimai2_users_teams.teamlead=1;
                     title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
         st.plotly_chart(fig2)
 
-        st.write("## Choose User:")
+
+
+
+        st.title("Compare Project Managers")
 
         regular_search_term =dfdata['username'].unique().tolist()
         choices2 = st.multiselect(" ",regular_search_term + ['All'])
@@ -150,7 +153,7 @@ WHERE kimai2_users_teams.teamlead=1;
 
         if 'All' not in choices2:
 
-            df2=dfdata[dfdata['project_name'].isin(choices2)]
+            df2=dfdata[dfdata['username'].isin(choices2)]
             st.write(df2)
 
 
