@@ -156,26 +156,10 @@ WHERE kimai2_users_teams.teamlead=1;
 
 
 
-        tab_list = ["📈 Chart", "🗃 Data"]
-        tabs = {}
-
-        selected_tab = st.sidebar.selectbox("Select a tab", tab_list)
-
-
-        for tab_name in tab_list:
-            tabs[tab_name] = st.empty()
-
-        for tab_name, tab in tabs.items():
-            with tab:
-                st.subheader(f"A tab with {tab_name}")
-                if tab_name == "📈 Chart":
-                 #   data = np.random.randn(10, 1)
-                   # st.line_chart(data)
-                   st.write("hello")
-                elif tab_name == "🗃 Data":
-                   # data = np.random.randn(10, 1)
-                    st.write("hello2")
-
+        new_tab = st.text_input("Tab label", "New Tab")
+        if st.button("Add tab"):
+            st.session_state["tabs"].append(new_tab)
+            st.experimental_rerun()
 
 
         tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
