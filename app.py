@@ -172,7 +172,7 @@ WHERE kimai2_users_teams.teamlead=1;
         #         st.header(tab_content["title"])
         #         st.write(tab_content["content"])
                 
-        tabs = st.tabs(["metrics", "plots", "reports"])
+        tabs = st.tabs(df1['project_name'])
 
             
 
