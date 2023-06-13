@@ -96,42 +96,37 @@ WHERE kimai2_users_teams.teamlead=1;
 
 
 
+        # Create a Streamlit app
         dfgroup=dfdata.groupby(['username'])['project_name'].count()
 
-        dfframe=dfgroup.to_frame().reset_index()
-        st.write(dfframe)
-        dfframe = dfframe.rename(columns={'project_name': 'count'})
-        
-        # df = px.data.tips()
-        # st.write(type(dfframe['count'][0]))
-        st.write(dfframe)
-    
-        # Create the pie chart using Plotly Express
-        fig = px.pie(dfframe, values='count', names='username')
 
-        # Create a Streamlit app
+        dfgroup2=dfdata.groupby('username')['project_name'].agg(list).reset_index()
+
+
+        dfframe=dfgroup.to_frame().reset_index()
+
+        userlist=dfframe['username'].tolist()
+
+        countlist=dfframe['project_name'].tolist()
+
+        # dfgroup2
+
+        for i in range(len(dfgroup2)):
+            dfgroup2['project_name'][i] = '<br>'.join(dfgroup2['project_name'][i]).replace(',', ',<br>')
+
+
+        # Create the pie chart using Plotly Express
+        fig = px.pie(dfgroup2, values=countlist, names='username', hover_data=[dfgroup2['project_name']])
+        fig.update_traces(textposition='inside', textinfo='percent+label')
+
+        # Display the pie chart
+
+
         st.title("Tips by Day")
         st.plotly_chart(fig)
 
 
 
-        # dfgroup = dfdata.groupby(['username','project_name'])['project_id'].count()
-        # # st.write
-        # dfframe = dfgroup.to_frame().reset_index().rename(columns={'project_id': 'count'})
-        # # st.write(dfframe)
-        # # Create a Streamlit app
-        # st.title("Project Count by User")
-
-        # # Display the DataFrame
-        # st.write(dfframe)
-
-        # # Create the pie chart using Plotly Express
-        # fig = px.pie(dfframe, values='count', names='username', hover_data=[dfframe['project_name']])
-        # fig.update_traces(textposition='inside', textinfo='percent+label')
-
-        # # Display the pie chart
-        # st.plotly_chart(fig)
-       
 
 
 
