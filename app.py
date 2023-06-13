@@ -166,11 +166,12 @@ WHERE kimai2_users_teams.teamlead=1;
             with tab:
                 st.subheader(f"A tab with {tab_name}")
                 if tab_name == "📈 Chart":
-                    data = np.random.randn(10, 1)
-                    st.line_chart(data)
+                 #   data = np.random.randn(10, 1)
+                   # st.line_chart(data)
+                   st.write("hello")
                 elif tab_name == "🗃 Data":
-                    data = np.random.randn(10, 1)
-                    st.write(data)
+                   # data = np.random.randn(10, 1)
+                    st.write("hello2")
 
 
 
