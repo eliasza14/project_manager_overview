@@ -166,7 +166,7 @@ WHERE kimai2_users_teams.teamlead=1;
 
         tab_metrics = tabs[0]
 
-
+        st.write(tabs[0])
        
 
         for i in range(len(tabs)):
