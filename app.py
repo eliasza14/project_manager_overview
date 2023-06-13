@@ -186,13 +186,16 @@ WHERE kimai2_users_teams.teamlead=1;
         
         
         """
-        rows2,columnames2 = run_query(conn,sql2)
 
-        # st.write(columnames)
-        dfdata2=pd.DataFrame(rows2,columns=columnames2)
-        st.write("All Data from Query",dfdata2)
+       
+        with tab_metrics:        
+            rows2,columnames2 = run_query(conn,sql2)
+
+            # st.write(columnames)
+            dfdata2=pd.DataFrame(rows2,columns=columnames2)
+             
+            st.write("All Data from Query",dfdata2)
             
-        tab_metrics.dfdata2
 
         # tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 
