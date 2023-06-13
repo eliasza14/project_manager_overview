@@ -124,7 +124,7 @@ WHERE kimai2_users_teams.teamlead=1;
         # Display the pie chart
 
 
-        st.title("Tips by Day")
+        st.title("Project Manager Overview")
         st.plotly_chart(fig)
 
 
