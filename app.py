@@ -173,6 +173,7 @@ WHERE kimai2_users_teams.teamlead=1;
             with tabs[i]:
                 dftest=df1[df1['project_name']==str(tablist[i])]
                 projectlist=dftest['project_id'].tolist()
+                teamlist=dftest['team_id'].tolist()
                 sql2=""" 
                         SELECT kimai2_projects_teams.*,kimai2_projects.name,kimai2_projects.visible,kimai2_projects.time_budget,kimai2_projects.budget,kimai2_users_teams.user_id,kimai2_users_teams.teamlead,
                 (
@@ -187,7 +188,7 @@ WHERE kimai2_users_teams.teamlead=1;
                 INNER JOIN kimai2_timesheet ON kimai2_timesheet.user=kimai2_users_teams.user_id and kimai2_timesheet.project_id=kimai2_projects_teams.project_id 
                 INNER JOIN kimai2_users ON kimai2_users.id=kimai2_users_teams.user_id
                 INNER JOIN kimai2_teams ON kimai2_teams.id=kimai2_projects_teams.team_id
-                where kimai2_projects_teams.project_id="""+str(projectlist[0])+""" and kimai2_projects_teams.team_id="""+str(2)+"""
+                where kimai2_projects_teams.project_id="""+str(projectlist[0])+""" and kimai2_projects_teams.team_id="""+str(teamlist[0])+"""
                 GROUP BY kimai2_users_teams.user_id;
                 
                 
@@ -199,6 +200,7 @@ WHERE kimai2_users_teams.teamlead=1;
                 # st.write(columnames)
                 dfdata2=pd.DataFrame(rows2,columns=columnames2)
                 st.write(projectlist[0])
+                st.write(teamlist[0])
                 st.write("All Data from Query",dfdata2)
             
 
