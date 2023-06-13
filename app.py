@@ -127,6 +127,14 @@ WHERE kimai2_users_teams.teamlead=1;
         st.title("Project Manager Overview")
         st.plotly_chart(fig)
 
+        st.title("Select Project Manager from the below list:")
+        # List of options for the dropdown menu
+        optionlist =dfdata['username'].unique().tolist()
+        options = optionlist
+
+        # Display the dropdown menu
+        selected_option = st.selectbox('Choose Project Manager', options)
+
 
 
 
