@@ -202,6 +202,17 @@ WHERE kimai2_users_teams.teamlead=1;
                 st.write(projectlist[0])
                 st.write(teamlist[0])
                 st.write("All Data from Query",dfdata2)
+
+                       # Create the pie chart using Plotly Express
+                figtab = px.pie(dfdata2, values='duration', names='username', hover_data=[dfdata2['username']])
+                figtab.update_traces(textposition='inside', textinfo='percent+label')
+
+                # Display the pie chart
+
+
+                st.plotly_chart(figtab)
+
+
             
 
         # tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
