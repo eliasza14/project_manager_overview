@@ -167,12 +167,12 @@ WHERE kimai2_users_teams.teamlead=1;
         
 
         st.write(tablist[0])
-        st.write(df1[df1['project_name']==str(tablist[0])])
+        
 
         for i in range(len(tabs)):
             with tabs[i]:
                 dftest=df1[df1['project_name']==str(tablist[i])]
-                st.write(dftest)
+                st.write(dftest['project_id'][0])
                 sql2=""" 
                         SELECT kimai2_projects_teams.*,kimai2_projects.name,kimai2_projects.visible,kimai2_projects.time_budget,kimai2_projects.budget,kimai2_users_teams.user_id,kimai2_users_teams.teamlead,
                 (
