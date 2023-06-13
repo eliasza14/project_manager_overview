@@ -155,6 +155,26 @@ WHERE kimai2_users_teams.teamlead=1;
 
 
 
+        import streamlit as st
+
+        tab_list = ["📈 Chart", "🗃 Data"]
+        tabs = {}
+
+        for tab_name in tab_list:
+            tabs[tab_name] = st.empty()
+
+        for tab_name, tab in tabs.items():
+            with tab:
+                st.subheader(f"A tab with {tab_name}")
+                if tab_name == "📈 Chart":
+                    data = np.random.randn(10, 1)
+                    st.line_chart(data)
+                elif tab_name == "🗃 Data":
+                    data = np.random.randn(10, 1)
+                    st.write(data)
+
+
+
         tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 
         with tab1:
