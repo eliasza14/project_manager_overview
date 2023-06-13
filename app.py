@@ -159,6 +159,9 @@ WHERE kimai2_users_teams.teamlead=1;
         tab_list = ["📈 Chart", "🗃 Data"]
         tabs = {}
 
+        selected_tab = st.sidebar.selectbox("Select a tab", tab_list)
+
+
         for tab_name in tab_list:
             tabs[tab_name] = st.empty()
 
