@@ -161,7 +161,7 @@ WHERE kimai2_users_teams.teamlead=1;
             ]
         # pull tab content from server
         tab_contents = get_tab_content()
-        tab_contents = df1
+        #tab_contents = df1
         # create tabs
         names = [content["title"] for content in tab_contents]
         tabs = st.tabs(names)
