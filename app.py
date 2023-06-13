@@ -154,6 +154,7 @@ WHERE kimai2_users_teams.teamlead=1;
         if 'All' not in choices2:
 
             df2=dfdata[dfdata['username'].isin(choices2)]
+            df2['duration']=df2['duration']/3600
             st.write(df2)
             
             #fig2 = px.bar(df2, x="username", y=df2['project_name'].tolist(), title="Wide-Form Input")
