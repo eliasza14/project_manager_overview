@@ -174,11 +174,7 @@ WHERE kimai2_users_teams.teamlead=1;
                 
         tabs = st.tabs(["metrics", "plots", "reports"])
 
-        tab_metrics = tabs[0]
-
-        with tab_metrics:
-            st.metric("Precision", 0.85, delta=0.2)
-            st.metric("Recall", 0.60, delta=-0.1)       
+            
 
 
         tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
