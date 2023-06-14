@@ -135,7 +135,9 @@ WHERE kimai2_users_teams.teamlead=1;
         # Display the dropdown menu
         selected_option = st.selectbox('Choose Project Manager', options)
         df1 = dfdata[dfdata['username'] == selected_option]
-        df1['duration']=df1['duration']/3600
+        # df1['duration']=df1['duration']/3600
+        df1.loc[:, 'duration'] = df1['duration'] / 3600
+
         # df = px.data.gapminder().query("continent == 'Europe' and year == 2007 and pop > 2.e6")
         fig2 = px.bar(df1, y='duration', x='project_name', text_auto='.2s',
                     title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
@@ -200,7 +202,9 @@ WHERE kimai2_users_teams.teamlead=1;
 
                 # st.write(columnames)
                 dfdata2=pd.DataFrame(rows2,columns=columnames2)
-                dfdata2['duration']=dfdata2['duration']/3600
+                # dfdata2['duration']=dfdata2['duration']/3600
+                dfdata2.loc[:, 'duration'] = dfdata2['duration'] / 3600
+
                 # st.write(projectlist[0])
                 # st.write(teamlist[0])
                 # st.write("All Data from Query",dfdata2)
