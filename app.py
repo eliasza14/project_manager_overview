@@ -180,7 +180,7 @@ WHERE kimai2_users_teams.teamlead=1;
                 (
                     SELECT SUM(kimai2_timesheet.duration)
                     FROM kimai2_timesheet
-                    WHERE kimai2_timesheet.user = kimai2_users_teams.user_id
+                    WHERE kimai2_timesheet.user = kimai2_users_teams.user_id and kimai2_timesheet.project_id=kimai2_projects_teams.project_id
                 ) AS duration,kimai2_users.alias as username,kimai2_teams.name as team_name
 
                 FROM `kimai2_projects_teams` 
