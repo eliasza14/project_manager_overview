@@ -200,6 +200,7 @@ WHERE kimai2_users_teams.teamlead=1;
 
                 # st.write(columnames)
                 dfdata2=pd.DataFrame(rows2,columns=columnames2)
+                dfdata2['duration']=dfdata2['duration']/3600
                 # st.write(projectlist[0])
                 # st.write(teamlist[0])
                 # st.write("All Data from Query",dfdata2)
