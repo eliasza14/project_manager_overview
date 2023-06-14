@@ -210,25 +210,27 @@ WHERE kimai2_users_teams.teamlead=1;
                 # st.write("All Data from Query",dfdata2)
 
  # Create the visualization based on the selected option
-                visualization_option = st.radio("Select Visualization", ("Pie Chart", "Bar Plot"), key=str(i))
-                if visualization_option == "Pie Chart":
-                    figtab = px.pie(dfdata2, values='duration', names='username', hover_data=[dfdata2['username']])
-                    figtab.update_traces(textposition='inside', textinfo='percent+label')
-                    st.plotly_chart(figtab)
-                elif visualization_option == "Bar Plot":
-                    figtab = go.Figure(data=[go.Bar(x=dfdata2['username'], y=dfdata2['duration'])])
-                    st.plotly_chart(figtab)
+
+
+                # visualization_option = st.radio("Select Visualization", ("Pie Chart", "Bar Plot"), key=str(i))
+                # if visualization_option == "Pie Chart":
+                #     figtab = px.pie(dfdata2, values='duration', names='username', hover_data=[dfdata2['username']])
+                #     figtab.update_traces(textposition='inside', textinfo='percent+label')
+                #     st.plotly_chart(figtab)
+                # elif visualization_option == "Bar Plot":
+                #     figtab = go.Figure(data=[go.Bar(x=dfdata2['username'], y=dfdata2['duration'])])
+                #     st.plotly_chart(figtab)
 
 
 
-                #        # Create the pie chart using Plotly Express
-                # figtab = px.pie(dfdata2, values='duration', names='username', hover_data=[dfdata2['username']])
-                # figtab.update_traces(textposition='inside', textinfo='percent+label')
+                # Create the pie chart using Plotly Express
+                figtab = px.pie(dfdata2, values='duration', names='username', hover_data=[dfdata2['username']])
+                figtab.update_traces(textposition='inside', textinfo='percent+label')
 
-                # # Display the pie chart
+                # Display the pie chart
 
 
-                # st.plotly_chart(figtab)
+                st.plotly_chart(figtab)
 
 
             
