@@ -206,7 +206,7 @@ WHERE kimai2_users_teams.teamlead=1;
                 # st.write("All Data from Query",dfdata2)
 
  # Create the visualization based on the selected option
-                visualization_option = st.radio("Select Visualization", ("Pie Chart", "Bar Plot"))
+                visualization_option = st.radio("Select Visualization", ("Pie Chart", "Bar Plot"), key=str(i))
                 if visualization_option == "Pie Chart":
                     figtab = px.pie(dfdata2, values='duration', names='username', hover_data=[dfdata2['username']])
                     figtab.update_traces(textposition='inside', textinfo='percent+label')
