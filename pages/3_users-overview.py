@@ -49,20 +49,7 @@ def main():
 
         
 
-        # Create a dropdown list in Streamlit
-        selected_option = st.selectbox("Select Project Status", ["Active Project", "Inactive Project", "All Projects"])
 
-        # Assign values based on the selected option
-        if selected_option == "Active Project":
-            value = 1
-        elif selected_option == "Inactive Project":
-            value = 0
-        else:
-            value = ""
-
-        # Display the resulting value
-        st.write("Selected Option:", selected_option)
-        st.write("Value:", value)
 
         # name = st.text_input("Enter your name:")
         # email = st.text_input("Enter your email:")
@@ -102,7 +89,6 @@ def main():
 
     # st.write(columnames)
         dfdata=pd.DataFrame(rows,columns=columnames)
-        dfdata=dfdata[dfdata['visible']==value]
         st.write("All Data from Query",dfdata)
         dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
 
