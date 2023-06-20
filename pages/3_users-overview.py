@@ -141,7 +141,7 @@ GROUP BY kimai2_users.alias; """
 FROM `kimai2_timesheet`
 INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
 Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
-WHERE kimai2_users.alias='Zampetakis Ilias' AND kimai2_projects.name='Πλατφόρμα Project Management';"""
+WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.name='"""+str(first_name_value2)+"""';"""
 
     rows,columnames = run_query(conn,sql3)
 
