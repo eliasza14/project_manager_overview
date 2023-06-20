@@ -127,6 +127,7 @@ GROUP BY kimai2_users.alias; """
     options2 = optionlist
     selected_option = st.selectbox('Choose Project', options2)
     df2 = userdf[userdf['alias'] == selected_option]
+    st.write(df2)
 
 
 
