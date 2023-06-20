@@ -49,17 +49,20 @@ def main():
 
         
 
-# Create a checkbox in Streamlit
-        checkbox_value = st.checkbox("Enable checkbox")
+        # Create a dropdown list in Streamlit
+        selected_option = st.selectbox("Select Project Status", ["Active Project", "Inactive Project", "All Projects"])
 
-        # Check the checkbox value and assign 1 or 0 accordingly
-        if checkbox_value:
+        # Assign values based on the selected option
+        if selected_option == "Active Project":
             value = 1
-        else:
+        elif selected_option == "Inactive Project":
             value = 0
+        else:
+            value = ""
 
         # Display the resulting value
-        st.write("Checkbox value:", value)
+        st.write("Selected Option:", selected_option)
+        st.write("Value:", value)
 
         # name = st.text_input("Enter your name:")
         # email = st.text_input("Enter your email:")
