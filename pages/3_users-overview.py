@@ -131,13 +131,18 @@ GROUP BY kimai2_users.alias; """
     first_name_value2 = df2['name'].iloc[0]
     first_alias_value2 = df2['alias'].iloc[0]
 
+#     sql3=""" SELECT kimai2_users.alias,kimai2_projects.name,kimai2_timesheet.start_time,kimai2_timesheet.duration
+# FROM `kimai2_timesheet`
+# INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+# Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
+# WHERE kimai2_users.alias="""+str(first_alias_value2)+""" and kimai2_projects.name="""+str(first_name_value2)+""";"""
+    
     sql3=""" SELECT kimai2_users.alias,kimai2_projects.name,kimai2_timesheet.start_time,kimai2_timesheet.duration
 FROM `kimai2_timesheet`
 INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
 Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
-WHERE kimai2_users.alias="""+str(first_alias_value2)+""" and kimai2_projects.name="""+str(first_name_value2)+""";"""
-    
-    
+WHERE kimai2_users.alias='Zampetakis Ilias' AND kimai2_projects.name='Πλατφόρμα Project Management';"""
+
     rows,columnames = run_query(conn,sql3)
 
     # st.write(columnames)
