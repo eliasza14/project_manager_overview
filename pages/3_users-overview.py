@@ -20,6 +20,10 @@ def run_query(conn,query):
 
 def main():
     conn = init_connection()
+    st.set_page_config(page_title="User Overview")
+    st.title("User Overview")
+
+
 
 
 if __name__ == '__main__':
