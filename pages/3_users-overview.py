@@ -106,7 +106,7 @@ GROUP BY kimai2_users.alias; """
     # df1['duration']=df1['duration']/3600
     # df1.loc[:, 'duration'] = df1['duration'] / 3600
     first_duration_value = df1['duration'].iloc[0]
-    st.write(str(first_duration_value)+"\u23F0")
+    st.write("<strong>Total duration is:"+str(first_duration_value)+"Hours \u23F0 </strong>")
 
 
 
