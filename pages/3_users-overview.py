@@ -90,8 +90,9 @@ GROUP BY kimai2_users.alias; """
     fig2 = go.Figure(go.Bar(
     x=dfdata2['duration'].tolist(),
     y=dfdata2['alias'].tolist(),
-    orientation='h',title="Users Total Working Hours"))
-    fig2.update_layout(yaxis=dict(autorange="reversed"))
+    orientation='h'))
+    
+    fig2.update_layout(title="Users Total Working Hours",yaxis=dict(autorange="reversed"))
     st.plotly_chart(fig2)
     
 
