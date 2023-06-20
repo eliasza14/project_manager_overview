@@ -106,7 +106,7 @@ GROUP BY kimai2_users.alias; """
     # df1['duration']=df1['duration']/3600
     # df1.loc[:, 'duration'] = df1['duration'] / 3600
     first_duration_value = df1['duration'].iloc[0]
-    first_alias_value = df1['duration'].iloc[0]
+    first_alias_value = df1['alias'].iloc[0]
     text="**Total** **duration** **is:** **"+str(first_duration_value)+"** **Hours** **\u23F0** "
     st.write(first_alias_value)
     st.markdown(text)
