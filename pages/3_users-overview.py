@@ -102,6 +102,7 @@ def main():
 
     # st.write(columnames)
         dfdata=pd.DataFrame(rows,columns=columnames)
+        dfdata=dfdata['visible'==value]
         st.write("All Data from Query",dfdata)
         dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
 
