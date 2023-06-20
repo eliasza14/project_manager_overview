@@ -49,7 +49,17 @@ def main():
 
         
 
+# Create a checkbox in Streamlit
+        checkbox_value = st.checkbox("Enable checkbox")
 
+        # Check the checkbox value and assign 1 or 0 accordingly
+        if checkbox_value:
+            value = 1
+        else:
+            value = 0
+
+        # Display the resulting value
+        st.write("Checkbox value:", value)
 
         # name = st.text_input("Enter your name:")
         # email = st.text_input("Enter your email:")
@@ -63,6 +73,7 @@ def main():
     if st.session_state.submitted:
         st.write("Given startdate and endate",startdate)
         st.write("Given startdate and endate",enddate)
+        st.write("visble:",value)
 
 
 
