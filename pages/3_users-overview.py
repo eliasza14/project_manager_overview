@@ -156,7 +156,7 @@ WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.n
     dfdata3['year'] = dfdata3['start_time'].dt.year
    
 # Apply the formatting function to the 'Year' column
-    dfdata3['Year'] = dfdata3['Year'].apply(format_year)
+    dfdata3['year'] = dfdata3['year'].apply(format_year)
     # dfdata3['year']=dfdata3['year'].str.replace(',', '').astype(int)
     st.write(dfdata3['year'].dtype)
 
