@@ -181,8 +181,8 @@ WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.n
 
     # Add line trace
     fig.add_trace(go.Scatter(
-        x=dfgroup['month_name'],
-        y=dfgroup['duration'],
+        x=dfdata3group['month_name'],
+        y=dfdata3group['duration'],
         mode='lines',
         name='Duration'
     ))
