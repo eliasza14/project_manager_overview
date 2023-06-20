@@ -6,7 +6,7 @@ from streamlit import session_state
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import timedelta
-
+import calendar 
 def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])
 
@@ -148,6 +148,75 @@ WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.n
     # st.write(columnames)
     dfdata3=pd.DataFrame(rows,columns=columnames)
     st.write("All Data from Query",dfdata3)
+    
+    # Convert 'start_time' column to datetime
+    dfdata3['start_time'] = pd.to_datetime(dfdata3['start_time'])
+
+    # Extract month from 'start_time' column
+    dfdata3['month'] = dfdata3['start_time'].dt.month
+
+    # Convert 'duration' column to numeric
+    dfdata3['duration'] = (dfdata3['duration'] / 3600).astype(int)
+
+    # Group by month and calculate total duration
+    dfdata3group = dfdata3.groupby('month')['duration'].sum().reset_index()
+
+    # Create all 12 months
+    all_months = list(range(1, 13))
+
+    # Add missing months to the DataFrame with duration set to 0
+    dfdata3group = dfdata3group.merge(pd.DataFrame({'month': all_months}), how='right')
+
+    # Sort the DataFrame by month
+    dfdata3group = dfdata3group.sort_values('month')
+
+    # Fill missing duration values with 0
+    dfdata3group['duration'] = dfdata3group['duration'].fillna(0)
+
+    # Get the name of each month
+    dfdata3group['month_name'] = dfdata3group['month'].apply(lambda x: calendar.month_name[x])
+
+    # Create line chart
+    fig = go.Figure()
+
+    # Add line trace
+    fig.add_trace(go.Scatter(
+        x=dfgroup['month_name'],
+        y=dfgroup['duration'],
+        mode='lines',
+        name='Duration'
+    ))
+
+    # Identify the months with non-zero sum duration
+    non_zero_months = dfdata3group[dfdata3group['duration'] > 0]
+
+    # Add dots for non-zero months
+    fig.add_trace(go.Scatter(
+        x=non_zero_months['month_name'],
+        y=non_zero_months['duration'],
+        mode='markers',
+        marker=dict(
+            color='green',
+            size=10,
+            symbol='circle',
+            line=dict(
+                width=2,
+                color='green'
+            )
+        ),
+        name='Non-Zero Months'
+    ))
+
+    # Set axis labels and chart title
+    fig.update_layout(
+        xaxis_title='Month',
+        yaxis_title='Total Duration',
+        title='Duration of the Project per Month'
+    )
+
+    # Display the chart
+    st.plotly_chart(fig)
+
 
 
 
