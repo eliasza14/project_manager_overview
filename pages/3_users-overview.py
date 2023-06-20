@@ -16,6 +16,8 @@ def run_query(conn,query):
         columnsnames=cur.column_names
         return cur.fetchall(),columnsnames
     
+def format_year(year):
+    return "{:d}".format(year)  # Removes the comma separator
 
 
 def main():
@@ -152,6 +154,9 @@ WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.n
     # Convert 'start_time' column to datetime
     dfdata3['start_time'] = pd.to_datetime(dfdata3['start_time'])
     dfdata3['year'] = dfdata3['start_time'].dt.year
+   
+# Apply the formatting function to the 'Year' column
+    dfdata3['Year'] = dfdata3['Year'].apply(format_year)
     # dfdata3['year']=dfdata3['year'].str.replace(',', '').astype(int)
     st.write(dfdata3['year'].dtype)
 
