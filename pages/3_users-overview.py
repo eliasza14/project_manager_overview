@@ -18,7 +18,10 @@ def run_query(conn,query):
     
 def format_year(year):
     return "{:d}".format(year)  # Removes the comma separator
+
+
 def update():
+    st.write("FILTER WORK")
     return "yes"
 
 def main():
