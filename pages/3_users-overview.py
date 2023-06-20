@@ -128,7 +128,14 @@ GROUP BY kimai2_users.alias; """
     selected_option = st.selectbox('Choose Project', options2)
     df2 = userdf[userdf['name'] == selected_option]
     st.write(df2)
+    first_name_value2 = df1['name'].iloc[0]
+    first_alias_value2 = df1['alias'].iloc[0]
 
+    sql3=""" SELECT kimai2_users.alias,kimai2_projects.name,kimai2_timesheet.start_time,kimai2_timesheet.duration
+FROM `kimai2_timesheet`
+INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
+WHERE kimai2_users.alias="""+str(first_alias_value2)+""" AND kimai2_projects.name="""+str(first_name_value2)+""";"""
 
 
 
