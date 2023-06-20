@@ -210,7 +210,7 @@ WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.n
     # Set axis labels and chart title
     fig.update_layout(
         xaxis_title='Months',
-        yaxis_title='Total Duration of Project:'+first_name_value2+"/n in Hours",
+        yaxis_title='Total Duration of Project:'+first_name_value2+" in Hours",
         title='Duration of the Project per Month'
     )
 
