@@ -110,7 +110,7 @@ GROUP BY kimai2_users.alias; """
     text="**Total** **duration** **is:** **"+str(first_duration_value)+"** **Hours** **\u23F0** "
     st.write(first_alias_value)
     st.markdown(text)
-    userdf = dfdata['alias'].loc[first_alias_value]
+    userdf = dfdata.loc[dfdata['alias']==first_alias_value]
     st.write(userdf)
 
 
