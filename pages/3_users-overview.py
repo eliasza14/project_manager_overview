@@ -154,9 +154,13 @@ WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.n
 
     # Extract month from 'start_time' column
     dfdata3['month'] = dfdata3['start_time'].dt.month
+    dfdata3['year'] = dfdata3['start_time'].dt.year
 
     # Convert 'duration' column to numeric
     dfdata3['duration'] = (dfdata3['duration'] / 3600).astype(int)
+    st.write("After Preprocessing Data from Query",dfdata3)
+
+
 
     # Group by month and calculate total duration
     dfdata3group = dfdata3.groupby('month')['duration'].sum().reset_index()
