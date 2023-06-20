@@ -70,7 +70,7 @@ GROUP BY kimai2_users.alias; """
     fig = px.pie(dfgroup2, values=countlist, names='alias', hover_data=[dfgroup2['name']],labels={'alias':'Project Manager',
                                                                                                         'values':'Project number',
                                                                                                         'name':'Projects'})
-    fig.update_traces(textposition='inside', textinfo='label')
+    fig.update_traces(textposition='inside', textinfo='values+label')
 
     # Display the pie chart
 
