@@ -195,8 +195,7 @@ GROUP BY kimai2_users.alias; """
 
     fig.update_layout(annotations=annotations)
 
-    fig.show()
-
+    st.plotly_chart(fig)
 
 
 
