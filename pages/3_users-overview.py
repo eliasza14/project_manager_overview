@@ -63,7 +63,7 @@ def main():
     if st.session_state.submitted:
         st.write("Given startdate and endate",startdate)
         st.write("Given startdate and endate",enddate)
-        st.write("visble:",value)
+        # st.write("visble:",value)
 
 
 
