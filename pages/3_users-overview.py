@@ -1,10 +1,28 @@
 import streamlit as st
+import pandas as pd
+import mysql.connector
+import datetime
+from streamlit import session_state
+import plotly.express as px
+import plotly.graph_objects as go
+from datetime import timedelta
 
-st.set_page_config(
-    page_title="Hello",
-    page_icon="👋",
-)
+def init_connection():
+    return mysql.connector.connect(**st.secrets["mysql"])
 
-st.write("# User Overview! 👋")
+def run_query(conn,query):
+    with conn.cursor() as cur:
+        cur.execute(query)
+        columnsnames=cur.column_names
+        return cur.fetchall(),columnsnames
+    
 
-st.sidebar.success("Select a demo above.")
+
+def main():
+    conn = init_connection()
+
+
+if __name__ == '__main__':
+    main()
+
+
