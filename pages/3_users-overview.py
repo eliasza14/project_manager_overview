@@ -118,7 +118,7 @@ GROUP BY kimai2_users.alias; """
              title='User Project durations',
              hover_data=['duration'], labels={'duration':'duration'})
     fig3.update_traces(textposition='inside', textinfo='percent+label')
-
+    st.plotly_chart(fig3)
 
 
 
