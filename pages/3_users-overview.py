@@ -21,8 +21,7 @@ def format_year(year):
 
 
 def update():
-    st.write("FILTER WORK")
-    return "yes"
+    st.session_state.submitted = True
 
 def main():
 
@@ -32,7 +31,7 @@ def main():
 
     # Define the sidebar form
     with st.sidebar.form("my_sidebar_form"):
-        st.write("## date range Form")
+        st.write("##Filters User Overview")
         startdate = st.date_input(
         "Give Start Date",
         datetime.date.today())
@@ -56,8 +55,12 @@ def main():
         # color = st.selectbox("Choose your favorite color:", ["Red", "Green", "Blue"])
         #submit_button = st.form_submit_button(label="Submit",on_click=update)
         st.form_submit_button(label="Apply Filters",on_click=update)
-    # Display the results
 
+
+    # Display the results
+    if st.session_state.submitted:
+        st.write("Given startdate and endate",startdate)
+        st.write("Given startdate and endate",enddate)
 
 
 
