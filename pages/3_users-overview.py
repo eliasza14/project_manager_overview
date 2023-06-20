@@ -154,7 +154,7 @@ WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.n
 
     # Extract month from 'start_time' column
     dfdata3['month'] = dfdata3['start_time'].dt.month
-    dfdata3['year'] = dfdata3['start_time'].dt.year
+    dfdata3['year'] = (dfdata3['start_time'].dt.year).astype(int)
 
     # Convert 'duration' column to numeric
     dfdata3['duration'] = (dfdata3['duration'] / 3600).astype(int)
