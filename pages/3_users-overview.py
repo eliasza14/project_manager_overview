@@ -91,11 +91,21 @@ GROUP BY kimai2_users.alias; """
     x=dfdata2['duration'].tolist(),
     y=dfdata2['alias'].tolist(),
     orientation='h'))
-    
+
     fig2.update_layout(title="Users Total Working Hours",yaxis=dict(autorange="reversed"))
     st.plotly_chart(fig2)
-    
 
+    st.title("Select User from the below list:")
+        # List of options for the dropdown menu
+    optionlist =dfdata2['alias'].tolist()
+    options = optionlist
+
+    # Display the dropdown menu
+    selected_option = st.selectbox('Choose User', options)
+    df1 = dfdata2[dfdata2['alias'] == selected_option]
+    # df1['duration']=df1['duration']/3600
+    # df1.loc[:, 'duration'] = df1['duration'] / 3600
+    st.write(df1)
 
 
 
