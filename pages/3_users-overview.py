@@ -42,6 +42,23 @@ GROUP BY kimai2_users.alias; """
     st.write("All Data from Query",dfdata)
 
 
+    dfgroup=dfdata.groupby(['alias'])['name'].count()
+    st.write(dfgroup)
+
+
+           # Create the pie chart using Plotly Express
+    fig = px.pie(dfgroup2, values=countlist, names='username', hover_data=[dfgroup2['project_name']],labels={'username':'Project Manager',
+                                                                                                        'values':'Project number',
+                                                                                                        'project_name':'Projects'})
+    fig.update_traces(textposition='inside', textinfo='percent+label')
+
+    # Display the pie chart
+
+
+    st.title("Project Manager Overview")
+    st.plotly_chart(fig)
+
+
 
 
 
