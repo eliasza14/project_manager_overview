@@ -27,6 +27,8 @@ def main():
 
     conn = init_connection()
     st.set_page_config(page_title="User Overview")
+    if 'submitted' not in st.session_state:
+        st.session_state.submitted = False
     st.title("User Overview")
 
     # Define the sidebar form
