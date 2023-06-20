@@ -90,15 +90,19 @@ GROUP BY kimai2_users.alias; """
 
     import numpy as np
 
-    y_saving = [1.3586, 2.2623000000000002, 4.9821999999999997, 6.5096999999999996,
-                7.4812000000000003, 7.5133000000000001, 15.2148, 17.520499999999998
-                ]
-    y_net_worth = [93453.919999999998, 81666.570000000007, 69889.619999999995,
-                78381.529999999999, 141395.29999999999, 92969.020000000004,
-                66090.179999999993, 122379.3]
-    x = ['Japan', 'United Kingdom', 'Canada', 'Netherlands',
-        'United States', 'Belgium', 'Sweden', 'Switzerland']
+    # y_saving = [1.3586, 2.2623000000000002, 4.9821999999999997, 6.5096999999999996,
+    #             7.4812000000000003, 7.5133000000000001, 15.2148, 17.520499999999998
+    #             ]
+    y_saving=dfdata2['duration'].tolist()
 
+    # y_net_worth = [93453.919999999998, 81666.570000000007, 69889.619999999995,
+    #             78381.529999999999, 141395.29999999999, 92969.020000000004,
+    #             66090.179999999993, 122379.3]
+    y_net_worth=dfdata2['duration'].tolist()
+    
+    # x = ['Japan', 'United Kingdom', 'Canada', 'Netherlands',
+    #     'United States', 'Belgium', 'Sweden', 'Switzerland']
+    x=dfdata2['alias'].tolist()
 
     # Creating two subplots
     fig = make_subplots(rows=1, cols=2, specs=[[{}, {}]], shared_xaxes=True,
