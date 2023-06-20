@@ -78,6 +78,8 @@ def main():
         sql2 ="""SELECT kimai2_users.alias,SUM(kimai2_timesheet.duration) as duration 
     FROM `kimai2_timesheet`
     INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+    WHERE DATE(start_time) >='"""+str(startdate)+"""' AND DATE(start_time) <='"""+str(enddate)+"""' 
+
     GROUP BY kimai2_users.alias; """
 
         
