@@ -151,7 +151,7 @@ WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.n
     
     # Convert 'start_time' column to datetime
     
-    dfdata3['start_time'] = pd.to_datetime(dfdata3['start_time'])
+    # dfdata3['start_time'] = pd.to_datetime(dfdata3['start_time'])
     dfdata3['start_time'] = dfdata3['start_time'].dt.strftime('%Y-%m-%d %H:%M:%S')
 
     dfdata3['year'] = (dfdata3['start_time'].dt.year).astype(int)
