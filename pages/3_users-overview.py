@@ -150,47 +150,6 @@ WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.n
     st.write("All Data from Query",dfdata3)
 
 
-    # Assuming df is your DataFrame
-    df = pd.DataFrame({
-        'alias': ['Zampetakis Ilias'] * 22,
-        'project_name': ['Πλατφόρμα Project Management'] * 22,
-        'start_time': [
-            '2023-05-02 08:10:00', '2023-05-03 08:10:00', '2023-05-04 08:10:00', '2023-05-05 08:10:00',
-            '2023-05-08 08:13:00', '2023-05-15 15:26:00', '2023-05-05 08:21:00', '2023-05-12 08:23:00',
-            '2023-05-08 07:59:00', '2023-05-09 08:13:00', '2023-05-10 08:13:00', '2023-05-11 08:13:00',
-            '2023-05-12 08:23:00', '2023-05-26 12:13:00', '2023-06-02 14:03:00', '2023-06-08 14:19:00',
-            '2023-06-09 13:23:00', '2023-06-12 07:43:00', '2023-06-13 07:43:00', '2023-06-14 11:53:00',
-            '2023-06-16 12:53:00', '2023-06-19 07:39:00'
-        ],
-        'duration': ["28,800", "28,800", "28,800", "28,800", "28,800", "28,800", 60, 60, 0, "28,800", "21,600",
-                    "28,800", "28,800", "14,400", "10,800", "7,200", "14,400", "28,800", "28,800", "14,400",
-                    "3,600", "18,000"]
-    })
-
-    # Convert 'start_time' column to datetime
-    df['start_time'] = pd.to_datetime(df['start_time'])
-
-    # Extract month from 'start_time' column
-    df['month'] = df['start_time'].dt.month
-
-    # Convert 'duration' column to numeric
-    df['duration'] = df['duration'].str.replace(',', '').astype(int)
-
-    # Group by month and calculate total duration
-    dfgroup = df.groupby('month')['duration'].sum().reset_index()
-
-    # Create line chart
-    fig = go.Figure(data=go.Scatter(x=dfgroup['month'], y=dfgroup['duration'], mode='lines'))
-
-    # Set axis labels and chart title
-    fig.update_layout(
-        xaxis_title='Month',
-        yaxis_title='Total Duration',
-        title='Duration of the Project per Month'
-    )
-
-# Display the chart
-    st.plotly_chart(fig)
 
 
 
