@@ -105,8 +105,8 @@ GROUP BY kimai2_users.alias; """
     df1 = dfdata2[dfdata2['alias'] == selected_option]
     # df1['duration']=df1['duration']/3600
     # df1.loc[:, 'duration'] = df1['duration'] / 3600
-    
-    st.write(str(df1['duration'].iloc[0]))
+    first_duration_value = df1['duration'].iloc[0]
+    st.write(first_duration_value)
 
 
 
