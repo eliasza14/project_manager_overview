@@ -83,7 +83,7 @@ GROUP BY kimai2_users.alias; """
     # st.write(columnames)
     dfdata2=pd.DataFrame(rows,columns=columnames)
     dfdata2.loc[:, 'duration'] = dfdata2['duration'] // 3600
-    dfdata2=dfdata2.sort_values(by=['duration'], ascending=True)
+    dfdata2=dfdata2.sort_values(by=['duration'], ascending=False)
     st.write("All Data from Query",dfdata2)
 
 
