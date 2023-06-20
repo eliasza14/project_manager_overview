@@ -75,7 +75,7 @@ GROUP BY kimai2_users.alias; """
     # Display the pie chart
 
 
-    st.title("Project Manager Overview")
+    st.title("User Overview")
     st.plotly_chart(fig)
 
     rows,columnames = run_query(conn,sql2)
