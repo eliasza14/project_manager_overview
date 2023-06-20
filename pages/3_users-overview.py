@@ -110,8 +110,14 @@ GROUP BY kimai2_users.alias; """
     text="**Total** **duration** **is:** **"+str(first_duration_value)+"** **Hours** **\u23F0** "
     st.write(first_alias_value)
     st.markdown(text)
+    st.title(text)
     userdf = dfdata.loc[dfdata['alias']==first_alias_value]
     st.write(userdf)
+
+    fig3 = px.pie(userdf, values='duration', names='name',
+             title='User Project durations',
+             hover_data=['duration'], labels={'duration':'duration'})
+    fig3.update_traces(textposition='inside', textinfo='percent+label')
 
 
 
