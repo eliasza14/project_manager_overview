@@ -150,13 +150,9 @@ WHERE kimai2_users.alias='"""+str(first_alias_value2)+"""' AND kimai2_projects.n
     st.write("All Data from Query",dfdata3)
     
     # Convert 'start_time' column to datetime
-    
     dfdata3['start_time'] = pd.to_datetime(dfdata3['start_time'])
-    st.write(dfdata3)
-    dfdata3['start_time'] = dfdata3['start_time'].dt.strftime('%Y-%m-%d %H:%M:%S')
-
-    dfdata3['year'] = (dfdata3['start_time'].dt.year).astype(int)
-
+    dfdata3['year'] = dfdata3['start_time'].dt.year
+    st.write(type(dfdata3['year']))
     # Extract month from 'start_time' column
     dfdata3['month'] = dfdata3['start_time'].dt.month
 
