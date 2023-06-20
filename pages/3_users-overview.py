@@ -63,7 +63,7 @@ GROUP BY kimai2_users.alias; """
 
 
 
-    st.write(dfgroup)
+    st.write(dfgroup2)
 
 
            # Create the pie chart using Plotly Express
