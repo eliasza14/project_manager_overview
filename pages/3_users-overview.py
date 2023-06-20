@@ -122,8 +122,10 @@ GROUP BY kimai2_users.alias; """
     st.plotly_chart(fig3)
 
     st.title("Select Project from the below list")
-
-
+    
+    optionlist =userdf['name'].tolist()
+    options2 = optionlist
+    selected_option = st.selectbox('Choose Project', options)
 
 
 
