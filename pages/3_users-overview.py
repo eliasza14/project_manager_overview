@@ -40,7 +40,7 @@ GROUP BY kimai2_users.alias; """
 # st.write(columnames)
     dfdata=pd.DataFrame(rows,columns=columnames)
     st.write("All Data from Query",dfdata)
-
+    dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
 
     dfgroup=dfdata.groupby(['alias'])['name'].count()
 
@@ -112,6 +112,7 @@ GROUP BY kimai2_users.alias; """
     st.markdown(text)
     st.title(text)
     userdf = dfdata.loc[dfdata['alias']==first_alias_value]
+
     st.write(userdf)
 
     fig3 = px.pie(userdf, values='duration', names='name',
