@@ -77,6 +77,12 @@ GROUP BY kimai2_users.alias; """
 
     st.title("Project Manager Overview")
     st.plotly_chart(fig)
+    
+    rows,columnames = run_query(conn,sql2)
+
+    # st.write(columnames)
+    dfdata2=pd.DataFrame(rows,columns=columnames)
+    st.write("All Data from Query",dfdata2)
 
 
 
