@@ -31,7 +31,7 @@ def main():
 
     # Define the sidebar form
     with st.sidebar.form("my_sidebar_form"):
-        st.write("##Filters User Overview")
+        st.write("# Filters User Overview")
         startdate = st.date_input(
         "Give Start Date",
         datetime.date.today())
