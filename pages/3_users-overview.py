@@ -168,9 +168,10 @@ GROUP BY kimai2_users.alias; """
 
     annotations = []
 
-    y_s = np.round(y_saving, decimals=2)
-    y_nw = np.rint(y_net_worth)
-
+    # y_s = np.round(y_saving, decimals=2)
+    # y_nw = np.rint(y_net_worth)
+    y_s = y_saving
+    y_nw = y_net_worth
     # Adding labels
     for ydn, yd, xd in zip(y_nw, y_s, x):
         # labeling the scatter savings
