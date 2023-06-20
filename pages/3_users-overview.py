@@ -121,6 +121,8 @@ GROUP BY kimai2_users.alias; """
     fig3.update_traces(textposition='inside', textinfo='percent+label')
     st.plotly_chart(fig3)
 
+    st.title("Select Project from the below list")
+
 
 
 
