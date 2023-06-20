@@ -18,12 +18,47 @@ def run_query(conn,query):
     
 def format_year(year):
     return "{:d}".format(year)  # Removes the comma separator
-
+def update():
+    return "yes"
 
 def main():
+
     conn = init_connection()
     st.set_page_config(page_title="User Overview")
     st.title("User Overview")
+
+    # Define the sidebar form
+    with st.sidebar.form("my_sidebar_form"):
+        st.write("## date range Form")
+        startdate = st.date_input(
+        "Give Start Date",
+        datetime.date.today())
+
+
+
+
+        enddate = st.date_input(
+        "Give End Date",
+        datetime.datetime.now() + datetime.timedelta(days=1))
+
+        st.write('Your birthday is:', enddate)
+
+        
+
+
+
+        # name = st.text_input("Enter your name:")
+        # email = st.text_input("Enter your email:")
+        # age = st.number_input("Enter your age:", min_value=0, max_value=120)
+        # color = st.selectbox("Choose your favorite color:", ["Red", "Green", "Blue"])
+        #submit_button = st.form_submit_button(label="Submit",on_click=update)
+        st.form_submit_button(label="Apply Filters",on_click=update)
+    # Display the results
+
+
+
+
+
     sql = """SELECT kimai2_projects.name,kimai2_users.alias,SUM(kimai2_timesheet.duration) as duration ,MIN(kimai2_timesheet.start_time) as startime,MAX(kimai2_timesheet.start_time) as lasttime,kimai2_projects.visible
 FROM `kimai2_timesheet`
 INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
