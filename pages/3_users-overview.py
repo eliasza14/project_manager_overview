@@ -67,10 +67,10 @@ GROUP BY kimai2_users.alias; """
 
 
            # Create the pie chart using Plotly Express
-    fig = px.pie(dfgroup2, values=countlist, names='alias', hover_data=[dfgroup2['name']],labels={'alias':'Project Manager',
-                                                                                                        'values':'Project number',
+    fig = px.pie(dfgroup2, values=countlist, names='alias', hover_data=[dfgroup2['name']],labels={'alias':'User',
+                                                                                                        'values':'Project count',
                                                                                                         'name':'Projects'})
-    fig.update_traces(textposition='inside', textinfo='values+label')
+    fig.update_traces(textposition='inside', textinfo='text+label')
 
     # Display the pie chart
 
