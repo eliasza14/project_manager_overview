@@ -70,7 +70,7 @@ def main():
         filter_values = {
         "Active": 1,
         "Inactive": 0,
-        "Total": None
+        "Total": ''
         }
     
         selected_filter = filter_values[filter_option]
