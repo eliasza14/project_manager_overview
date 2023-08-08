@@ -225,8 +225,8 @@ def main():
             col1,col2 = st.columns(2)
             with col1:
                 st.write('Rate per Project for selected user')
-                df1['cost']=df1['value'].astype(float)*df1['duration'].astype(float)
-                figrate= px.bar(df1, y='cost', x='name', text_auto='.2s',title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
+                # df1['cost']=df1['value'].astype(float)*df1['duration'].astype(float)
+                figrate= px.bar(df1, y='duration', x='alias', text_auto='.2s',title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
                 figrate.update_layout(barmode='stack', xaxis={'categoryorder': 'total descending'})
 
                 st.plotly_chart(figrate)
