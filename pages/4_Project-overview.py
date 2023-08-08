@@ -167,9 +167,9 @@ def main():
         with st.container():
             col1, col2 = st.columns(2)
             with col1:
-                st.write("hello")
+                st.title("hello")
             with col2:
-                st.write("there")
+                st.title("there")
 
         st.write(dfgroup2)
 
