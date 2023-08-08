@@ -167,15 +167,19 @@ def main():
 
         st.write(dfgroup2)
         ##############containers
+        with open("animated_counter.js", "r") as file:
+            js_code = file.read()
         with st.container():
             col1, col2 = st.columns(2)
             with col1:
+                val=100
                 st.title("hello")
-                html_content1 = html_button1()
+                html_content1 = html_button1(js_code,val)
                 html(html_content1,height=250)
             with col2:
                 st.title("there")
-                html_content1 = html_button1()
+                val=200
+                html_content1 = html_button1(js_code,val)
                 html(html_content1,height=250)
                 
         

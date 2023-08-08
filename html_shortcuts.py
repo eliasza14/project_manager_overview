@@ -1,4 +1,4 @@
-def html_button1():
+def html_button1(js_code,val):
     html_content_1=f"""
                     <body>
                         <div style="display:flex; justify-content: center; " >
@@ -41,7 +41,10 @@ def html_button1():
                                 </div>
                             </div>
                         </div>
-                    
+                    <script type="text/javascript">
+                    {js_code}
+                    animateCounter3test2noEuro("counter", 0, """+str(val)+""", 1000,100);
+                    </script>
                     </body>
 
 
