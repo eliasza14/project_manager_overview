@@ -88,7 +88,7 @@ def main():
             filter_condition = f"kimai2_projects.visible={selected_filter_value}"
 
         sql = f"""
-        SELECT kimai2_projects.name, kimai2_users.alias, SUM(kimai2_timesheet.duration) as duration,
+        SELECT kimai2_projects.name, kimai2_users.alias,kimai2_users.enabled, SUM(kimai2_timesheet.duration) as duration,
             MIN(kimai2_timesheet.start_time) as startime, MAX(kimai2_timesheet.start_time) as lasttime,
             kimai2_projects.visible, kimai2_user_preferences.name as rate, kimai2_user_preferences.value
         FROM `kimai2_timesheet`
