@@ -203,6 +203,25 @@ def main():
         df1 = dfdata[dfdata['name'] == selected_option]
         st.write(df1)
 
+        with st.container():
+            col1, col2,col3,col4 = st.columns(4)
+            with col1:
+                pass
+  
+            with col2:
+
+                val=len(df1['alias'][dfdata['enabled']==1].unique())
+                html_content3 = html_button3(js_code,val)
+                html(html_content3,height=250)
+            with col3:
+                pass
+                # val=len(dfdata['name'].unique())
+                # html_content1 = html_button1(js_code,val)
+                # html(html_content1,height=250)
+            with col4:
+                pass
+
+
 
                 
         
