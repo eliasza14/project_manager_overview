@@ -163,6 +163,7 @@ def main():
         for i in range(len(dfgroup2)):
             dfgroup2['name'][i] = '<br>'.join(dfgroup2['name'][i]).replace(',', ',<br>')
 
+        st.write(dfgroup2)
         ##############containers
         with st.container():
             col1, col2 = st.columns(2)
@@ -170,7 +171,7 @@ def main():
                 st.title("hello")
             with col2:
                 st.title("there")
-                st.write(dfgroup2)
+                
         
 
 
