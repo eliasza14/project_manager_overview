@@ -44,7 +44,8 @@ def main():
         enddate = st.date_input(
         "Give End Date",
         datetime.datetime.now() + datetime.timedelta(days=1))
-
+        filter_option = st.radio("Select Filter:", ["Active", "Inactive", "Total"], index=2)  # Set default to "Total"
+        st.write(filter_option)
         st.write('Your birthday is:', enddate)
 
         
