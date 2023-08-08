@@ -195,6 +195,14 @@ def main():
             with col2:
                 pass
 
+                # Display the dropdown menu
+               # List of options for the dropdown menu
+        optionlist =dfdata['name'].unique().tolist()
+        options = optionlist
+        selected_option = st.selectbox('Select Project', options)
+        df1 = dfdata[dfdata['name'] == selected_option]
+        st.write(df1)
+
 
                 
         
