@@ -179,8 +179,8 @@ def main():
                 val=len(dfdata['alias'][dfdata['enabled']==1].unique())
                 html_content2 = html_button2(js_code,val)
                 html(html_content2,height=250)
-         with st.container():
-
+                
+        with st.container():
             col1 = st.columns(1)
             with col1:
                 fig = px.pie(dfdata, values='duration', names='name',
