@@ -98,7 +98,7 @@ def main():
         WHERE DATE(start_time) >= '{startdate}' AND DATE(start_time) <= '{enddate}'
             AND kimai2_user_preferences.name = 'hourly_rate' AND ({filter_condition})
         GROUP BY kimai2_users.alias, kimai2_projects.name, kimai2_projects.visible,
-                kimai2_user_preferences.name, kimai2_user_preferences.value;
+                kimai2_user_preferences.name, kimai2_user_preferences.value,kimai2_users.enabled;
         """
 
 
