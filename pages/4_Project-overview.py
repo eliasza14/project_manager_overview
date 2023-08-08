@@ -176,12 +176,9 @@ def main():
                 html_content1 = html_button1(js_code,val)
                 html(html_content1,height=250)
             with col2:
-                st.title("there")
-                st.write(dfdata['alias'][dfdata['enabled']==1].unique())
                 val=len(dfdata['alias'][dfdata['enabled']==1].unique())
-                st.write(val)
-                html_content1 = html_button1(js_code,val)
-                html(html_content1,height=250)
+                html_content2 = html_button2(js_code,val)
+                html(html_content2,height=250)
                 
         
 
