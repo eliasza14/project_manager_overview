@@ -186,7 +186,7 @@ def main():
         #st.markdown(text)
         st.title(text)
         userdf = dfdata.loc[dfdata['alias']==first_alias_value]
-        # userdf['cost']=userdf['rate'].astype(float)*userdf['duration'].astype(float)
+        userdf['cost']=userdf['value'].astype(float)*userdf['duration'].astype(float)
         st.write(userdf)
 
         fig3 = px.pie(userdf, values='duration', names='name',
