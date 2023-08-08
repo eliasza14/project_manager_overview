@@ -186,7 +186,7 @@ def main():
         #st.markdown(text)
         st.title(text)
         userdf = dfdata.loc[dfdata['alias']==first_alias_value]
-
+        userdf['cost']=userdf['rate']*userdf['duration']
         st.write(userdf)
 
         fig3 = px.pie(userdf, values='duration', names='name',
@@ -194,6 +194,16 @@ def main():
                 hover_data=['duration'], labels={'duration':'duration'})
         fig3.update_traces(textposition='inside', textinfo='percent+label')
         st.plotly_chart(fig3)
+
+
+        st.write('Rate per Project for selected user')
+
+        # figrate= px.bar(df1, y='duration', x='project_name', text_auto='.2s',
+        #             title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
+        # st.plotly_chart(figrate)
+
+
+
 
         st.title("Select Project from the below list")
         
