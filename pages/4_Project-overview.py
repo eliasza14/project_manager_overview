@@ -181,7 +181,7 @@ def main():
         with st.container():
             col1,col2 = st.columns(2)
             with col1:
-                st.write(dfdata[['name','duration']].value_counts())
+                st.write(dfdata.groupby('name')['duration'].sum())
                 fig = px.pie(dfdata, values='duration', names='name',
                 title='User Project durations',
                 hover_data=['duration'], labels={'duration':'duration'})
