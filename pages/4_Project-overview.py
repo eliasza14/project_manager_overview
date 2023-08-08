@@ -172,8 +172,8 @@ def main():
         with st.container():
             col1, col2 = st.columns(2)
             with col1:
-                val=100
-                st.title("hello")
+                val=dfdata['name'].unique().sum()
+                st.title("Total Active Projects")
                 html_content1 = html_button1(js_code,val)
                 html(html_content1,height=250)
             with col2:
