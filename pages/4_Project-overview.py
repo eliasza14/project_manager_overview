@@ -169,7 +169,7 @@ def main():
             col1, col2 = st.columns(2)
             with col1:
                 st.title("hello")
-                st.write(f"""
+                st.markdown(f"""
                     <body>
                         <div style="display:flex; justify-content: center; " >
                             <div style="width:310px; background: linear-gradient(138deg, rgba(198.55, 215.22, 244.37, 0.56) 0%, rgba(96, 239, 255, 0.55) 100%); display: flex;align-items: center;flex-direction: column;flex-wrap: nowrap;border: 1px solid transparent;border-radius: 16px;padding-top: 12px; padding-bottom: 12px; padding-left:24px; padding-right:24px;">
