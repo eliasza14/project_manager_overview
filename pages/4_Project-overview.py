@@ -170,8 +170,8 @@ def main():
                 st.title("hello")
             with col2:
                 st.title("there")
-
-        st.write(dfgroup2)
+                st.write(dfgroup2)
+        
 
 
     #         # Create the pie chart using Plotly Express
