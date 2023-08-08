@@ -199,7 +199,7 @@ def main():
         st.write('Rate per Project for selected user')
 
         figrate= px.bar(userdf, y='cost', x='name', text_auto='.2s',title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
-        figrate.update_layout(barmode='stack', xaxis={'categoryorder': 'total ascending'})
+        figrate.update_layout(barmode='stack', xaxis={'categoryorder': 'total descending'})
 
         st.plotly_chart(figrate)
 
