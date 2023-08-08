@@ -179,15 +179,17 @@ def main():
                 val=len(dfdata['alias'][dfdata['enabled']==1].unique())
                 html_content2 = html_button2(js_code,val)
                 html(html_content2,height=250)
-                
+
         with st.container():
-            col1 = st.columns(1)
+            col1,col2 = st.columns(2)
             with col1:
                 fig = px.pie(dfdata, values='duration', names='name',
                 title='User Project durations',
                 hover_data=['duration'], labels={'duration':'duration'})
                 fig.update_traces(textposition='inside', textinfo='percent+label')
                 st.plotly_chart(fig)
+            with col2:
+
 
                 
         
