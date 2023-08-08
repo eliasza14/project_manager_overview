@@ -70,26 +70,49 @@ def main():
         filter_values = {
         "Active": 1,
         "Inactive": 0,
-        "Total": ''
+        "Total": "All"
         }
-    
-        selected_filter = filter_values[filter_option]
-        st.write(selected_filter)
+
+        selected_filter_value = filter_values[filter_option]
+
+        # selected_filter = filter_values[filter_option]
+        # st.write(selected_filter)
         # st.write("visble:",value)
 
-        sql="""SELECT kimai2_projects.name,kimai2_users.alias,SUM(kimai2_timesheet.duration) as duration ,MIN(kimai2_timesheet.start_time) as startime,MAX(kimai2_timesheet.start_time) as lasttime,kimai2_projects.visible,kimai2_user_preferences.name as rate,kimai2_user_preferences.value
 
-    FROM `kimai2_timesheet`
+        if selected_filter_value == "All":
+            filter_condition = "1 OR kimai2_projects.visible=0"  # Show all data regardless of visibility
+        else:
+            filter_condition = f"kimai2_projects.visible={selected_filter_value}"
 
-    INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+        sql = f"""
+        SELECT kimai2_projects.name, kimai2_users.alias, SUM(kimai2_timesheet.duration) as duration,
+            MIN(kimai2_timesheet.start_time) as startime, MAX(kimai2_timesheet.start_time) as lasttime,
+            kimai2_projects.visible, kimai2_user_preferences.name as rate, kimai2_user_preferences.value
+        FROM `kimai2_timesheet`
+        INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+        INNER JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
+        INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
+        WHERE DATE(start_time) >= '{startdate}' AND DATE(start_time) <= '{enddate}'
+            AND kimai2_user_preferences.name = 'hourly_rate' AND ({filter_condition})
+        GROUP BY kimai2_users.alias, kimai2_projects.name, kimai2_projects.visible,
+                kimai2_user_preferences.name, kimai2_user_preferences.value;
+        """
 
-    INNER JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
 
-    INNER JOIN `kimai2_user_preferences`ON kimai2_users.id=kimai2_user_preferences.user_id
+    #     sql="""SELECT kimai2_projects.name,kimai2_users.alias,SUM(kimai2_timesheet.duration) as duration ,MIN(kimai2_timesheet.start_time) as startime,MAX(kimai2_timesheet.start_time) as lasttime,kimai2_projects.visible,kimai2_user_preferences.name as rate,kimai2_user_preferences.value
 
-    WHERE DATE(start_time) >='"""+str(startdate)+"""' AND DATE(start_time) <='"""+str(enddate)+"""' AND kimai2_user_preferences.name = 'hourly_rate' AND kimai2_projects.visible='"""+str(selected_filter)+"""'
+    # FROM `kimai2_timesheet`
 
-    GROUP BY kimai2_users.alias,kimai2_projects.name,kimai2_projects.visible,kimai2_user_preferences.name,kimai2_user_preferences.value;"""
+    # INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+
+    # INNER JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
+
+    # INNER JOIN `kimai2_user_preferences`ON kimai2_users.id=kimai2_user_preferences.user_id
+
+    # WHERE DATE(start_time) >='"""+str(startdate)+"""' AND DATE(start_time) <='"""+str(enddate)+"""' AND kimai2_user_preferences.name = 'hourly_rate' AND kimai2_projects.visible='"""+str(selected_filter)+"""'
+
+    # GROUP BY kimai2_users.alias,kimai2_projects.name,kimai2_projects.visible,kimai2_user_preferences.name,kimai2_user_preferences.value;"""
 
 
     #     sql = """SELECT kimai2_projects.name,kimai2_users.alias,SUM(kimai2_timesheet.duration) as duration ,MIN(kimai2_timesheet.start_time) as startime,MAX(kimai2_timesheet.start_time) as lasttime,kimai2_projects.visible
