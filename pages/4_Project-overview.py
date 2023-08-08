@@ -169,6 +169,7 @@ def main():
         ##############containers
         with open("animated_counter.js", "r") as file:
             js_code = file.read()
+
         with st.container():
             col1, col2 = st.columns(2)
             with col1:
@@ -189,6 +190,7 @@ def main():
                 fig.update_traces(textposition='inside', textinfo='percent+label')
                 st.plotly_chart(fig)
             with col2:
+                pass
 
 
                 
