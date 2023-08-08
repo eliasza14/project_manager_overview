@@ -198,9 +198,9 @@ def main():
 
         st.write('Rate per Project for selected user')
 
-        # figrate= px.bar(df1, y='duration', x='project_name', text_auto='.2s',
-        #             title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
-        # st.plotly_chart(figrate)
+        figrate= px.bar(userdf, y='cost', x='project_name', text_auto='.2s',
+                    title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
+        st.plotly_chart(figrate)
 
 
 
