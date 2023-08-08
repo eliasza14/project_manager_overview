@@ -181,8 +181,8 @@ def main():
         with st.container():
             col1,col2 = st.columns(2)
             with col1:
-                st.write(dfdata.groupby('name')['duration'].sum())
-                fig = px.pie(dfdata, values='duration', names='name',
+                # st.write(dfdata.groupby('name')['duration'].sum())
+                fig = px.pie(dfdata, values=dfdata.groupby('name')['duration'].sum()[1], names=dfdata.groupby('name')['duration'].sum()[0],
                 title='User Project durations',
                 hover_data=['duration'], labels={'duration':'duration'})
                 fig.update_traces(textposition='inside', textinfo='percent+label')
