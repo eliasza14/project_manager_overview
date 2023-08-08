@@ -27,8 +27,10 @@ def main():
 
     conn = init_connection()
     st.set_page_config(page_title="User Overview")
+
     if 'submitted' not in st.session_state:
         st.session_state.submitted = False
+
     st.title("User Overview")
 
     # Define the sidebar form
@@ -64,6 +66,15 @@ def main():
     if st.session_state.submitted:
         st.write("Given startdate and endate",startdate)
         st.write("Given startdate and endate",enddate)
+
+        filter_values = {
+        "Active": 1,
+        "Inactive": 0,
+        "Total": None
+        }
+    
+        selected_filter = filter_values[filter_option]
+        st.write(selected_filter)
         # st.write("visble:",value)
 
         sql="""SELECT kimai2_projects.name,kimai2_users.alias,SUM(kimai2_timesheet.duration) as duration ,MIN(kimai2_timesheet.start_time) as startime,MAX(kimai2_timesheet.start_time) as lasttime,kimai2_projects.visible,kimai2_user_preferences.name as rate,kimai2_user_preferences.value
