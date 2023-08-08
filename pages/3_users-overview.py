@@ -135,9 +135,12 @@ def main():
 
         # st.write(columnames)
         dfdata2=pd.DataFrame(rows,columns=columnames)
+        dfdata2=dfdata2[dfdata2['alias']!='ADMINISTRATOR']
+        st.write("All Data from Filter data2",dfdata2)
         dfdata2.loc[:, 'duration'] = dfdata2['duration'] // 3600
         
         dfdata2=dfdata2.sort_values('duration', ascending=False)
+        
         st.write("All Data from Query",dfdata2)
 
 
