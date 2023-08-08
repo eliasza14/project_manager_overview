@@ -182,6 +182,7 @@ def main():
             col1,col2 = st.columns(2)
             with col1:
                 dfgroup=dfdata.groupby('name')['duration'].sum()
+                dfgroup=dfgroup.to_frame().reset_index()
                 st.write(dfgroup['duration'])
                 st.write(dfdata.groupby('name')['duration'].sum())
                 fig = px.pie(dfgroup, values='duration', names='name',
