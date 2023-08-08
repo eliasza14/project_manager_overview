@@ -87,7 +87,7 @@ def main():
 
     INNER JOIN `kimai2_user_preferences`ON kimai2_users.id=kimai2_user_preferences.user_id
 
-    WHERE DATE(start_time) >='"""+str(startdate)+"""' AND DATE(start_time) <='"""+str(enddate)+"""' AND kimai2_user_preferences.name = 'hourly_rate'
+    WHERE DATE(start_time) >='"""+str(startdate)+"""' AND DATE(start_time) <='"""+str(enddate)+"""' AND kimai2_user_preferences.name = 'hourly_rate' AND kimai2_projects.visible='"""+str(selected_filter)+"""'
 
     GROUP BY kimai2_users.alias,kimai2_projects.name,kimai2_projects.visible,kimai2_user_preferences.name,kimai2_user_preferences.value;"""
 
