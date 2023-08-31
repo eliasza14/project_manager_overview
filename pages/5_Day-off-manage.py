@@ -58,7 +58,7 @@ def main():
     st.write("All Days Off for current user",dfdata2)
 
     st.title("Edit Days off")
-    id=st.number_input("Enter ID")
+    id=st.number_input("Enter ID",userid)
     total_days=st.number_input("Enter total days off")
     if st.button("Update"):
         sql="update kimai2_daysoff  set total_days=%s where id=%s"
