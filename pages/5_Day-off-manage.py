@@ -41,7 +41,7 @@ def main():
     options = optionlist
     selected_option = st.selectbox('Select Project', options)
     df1 = dfdata[dfdata['name'] == selected_option]
-    st.write(df1['name'].iloc[0])
+    st.write(df1['id'].iloc[0])
 
 
 #     sql = f"""
