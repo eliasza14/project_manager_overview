@@ -39,10 +39,29 @@ def main():
 
     optionlist =dfdata['name'].unique().tolist()
     options = optionlist
-    selected_option = st.selectbox('Select Project', options)
+    selected_option = st.selectbox('Select User', options)
     df1 = dfdata[dfdata['name'] == selected_option]
     userid=df1['id'].iloc[0]
     st.write(userid)
+
+
+    st.title("User Analytics Dayoff")
+    sql = f"""
+
+SELECT start_time,duration FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
+        """
+    rows,columnames = run_query(conn,sql)
+
+    # st.write(columnames)
+    dfdaysoff=pd.DataFrame(rows,columns=columnames)
+    dfdaysoff['duration']=dfdaysoff['duration'] // 3600
+    st.write("All Days Off for current user",dfdaysoff)
+
+
+
+
+
+
 
     st.title("Total Days off for this user")
     sql = f"""
