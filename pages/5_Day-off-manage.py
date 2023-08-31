@@ -56,10 +56,11 @@ def main():
     # st.write(columnames)
     dfdata2=pd.DataFrame(rows,columns=columnames)
     st.write("All Days Off for current user",dfdata2)
+    total_daysoff=dfdata2['total_daysoff'].iloc[0]
 
     st.title("Edit Days off")
     id=st.number_input("Enter ID",userid)
-    total_days=st.number_input("Enter total days off")
+    total_days=st.number_input("Enter total days off",total_daysoff)
     if st.button("Update"):
         sql="update kimai2_daysoff  set total_days=%s where id=%s"
         val=(total_days,id)
