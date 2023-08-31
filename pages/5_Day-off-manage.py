@@ -80,18 +80,23 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     remaindays=total_daysoff-useddaysoff
     st.write("Remainig Days of:",remaindays)
 
+    labels = ['Remaining Days','Used Days']
+    values = [remaindays, useddaysoff ]
+
+    colors = ['green', 'red']
+
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+    fig.update_traces(hoverinfo='label+percent', textinfo='value', textfont_size=20,
+                  marker=dict(colors=colors, line=dict(color='#000000', width=2)))
+    st.plotly_chart(fig)
+
 
     st.title("Edit Days off")
     id=st.number_input("Enter ID",userid)
     total_days=st.number_input("Enter total days off",min_value=0,value=total_daysoff)
 
 
-    labels = ['Remaining Days','Used Days']
-    values = [remaindays, useddaysoff ]
-
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
-    st.plotly_chart(fig)
-
+ 
 
 
 
