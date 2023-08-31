@@ -56,7 +56,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     dfdaysoff=pd.DataFrame(rows,columns=columnames)
     st.write("All Days Off for current user",dfdaysoff)
     useddaysoff=len(dfdaysoff['start_time'])
-    st.write("Total DaysOff has beeb used until now:",len(useddaysoff))
+    st.write("Total DaysOff has beeb used until now:",useddaysoff)
 
 
 
