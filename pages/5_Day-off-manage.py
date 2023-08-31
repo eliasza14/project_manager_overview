@@ -91,6 +91,9 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
             cur.execute(sql,val)
             conn.commit()
             st.success("Record Updated Successfully")
+            st.experimental_rerun()
+
+
 
 
 
