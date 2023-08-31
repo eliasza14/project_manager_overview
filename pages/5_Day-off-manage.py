@@ -84,6 +84,23 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     st.title("Edit Days off")
     id=st.number_input("Enter ID",userid)
     total_days=st.number_input("Enter total days off",min_value=0,value=total_daysoff)
+
+
+    labels = ['Remaining Days','Used Days']
+    values = [remaindays, useddaysoff ]
+
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+    st.plotly_chart(fig)
+
+
+
+
+    # fig = px.pie(dfgroup, values='duration', names='name',
+    #             title='% Διάρκεια ανα Project επί του Συνόλου  ',
+    #             hover_data=['duration'], labels={'duration':'duration'})
+    #             fig.update_traces(textposition='inside', textinfo='percent+label')
+    #             st.plotly_chart(fig)
+
     if st.button("Update"):
         sql="update kimai2_daysoff  set kimai2_daysoff.total_daysoff=%s where kimai2_daysoff.user_id=%s"
         val=(total_days,id)
