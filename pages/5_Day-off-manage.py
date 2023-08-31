@@ -57,6 +57,18 @@ def main():
     dfdata2=pd.DataFrame(rows,columns=columnames)
     st.write("All Days Off for current user",dfdata2)
 
+    st.title("Edit Days off")
+    id=st.number_input("Enter ID")
+    total_days=st.number_input("Enter total days off")
+    if st.button("Update"):
+        sql="update kimai2_daysoff  set total_days=%s where id=%s"
+        val=(total_days,id)
+        with conn.cursor() as cur:
+            cur.execute(sql,val)
+            conn.commit()
+            st.success("Record Updated Successfully")
+
+
 
 
 
