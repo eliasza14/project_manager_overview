@@ -24,7 +24,22 @@ def main():
     conn = init_connection()
     st.set_page_config(page_title="DayOff Management")
 
-    st.title("DayOff Management")
+    st.title("Day Off Management")
+
+
+    sql = f"""
+      SELECT kimai2_daysoff.total_daysoff, kimai2_daysoff.user_id,kimai2_users.alias
+ FROM `kimai2_daysoff`
+ INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_daysoff.user_id
+ WHERE  `user_id`=2;
+        """
+    rows,columnames = run_query(conn,sql)
+
+    # st.write(columnames)
+    dfdata=pd.DataFrame(rows,columns=columnames)
+    st.write("All Data from Query",dfdata)
+
+
 
 
 
