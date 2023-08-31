@@ -55,7 +55,8 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     # st.write(columnames)
     dfdaysoff=pd.DataFrame(rows,columns=columnames)
     st.write("All Days Off for current user",dfdaysoff)
-    st.write("Total DaysOff until now:",len(dfdaysoff['start_time']))
+    useddaysoff=len(dfdaysoff['start_time'])
+    st.write("Total DaysOff has beeb used until now:",len(useddaysoff))
 
 
 
@@ -76,6 +77,9 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     dfdata2=pd.DataFrame(rows,columns=columnames)
     st.write("All Days Off for current user",dfdata2)
     total_daysoff=dfdata2['total_daysoff'].iloc[0]
+    remaindays=total_daysoff-useddaysoff
+    st.write("Remainig Days of:",remaindays)
+
 
     st.title("Edit Days off")
     id=st.number_input("Enter ID",userid)
