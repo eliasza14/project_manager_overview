@@ -62,7 +62,7 @@ def main():
     id=st.number_input("Enter ID",userid)
     total_days=st.number_input("Enter total days off",total_daysoff)
     if st.button("Update"):
-        sql="update kimai2_daysoff  set total_days=%s where id=%s"
+        sql="update kimai2_daysoff  set kimai2_daysoff.total_daysoff=%s where kimai2_daysoff.user_id=%s"
         val=(total_days,id)
         with conn.cursor() as cur:
             cur.execute(sql,val)
