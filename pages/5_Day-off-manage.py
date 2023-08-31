@@ -48,14 +48,14 @@ def main():
     st.title("User Analytics Dayoff")
     sql = f"""
 
-SELECT start_time,duration FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
+SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
         """
     rows,columnames = run_query(conn,sql)
 
     # st.write(columnames)
     dfdaysoff=pd.DataFrame(rows,columns=columnames)
-    dfdaysoff['duration']=dfdaysoff['duration'] // 3600
     st.write("All Days Off for current user",dfdaysoff)
+    st.write("Total DaysOff until now:",len(dfdaysoff['start_time']))
 
 
 
