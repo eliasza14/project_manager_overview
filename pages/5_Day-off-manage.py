@@ -87,7 +87,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
 
     fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
     fig.update_traces(hoverinfo='label+percent', textinfo='value', textfont_size=20,
-                  marker=dict(colors=colors, line=dict(color='#000000', width=2)))
+                  marker=dict(colors=colors ))
     st.plotly_chart(fig)
 
 
