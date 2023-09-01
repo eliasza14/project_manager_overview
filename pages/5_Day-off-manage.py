@@ -34,8 +34,8 @@ def main():
 
             /*the main div*/
             .css-1v0mbdj {
-                width: 200px; /*max value according to image width, can be smaller but not larger*/
-                height: 200px;
+                width: 100px; /*max value according to image width, can be smaller but not larger*/
+                height: 100px;
                 position: relative;
                 overflow: hidden;
                 border-radius: 50%;
