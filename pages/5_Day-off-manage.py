@@ -167,7 +167,6 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
 
 
     data=dfdaysoff['start_time']
-    st.write(data)
     df = pd.DataFrame(data)
     df['start_time'] = pd.to_datetime(df['start_time'])
 
