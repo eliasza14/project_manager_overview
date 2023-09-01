@@ -45,7 +45,7 @@ def main():
             .css-1v0mbdj > img{
                 display: inline;
                 margin: 0 auto;
-                margin-top: -35%; /*Tweak this one according to your need*/
+                margin-top: 4%; /*Tweak this one according to your need*/
             }
         
         </style>
