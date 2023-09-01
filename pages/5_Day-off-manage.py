@@ -73,6 +73,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
         """
     rows,columnames = run_query(conn,sql)
 
+
     # st.write(columnames)
     dfdata2=pd.DataFrame(rows,columns=columnames)
     st.write("All Days Off for current user",dfdata2)
