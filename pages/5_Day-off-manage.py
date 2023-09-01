@@ -98,6 +98,19 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
     usersickdayoff=len(sickdaysoff['start_time'])
     st.write("Total DaysOff has beeb used until now:",usersickdayoff)
 
+   ##Query for Education adeia
+    st.title("Educational Dayoff")
+    sql = f"""
+
+SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid};
+        """
+    rows,columnames = run_query(conn,sql)
+
+    # st.write(columnames)
+    edudaysoff=pd.DataFrame(rows,columns=columnames)
+    st.write("All Days Off for edu user",edudaysoff)
+    useredudayoff=len(edudaysoff['start_time'])
+    st.write("Total edu DaysOff has beeb used until now:",useredudayoff)
 
 
 
