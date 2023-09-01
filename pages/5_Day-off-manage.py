@@ -167,7 +167,6 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
 
 
     data=dfdaysoff['start_time']
-    st.write(data)
     df = pd.DataFrame(data)
     df['start_time'] = pd.to_datetime(df['start_time'])
 
@@ -181,10 +180,10 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     monthly_counts = all_months.merge(monthly_counts, on='start_time', how='left').fillna(0)
 
     # Create a bar plot using Plotly Express
-    fig = px.bar(monthly_counts, x='start_time', y='Count', labels={'start_time': 'Month'})
+    fig = px.bar(monthly_counts, x='start_time', y='Days Off Count', labels={'start_time': 'Month'})
     fig.update_xaxes(type='category', tickmode='array', tickvals=list(range(1, 13)),
                     ticktext=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
-    fig.update_layout(title='Count of Dates by Month',
+    fig.update_layout(title='Count of Dates Off by Month',
                     xaxis_title='Month',
                     yaxis_title='Count')
     st.plotly_chart(fig)
