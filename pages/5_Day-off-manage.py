@@ -70,7 +70,7 @@ def main():
     userid=df1['id'].iloc[0]
     st.write(userid)
 
-
+    ##Query for kanoniki adeia
     st.title("User Analytics Dayoff")
     sql = f"""
 
@@ -84,6 +84,19 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     useddaysoff=len(dfdaysoff['start_time'])
     st.write("Total DaysOff has beeb used until now:",useddaysoff)
 
+   ##Query for Asthenia adeia
+    st.title("Sickness Dayoff")
+    sql = f"""
+
+SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid};
+        """
+    rows,columnames = run_query(conn,sql)
+
+    # st.write(columnames)
+    sickdaysoff=pd.DataFrame(rows,columns=columnames)
+    st.write("All Days Off for sickness user",sickdaysoff)
+    usersickdayoff=len(sickdaysoff['start_time'])
+    st.write("Total DaysOff has beeb used until now:",usersickdayoff)
 
 
 
