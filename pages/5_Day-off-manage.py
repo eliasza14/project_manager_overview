@@ -154,7 +154,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
 
     # Group by month and count the occurrences
     monthly_counts = df.groupby(df['start_time'].dt.month).size().reset_index(name='Count')
-
+    st.write(monthly_counts)
     # Create a bar plot using Plotly Express
     fig = px.bar(monthly_counts, x='start_time', y='Count', labels={'start_time': 'Month'})
     fig.update_xaxes(type='category', tickmode='array', tickvals=list(range(1, 13)),
