@@ -80,6 +80,15 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     remaindays=total_daysoff-useddaysoff
     st.write("Remainig Days of:",remaindays)
 
+
+    with open("animated_counter.js", "r") as file:
+        js_code = file.read()
+        
+    html_content1 = html_button1(js_code,total_daysoff)
+    html(html_content1,height=250)
+ 
+
+
     labels = ['Remaining Days','Used Days']
     values = [remaindays, useddaysoff ]
 
@@ -96,7 +105,6 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     total_days=st.number_input("Enter total days off",min_value=0,value=total_daysoff)
 
 
- 
 
 
 
