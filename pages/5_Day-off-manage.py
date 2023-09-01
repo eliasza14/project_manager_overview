@@ -146,6 +146,25 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
                   marker=dict(colors=colors ))
     st.plotly_chart(fig)
 
+    data=dfdata2['start_time']
+    # data = {'Date': ['2023-01-15', '2023-02-20', '2023-03-10', '2023-03-25', '2023-04-05']}
+    df = pd.DataFrame(data)
+    df['start_time'] = pd.to_datetime(df['start_time'])
+
+    # Group by month and count the occurrences
+    monthly_counts = df.groupby(df['start_time'].dt.month).size().reset_index(name='Count')
+
+    # Create a bar plot using Plotly Express
+    fig = px.bar(monthly_counts, x='start_time', y='Count', labels={'start_time': 'Month'})
+    fig.update_xaxes(type='category', tickmode='array', tickvals=list(range(1, 13)),
+                    ticktext=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
+    fig.update_layout(title='Count of Dates by Month',
+                    xaxis_title='Month',
+                    yaxis_title='Count')
+    st.plotly_chart(fig)
+
+####################################################################
+############ADMINISTRATION PART EDIT ##############################
 
     st.title("Edit Days off")
     id=st.number_input("Enter ID",userid)
