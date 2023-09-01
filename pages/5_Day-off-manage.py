@@ -106,7 +106,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     st.write(dfdata2)
     imagepath=dfdata2['avatar'].iloc[0]
 
-    if imagepath.isna():
+    if pd.isna(imagepath):
         st.image('noimage.png',width=350,use_column_width="auto")
     else:
         st.image(imagepath,width=350,use_column_width="auto")
