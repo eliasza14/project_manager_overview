@@ -93,7 +93,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
 
     st.title("Total Days off for this user")
     sql = f"""
-      SELECT kimai2_daysoff.total_daysoff, kimai2_daysoff.user_id,kimai2_users.alias
+      SELECT kimai2_daysoff.total_daysoff, kimai2_daysoff.user_id,kimai2_users.alias,kimai2_users.avatar
  FROM `kimai2_daysoff`
  INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_daysoff.user_id
  WHERE  `user_id`={userid};
