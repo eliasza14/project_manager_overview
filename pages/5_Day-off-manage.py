@@ -147,6 +147,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     st.plotly_chart(fig)
 
     data=dfdata2['start_time']
+    st.write(data)
     # data = {'Date': ['2023-01-15', '2023-02-20', '2023-03-10', '2023-03-25', '2023-04-05']}
     df = pd.DataFrame(data)
     df['start_time'] = pd.to_datetime(df['start_time'])
