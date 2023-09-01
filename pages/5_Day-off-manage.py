@@ -51,7 +51,6 @@ def main():
         
         </style>
         """, unsafe_allow_html=True)
-    st.image("https://media.licdn.com/dms/image/C4E03AQEzwpryiISn8Q/profile-displayphoto-shrink_200_200/0/1617695697204?e=1698883200&v=beta&t=YWB7eQZG2mGZqmeeYsJXpPDlV3kmsVhxYgyt8-igieE",width=350,use_column_width="auto")
 
     sql = f"""
       SELECT kimai2_users.id, kimai2_users.alias as name FROM `kimai2_users`;
@@ -103,6 +102,9 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
 
     # st.write(columnames)
     dfdata2=pd.DataFrame(rows,columns=columnames)
+
+    st.image(dfdata2['avatar'].iloc[0],width=350,use_column_width="auto")
+
     st.write("All Days Off for current user",dfdata2)
     total_daysoff=dfdata2['total_daysoff'].iloc[0]
     remaindays=total_daysoff-useddaysoff
