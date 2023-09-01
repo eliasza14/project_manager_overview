@@ -83,9 +83,17 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
 
     with open("animated_counter.js", "r") as file:
         js_code = file.read()
-        
-    html_content1 = html_button1(js_code,total_daysoff)
-    html(html_content1,height=250)
+    with st.container():
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            html_content1 = html_days1(js_code,total_daysoff)
+            html(html_content1,height=250)
+        with col2:
+            html_content2 = html_days2(js_code,useddaysoff)
+            html(html_content2,height=250)
+        with col3:
+            html_content3 = html_days3(js_code,remaindays)
+            html(html_content3,height=250)
  
 
 
