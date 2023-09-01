@@ -23,28 +23,28 @@ def run_query(conn,query):
     
 def main():
     st.markdown("""
-  <style>
+    <style>
 
-    /*the main div*/
-    .css-1v0mbdj {
-        width: 200px; /*max value according to image width, can be smaller but not larger*/
-        height: 200px;
-        position: relative;
-        overflow: hidden;
-        border-radius: 50%;
-    }
+        /*the main div*/
+        .css-1v0mbdj {
+            width: 200px; /*max value according to image width, can be smaller but not larger*/
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+        
+        /*the img elements in the main div class*/
+        .css-1v0mbdj > img{
+            display: inline;
+            margin: 0 auto;
+            margin-top: -35%; /*Tweak this one according to your need*/
+        }
     
-    /*the img elements in the main div class*/
-    .css-1v0mbdj > img{
-        display: inline;
-        margin: 0 auto;
-        margin-top: -35%; /*Tweak this one according to your need*/
-    }
-  
-  </style>
-""", unsafe_allow_html=True)
+    </style>
+    """, unsafe_allow_html=True)
 
-    st.image("https://media.licdn.com/dms/image/C4E03AQEzwpryiISn8Q/profile-displayphoto-shrink_800_800/0/1617695697204?e=1698883200&v=beta&t=iv7bQaf4lMd166NQFiRPoQ6jLEKqMhycmZbNLVND_W4" ,200)
+    st.image("https://media.licdn.com/dms/image/C4E03AQEzwpryiISn8Q/profile-displayphoto-shrink_800_800/0/1617695697204?e=1698883200&v=beta&t=iv7bQaf4lMd166NQFiRPoQ6jLEKqMhycmZbNLVND_W4" ,180)
 
     conn = init_connection()
     st.set_page_config(page_title="DayOff Management")
