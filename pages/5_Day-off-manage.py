@@ -50,7 +50,7 @@ def main():
         
         </style>
         """, unsafe_allow_html=True)
-    st.image("hhttps://media.licdn.com/dms/image/C4E03AQEzwpryiISn8Q/profile-displayphoto-shrink_200_200/0/1617695697204?e=1698883200&v=beta&t=YWB7eQZG2mGZqmeeYsJXpPDlV3kmsVhxYgyt8-igieE" ,200)
+    st.image("https://media.licdn.com/dms/image/C4E03AQEzwpryiISn8Q/profile-displayphoto-shrink_200_200/0/1617695697204?e=1698883200&v=beta&t=YWB7eQZG2mGZqmeeYsJXpPDlV3kmsVhxYgyt8-igieE" ,200)
 
     sql = f"""
       SELECT kimai2_users.id, kimai2_users.alias as name FROM `kimai2_users`;
