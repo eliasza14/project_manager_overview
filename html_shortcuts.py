@@ -219,7 +219,7 @@ def html_days2(js_code,val):
     html_content_2=f"""
                     <body>
                         <div style="display:flex; justify-content: center; " >
-                            <div style="width:310px; background: linear-gradient(138deg, rgba(198.55, 215.22, 244.37, 0.56) 0%, rgba(96, 239, 255, 0.55) 100%); display: flex;align-items: center;flex-direction: column;flex-wrap: nowrap;border: 1px solid transparent;border-radius: 16px;padding-top: 12px; padding-bottom: 12px; padding-left:24px; padding-right:24px;">
+                            <div style="width:310px; background: linear-gradient(319deg, rgb(255 0 16 / 99%) 0%, rgb(255 0 0) 100%); display: flex;align-items: center;flex-direction: column;flex-wrap: nowrap;border: 1px solid white;border-radius: 16px;padding-top: 12px; padding-bottom: 12px; padding-left:24px; padding-right:24px;">
                                 <div style="text-align:right;">
                                 <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="&#206;&#147;&#206;&#181;&#206;&#189;&#206;&#185;&#206;&#186;&#207;&#140;&#207;&#130; &#207;&#128;&#206;&#187;&#206;&#183;&#206;&#184;&#207;&#133;&#207;&#131;&#206;&#188;&#207;&#140;&#207;&#130;">
@@ -273,7 +273,7 @@ def html_days3(js_code,val):
     html_content_3=f"""
                     <body>
                         <div style="display:flex; justify-content: center; " >
-                            <div style="width:310px; background: linear-gradient(138deg, rgba(198.55, 215.22, 244.37, 0.56) 0%, rgba(96, 239, 255, 0.55) 100%); display: flex;align-items: center;flex-direction: column;flex-wrap: nowrap;border: 1px solid transparent;border-radius: 16px;padding-top: 12px; padding-bottom: 12px; padding-left:24px; padding-right:24px;">
+                            <div style="width:310px; background: linear-gradient(138deg, rgb(29 179 0) 0%, rgb(16 174 0) 100%); display: flex;align-items: center;flex-direction: column;flex-wrap: nowrap;border: 1px solid white;border-radius: 16px;padding-top: 12px; padding-bottom: 12px; padding-left:24px; padding-right:24px;">
                                 <div style="text-align:right;">
                                 <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="&#206;&#147;&#206;&#181;&#206;&#189;&#206;&#185;&#206;&#186;&#207;&#140;&#207;&#130; &#207;&#128;&#206;&#187;&#206;&#183;&#206;&#184;&#207;&#133;&#207;&#131;&#206;&#188;&#207;&#140;&#207;&#130;">
