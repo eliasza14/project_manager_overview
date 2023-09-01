@@ -7,6 +7,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import timedelta
 import calendar 
+from PIL import Image
+
 from streamlit.components.v1 import html
 
 from html_shortcuts import *
@@ -41,11 +43,8 @@ def main():
   
   </style>
 """, unsafe_allow_html=True)
-    image=Image.open("https://media.licdn.com/dms/image/C4E03AQEzwpryiISn8Q/profile-displayphoto-shrink_800_800/0/1617695697204?e=1698883200&v=beta&t=iv7bQaf4lMd166NQFiRPoQ6jLEKqMhycmZbNLVND_W4")
-    st.image(image,caption="test")
-    html("""<div class='circle-image'>
-                <img src="https://media.licdn.com/dms/image/C4E03AQEzwpryiISn8Q/profile-displayphoto-shrink_800_800/0/1617695697204?e=1698883200&v=beta&t=iv7bQaf4lMd166NQFiRPoQ6jLEKqMhycmZbNLVND_W4" alt="my imae" >
-                </div>""",250)
+
+    st.image("https://media.licdn.com/dms/image/C4E03AQEzwpryiISn8Q/profile-displayphoto-shrink_800_800/0/1617695697204?e=1698883200&v=beta&t=iv7bQaf4lMd166NQFiRPoQ6jLEKqMhycmZbNLVND_W4" ,200)
 
     conn = init_connection()
     st.set_page_config(page_title="DayOff Management")
