@@ -37,6 +37,7 @@ def main():
                 width: 100px; /*max value according to image width, can be smaller but not larger*/
                 height: 100px;
                 position: relative;
+                border:3px solid #d1d1d1;
                 overflow: hidden;
                 border-radius: 50%;
             }
