@@ -85,7 +85,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     st.write("Total DaysOff has beeb used until now:",useddaysoff)
 
    ##Query for Asthenia adeia
-    st.title("Sickness Dayoff")
+    
     sql = f"""
 
 SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid};
@@ -96,6 +96,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
     sickdaysoff=pd.DataFrame(rows,columns=columnames)
     usersickdayoff=len(sickdaysoff['start_time'])
     if(usersickdayoff!=0):
+        st.title("Sickness Dayoff")
         st.write("All Days Off for sickness user",sickdaysoff)
         st.write("Total DaysOff has beeb used until now:",usersickdayoff)
         with open("animated_counter.js", "r") as file:
@@ -106,7 +107,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
 
 
    ##Query for Education adeia
-    st.title("Educational Dayoff")
+    
     sql = f"""
 
 SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid};
@@ -117,6 +118,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
     edudaysoff=pd.DataFrame(rows,columns=columnames)
     useredudayoff=len(edudaysoff['start_time'])
     if(useredudayoff!=0):
+        st.title("Educational Dayoff")
         st.write("All Days Off for edu user",edudaysoff)
         st.write("Total edu DaysOff has beeb used until now:",useredudayoff)
         with st.container():
