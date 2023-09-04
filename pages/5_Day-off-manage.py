@@ -138,49 +138,50 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
 
     # st.write(columnames)
     dfdata2=pd.DataFrame(rows,columns=columnames)
+    if(not dfdata2.empty):
+        
+        st.write(dfdata2)
+        imagepath=dfdata2['avatar'].iloc[0]
 
-    st.write(dfdata2)
-    imagepath=dfdata2['avatar'].iloc[0]
+        if pd.isna(imagepath):
+            st.image('noimage.png',width=350,use_column_width="auto")
+        else:
+            st.image(imagepath,width=350,use_column_width="auto")
 
-    if pd.isna(imagepath):
-        st.image('noimage.png',width=350,use_column_width="auto")
-    else:
-        st.image(imagepath,width=350,use_column_width="auto")
+        st.write("All Days Off for current user",dfdata2)
 
-    st.write("All Days Off for current user",dfdata2)
-
-    total_daysoff=dfdata2['total_daysoff'].iloc[0]
-    remaindays=total_daysoff-useddaysoff
-    st.write("Remainig Days of:",remaindays)
-
-
-    with open("animated_counter.js", "r") as file:
-        js_code = file.read()
-    with st.container():
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            html_content3 = html_days3(js_code,remaindays)
-            html(html_content3,height=250)
- 
-
-        with col2:
-            html_content2 = html_days2(js_code,useddaysoff)
-            html(html_content2,height=250)
-        with col3:
-            html_content1 = html_days1(js_code,total_daysoff)
-            html(html_content1,height=250)
+        total_daysoff=dfdata2['total_daysoff'].iloc[0]
+        remaindays=total_daysoff-useddaysoff
+        st.write("Remainig Days of:",remaindays)
 
 
+        with open("animated_counter.js", "r") as file:
+            js_code = file.read()
+        with st.container():
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                html_content3 = html_days3(js_code,remaindays)
+                html(html_content3,height=250)
+    
 
-    labels = ['Remaining Days','Used Days']
-    values = [remaindays, useddaysoff ]
+            with col2:
+                html_content2 = html_days2(js_code,useddaysoff)
+                html(html_content2,height=250)
+            with col3:
+                html_content1 = html_days1(js_code,total_daysoff)
+                html(html_content1,height=250)
 
-    colors = ['green', 'red']
 
-    fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
-    fig.update_traces(hoverinfo='label+percent', textinfo='value', textfont_size=20,
-                  marker=dict(colors=colors ))
-    st.plotly_chart(fig)
+
+        labels = ['Remaining Days','Used Days']
+        values = [remaindays, useddaysoff ]
+
+        colors = ['green', 'red']
+
+        fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+        fig.update_traces(hoverinfo='label+percent', textinfo='value', textfont_size=20,
+                    marker=dict(colors=colors ))
+        st.plotly_chart(fig)
 
     # data=dfdaysoff['start_time']
     # st.write(data)
