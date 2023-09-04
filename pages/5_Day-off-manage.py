@@ -97,7 +97,8 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
     st.write("All Days Off for sickness user",sickdaysoff)
     usersickdayoff=len(sickdaysoff['start_time'])
     st.write("Total DaysOff has beeb used until now:",usersickdayoff)
-
+    with open("animated_counter.js", "r") as file:
+        js_code = file.read()
     with st.container():
         col1= st.columns(1)
         with col1:
