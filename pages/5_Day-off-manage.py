@@ -107,7 +107,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     dfdaysoff['Year'] = dfdaysoff['start_time'].dt.year
     dfdaysoff['Year'] = dfdaysoff['Year'].apply(format_year)
 
-    yearlist=dfdaysofftotal['Year']
+    yearlist=dfdaysofftotal['Year'].unique().tolist()
     options2 = yearlist
     selected_option = st.selectbox('Select User', options2)
     st.write(dfdaysoff)
