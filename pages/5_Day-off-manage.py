@@ -88,7 +88,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     st.write("Total DaysOff has beeb used until now:",useddaysoff)
 
     dfdaysoff['Year'] = dfdaysoff['start_time'].dt.year
-    yearlist=dfdaysoff['Year'].unique().tolist()
+    yearlist=['2022','2023','2024','2025']
     options2 = yearlist
     selected_option = st.selectbox('Select User', options2)
     st.write(dfdaysoff)
