@@ -96,7 +96,7 @@ def main():
 
     ##Query for kanoniki adeia
 
-    st.title("User Dayoff")
+    st.title("Normal Dayoff")
     sql = f"""
 
 SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
