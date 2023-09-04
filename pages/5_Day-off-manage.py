@@ -100,10 +100,8 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
     with open("animated_counter.js", "r") as file:
         js_code = file.read()
     with st.container():
-        col1= st.columns(1)
-        with col1:
-            html_content2 = html_days2(js_code,usersickdayoff)
-            html(html_content2,height=250)
+        html_content2 = html_days2(js_code,usersickdayoff)
+        html(html_content2,height=250)
 
 
    ##Query for Education adeia
