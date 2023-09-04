@@ -105,6 +105,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
 
     # st.write(columnames)
     sickdaysoff=pd.DataFrame(rows,columns=columnames)
+    st.write(sickdaysoff)
     sickdaysoff['Year'] = sickdaysoff['start_time'].dt.year
 
     usersickdayoff=len(sickdaysoff['start_time'])
