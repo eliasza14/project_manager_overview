@@ -116,7 +116,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
     # st.write(columnames)
     edudaysoff=pd.DataFrame(rows,columns=columnames)
     useredudayoff=len(edudaysoff['start_time'])
-    if(edudaysoff!=0):
+    if(useredudayoff!=0):
         st.write("All Days Off for edu user",edudaysoff)
         st.write("Total edu DaysOff has beeb used until now:",useredudayoff)
         with st.container():
