@@ -98,6 +98,13 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
     usersickdayoff=len(sickdaysoff['start_time'])
     st.write("Total DaysOff has beeb used until now:",usersickdayoff)
 
+    with st.container():
+        col1, col2, col3 = st.columns(3)
+        with col2:
+            html_content2 = html_days2(js_code,usersickdayoff)
+            html(html_content2,height=250)
+
+
    ##Query for Education adeia
     st.title("Educational Dayoff")
     sql = f"""
