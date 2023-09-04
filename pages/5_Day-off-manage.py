@@ -86,7 +86,7 @@ def main():
     dfdaysofftotal['Year'] = dfdaysofftotal['start_time'].dt.year
     st.write(dfdaysofftotal)
 
-    dfdaysoff2=dfdaysoff2[dfdaysoff2['Year']==selected_option]
+    #dfdaysoff2=dfdaysoff2[dfdaysoff2['Year']==selected_option]
 
     ##Query for kanoniki adeia
 
