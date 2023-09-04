@@ -267,7 +267,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
     monthly_counts2 = all_months.merge(monthly_counts2, on='start_time', how='left').fillna(0)
     st.write(monthly_counts2)
     # Create a stacked bar plot for the second dataset
-    fig.add_trace(px.bar(monthly_counts2, x='start_time', y='Count', name='User Education Days Off').data[0])
+    fig.add_trace(px.bar(monthly_counts2, x='start_time', y='Count', name='User Education Days Off'))
 
     st.plotly_chart(fig)
 
