@@ -208,7 +208,33 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
 
 
 
-    data=dfdaysoff['start_time']
+    # data=dfdaysoff['start_time']
+    # df = pd.DataFrame(data)
+    # df['start_time'] = pd.to_datetime(df['start_time'])
+
+    # # Group by month and count the occurrences
+    # monthly_counts = df.groupby(df['start_time'].dt.month).size().reset_index(name='Count')
+
+    # # Create a DataFrame with all months (1 to 12)
+    # all_months = pd.DataFrame({'start_time': range(1, 13)})
+
+    # # Merge the two DataFrames to ensure all months are included
+    # monthly_counts = all_months.merge(monthly_counts, on='start_time', how='left').fillna(0)
+
+    # # Create a bar plot using Plotly Express
+    # fig = px.bar(monthly_counts, x='start_time', y='Count', labels={'start_time': 'Month'})
+    # fig.update_xaxes(type='category', tickmode='array', tickvals=list(range(1, 13)),
+    #                 ticktext=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
+    # fig.update_layout(title='Count of Dates by Month',
+    #                 xaxis_title='Month',
+    #                 yaxis_title='Count')
+    # st.plotly_chart(fig)
+
+
+
+
+
+    data = dfdaysoff['start_time']
     df = pd.DataFrame(data)
     df['start_time'] = pd.to_datetime(df['start_time'])
 
@@ -228,7 +254,31 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
     fig.update_layout(title='Count of Dates by Month',
                     xaxis_title='Month',
                     yaxis_title='Count')
+
+    # Your code to add the second dataset (useredudayoff)
+    data2 = useredudayoff['start_time']
+    df2 = pd.DataFrame(data2)
+    df2['start_time'] = pd.to_datetime(df2['start_time'])
+
+    # Group by month and count the occurrences
+    monthly_counts2 = df2.groupby(df2['start_time'].dt.month).size().reset_index(name='Count')
+
+    # Merge the two DataFrames to ensure all months are included
+    monthly_counts2 = all_months.merge(monthly_counts2, on='start_time', how='left').fillna(0)
+
+    # Create a stacked bar plot for the second dataset
+    fig.add_trace(px.bar(monthly_counts2, x='start_time', y='Count', name='User Education Days Off').data[0])
+
     st.plotly_chart(fig)
+
+
+
+
+
+
+
+
+
 ####################################################################
 ############ADMINISTRATION PART EDIT ##############################
 
