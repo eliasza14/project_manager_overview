@@ -311,10 +311,10 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
     # Check if dfthird is not empty
     if not edudaysoff.empty:
         edudaysoff['start_time'] = pd.to_datetime(edudaysoff['start_time'])
-        monthly_third_counts = edudaysoff.groupby(edudaysoff['start_time'].dt.month).size().reset_index(name='Third_Count')
+        monthly_third_counts = edudaysoff.groupby(edudaysoff['start_time'].dt.month).size().reset_index(name='edu_Count')
     else:
         # Create an empty DataFrame with the expected columns if dfthird is empty
-        monthly_third_counts = pd.DataFrame(columns=['start_time', 'Third_Count'])
+        monthly_third_counts = pd.DataFrame(columns=['start_time', 'edu_Count'])
 
     # Group by month and count the occurrences for daysoff
     monthly_daysoff_counts = dfdaysoff.groupby(dfdaysoff['start_time'].dt.month).size().reset_index(name='Daysoff_Count')
