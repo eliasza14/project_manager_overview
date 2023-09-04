@@ -100,7 +100,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
     with open("animated_counter.js", "r") as file:
         js_code = file.read()
     with st.container():
-        html_content2 = html_days3(js_code,usersickdayoff)
+        html_content2 = html_days1(js_code,usersickdayoff)
         html(html_content2,height=250)
 
 
@@ -118,7 +118,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
     useredudayoff=len(edudaysoff['start_time'])
     st.write("Total edu DaysOff has beeb used until now:",useredudayoff)
     with st.container():
-        html_content2 = html_days3(js_code,useredudayoff)
+        html_content2 = html_days1(js_code,useredudayoff)
         html(html_content2,height=250)
 
 
