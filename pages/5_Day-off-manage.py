@@ -91,6 +91,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     options2 = yearlist
     selected_option = st.selectbox('Select User', options2)
     dfdaysoff['Year'] = dfdaysoff['start_time'].dt.year
+    st.write(dfdaysoff)
    ##Query for Asthenia adeia
     
     sql = f"""
