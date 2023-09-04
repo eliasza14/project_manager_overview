@@ -256,7 +256,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
                     yaxis_title='Count')
 
     # Your code to add the second dataset (useredudayoff)
-    data2 = useredudayoff['start_time']
+    data2 = edudaysoff['start_time']
     df2 = pd.DataFrame(data2)
     df2['start_time'] = pd.to_datetime(df2['start_time'])
 
