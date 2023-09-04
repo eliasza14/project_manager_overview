@@ -64,6 +64,7 @@ def main():
 
 
 
+
     optionlist =dfdata['name'].unique().tolist()
     options = optionlist
     selected_option = st.selectbox('Select User', options)
@@ -71,6 +72,7 @@ def main():
     userid=df1['id'].iloc[0]
     st.write(userid)
 
+    
     ##Query for kanoniki adeia
     st.title("User Analytics Dayoff")
     sql = f"""
@@ -85,6 +87,10 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     useddaysoff=len(dfdaysoff['start_time'])
     st.write("Total DaysOff has beeb used until now:",useddaysoff)
 
+    yearlist=['2022','2023','2024']
+    options2 = yearlist
+    selected_option = st.selectbox('Select User', options2)
+    dfdaysoff['Year'] = dfdaysoff['start_time'].dt.year
    ##Query for Asthenia adeia
     
     sql = f"""
