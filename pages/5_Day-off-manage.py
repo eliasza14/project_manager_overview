@@ -95,7 +95,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
     # st.write(columnames)
     sickdaysoff=pd.DataFrame(rows,columns=columnames)
     usersickdayoff=len(sickdaysoff['start_time'])
-    if(usersickdayoff==0):
+    if(usersickdayoff!=0):
         st.write("All Days Off for sickness user",sickdaysoff)
         st.write("Total DaysOff has beeb used until now:",usersickdayoff)
         with open("animated_counter.js", "r") as file:
