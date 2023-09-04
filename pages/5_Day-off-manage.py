@@ -270,36 +270,72 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
     # fig.add_trace(px.bar(monthly_counts2, x='start_time', y='Count', name='User Education Days Off'))
 
     # st.plotly_chart(fig)
+################
+    # Assuming you have DataFrames 'dfdaysoff' and 'sickdaysoff' with 'start_time' columns
+    # dfdaysoff['start_time'] = pd.to_datetime(dfdaysoff['start_time'])
+    # sickdaysoff['start_time'] = pd.to_datetime(sickdaysoff['start_time'])
 
-    # Assuming you have DataFrames 'dfdaysoff' and 'dfsickdays' with 'start_time' columns
+    # # Group by month and count the occurrences for daysoff and sickdays
+    # monthly_daysoff_counts = dfdaysoff.groupby(dfdaysoff['start_time'].dt.month).size().reset_index(name='Daysoff_Count')
+    # monthly_sick_counts = sickdaysoff.groupby(sickdaysoff['start_time'].dt.month).size().reset_index(name='Sick_Count')
+
+    # # Create a DataFrame with all months (1 to 12)
+    # all_months = pd.DataFrame({'start_time': range(1, 13)})
+
+    # # Merge the two DataFrames to ensure all months are included
+    # monthly_counts = all_months.merge(monthly_daysoff_counts, on='start_time', how='left').fillna(0)
+    # monthly_counts = monthly_counts.merge(monthly_sick_counts, on='start_time', how='left').fillna(0)
+
+    # # Create a bar plot using Plotly Express for both daysoff and sickdays
+    # fig = px.bar(monthly_counts, x='start_time', y=['Daysoff_Count', 'Sick_Count'],
+    #             labels={'start_time': 'Month', 'value': 'Count'}, title='Count of Dates by Month')
+    # fig.update_xaxes(type='category', tickmode='array', tickvals=list(range(1, 13)),
+    #                 ticktext=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
+    # fig.update_layout(yaxis_title='Count')
+
+    # # Show the combined plot
+    # st.plotly_chart(fig)
+
+###########
+    # Assuming you have DataFrames 'dfdaysoff', 'dfsickdays', and 'dfthird' with 'start_time' columns
     dfdaysoff['start_time'] = pd.to_datetime(dfdaysoff['start_time'])
-    sickdaysoff['start_time'] = pd.to_datetime(sickdaysoff['start_time'])
 
-    # Group by month and count the occurrences for daysoff and sickdays
+    # Check if dfsickdays is not empty
+    if not sickdaysoff.empty:
+        sickdaysoff['start_time'] = pd.to_datetime(sickdaysoff['start_time'])
+        monthly_sick_counts = sickdaysoff.groupby(sickdaysoff['start_time'].dt.month).size().reset_index(name='Sick_Count')
+    else:
+        # Create an empty DataFrame with the expected columns if dfsickdays is empty
+        monthly_sick_counts = pd.DataFrame(columns=['start_time', 'Sick_Count'])
+
+    # Check if dfthird is not empty
+    if not edudaysoff.empty:
+        edudaysoff['start_time'] = pd.to_datetime(edudaysoff['start_time'])
+        monthly_third_counts = edudaysoff.groupby(edudaysoff['start_time'].dt.month).size().reset_index(name='Third_Count')
+    else:
+        # Create an empty DataFrame with the expected columns if dfthird is empty
+        monthly_third_counts = pd.DataFrame(columns=['start_time', 'Third_Count'])
+
+    # Group by month and count the occurrences for daysoff
     monthly_daysoff_counts = dfdaysoff.groupby(dfdaysoff['start_time'].dt.month).size().reset_index(name='Daysoff_Count')
-    monthly_sick_counts = sickdaysoff.groupby(sickdaysoff['start_time'].dt.month).size().reset_index(name='Sick_Count')
 
     # Create a DataFrame with all months (1 to 12)
     all_months = pd.DataFrame({'start_time': range(1, 13)})
 
-    # Merge the two DataFrames to ensure all months are included
+    # Merge the DataFrames to ensure all months are included
     monthly_counts = all_months.merge(monthly_daysoff_counts, on='start_time', how='left').fillna(0)
     monthly_counts = monthly_counts.merge(monthly_sick_counts, on='start_time', how='left').fillna(0)
+    monthly_counts = monthly_counts.merge(monthly_third_counts, on='start_time', how='left').fillna(0)
 
-    # Create a bar plot using Plotly Express for both daysoff and sickdays
-    fig = px.bar(monthly_counts, x='start_time', y=['Daysoff_Count', 'Sick_Count'],
+    # Create a bar plot using Plotly Express for daysoff, sickdays, and the third category
+    fig = px.bar(monthly_counts, x='start_time', y=['Daysoff_Count', 'Sick_Count', 'Third_Count'],
                 labels={'start_time': 'Month', 'value': 'Count'}, title='Count of Dates by Month')
     fig.update_xaxes(type='category', tickmode='array', tickvals=list(range(1, 13)),
                     ticktext=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
     fig.update_layout(yaxis_title='Count')
 
-    # Show the combined plot
+    #Show the combined plot
     st.plotly_chart(fig)
-
-
-
-
-
 
 
 
