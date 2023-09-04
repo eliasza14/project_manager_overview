@@ -74,8 +74,13 @@ def main():
     df1 = dfdata[dfdata['name'] == selected_option]
     userid=df1['id'].iloc[0]
     st.write(userid)
-
-    
+    ##get user daysof total
+    sql = f""" 
+        SELECT start_time FROM `kimai2_timesheet` WHERE (activity_id=4 OR activity_id=115 OR activity_id=116) AND user={userid};
+    """
+    rows,columnames = run_query(conn,sql)
+    dfdaysofftotal=pd.DataFrame(rows,columns=columnames)
+    st.write(dfdaysofftotal)
     ##Query for kanoniki adeia
     st.title("User Analytics Dayoff")
     sql = f"""
