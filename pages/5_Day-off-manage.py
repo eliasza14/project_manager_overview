@@ -121,8 +121,10 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
         st.title("Educational Dayoff")
         st.write("All Days Off for edu user",edudaysoff)
         st.write("Total edu DaysOff has beeb used until now:",useredudayoff)
+        with open("animated_counter.js", "r") as file:
+            js_code = file.read()
         with st.container():
-            html_content2 = html_days4(js_code,useredudayoff)
+            html_content2 = html_days5(js_code,useredudayoff)
             html(html_content2,height=250)
 
 
