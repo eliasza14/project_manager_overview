@@ -86,6 +86,7 @@ def main():
     dfdaysofftotal['Year'] = dfdaysofftotal['start_time'].dt.year
     st.write(dfdaysofftotal)
 
+    dfdaysoff2=dfdaysoff2[dfdaysoff2['Year']==selected_option]
 
     ##Query for kanoniki adeia
 
@@ -106,11 +107,12 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     dfdaysoff['Year'] = dfdaysoff['start_time'].dt.year
     dfdaysoff['Year'] = dfdaysoff['Year'].apply(format_year)
 
-    yearlist=[]
+    yearlist=dfdaysofftotal['Year']
     options2 = yearlist
     selected_option = st.selectbox('Select User', options2)
     st.write(dfdaysoff)
-    dfdaysoff=dfdaysoff[dfdaysoff['Year']==selected_option]
+    #dfdaysoff=dfdaysoff[dfdaysoff['Year']==selected_option]
+    dfdaysoff=dfdaysofftotal[dfdaysofftotal['Year']==selected_option]
     st.write(dfdaysoff)
 
    ##Query for Asthenia adeia
