@@ -115,12 +115,13 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
 
     # st.write(columnames)
     edudaysoff=pd.DataFrame(rows,columns=columnames)
-    st.write("All Days Off for edu user",edudaysoff)
     useredudayoff=len(edudaysoff['start_time'])
-    st.write("Total edu DaysOff has beeb used until now:",useredudayoff)
-    with st.container():
-        html_content2 = html_days1(js_code,useredudayoff)
-        html(html_content2,height=250)
+    if(edudaysoff!=0):
+        st.write("All Days Off for edu user",edudaysoff)
+        st.write("Total edu DaysOff has beeb used until now:",useredudayoff)
+        with st.container():
+            html_content2 = html_days1(js_code,useredudayoff)
+            html(html_content2,height=250)
 
 
 
