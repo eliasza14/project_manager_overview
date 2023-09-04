@@ -94,14 +94,15 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
 
     # st.write(columnames)
     sickdaysoff=pd.DataFrame(rows,columns=columnames)
-    st.write("All Days Off for sickness user",sickdaysoff)
     usersickdayoff=len(sickdaysoff['start_time'])
-    st.write("Total DaysOff has beeb used until now:",usersickdayoff)
-    with open("animated_counter.js", "r") as file:
-        js_code = file.read()
-    with st.container():
-        html_content2 = html_days1(js_code,usersickdayoff)
-        html(html_content2,height=250)
+    if(usersickdayoff==0):
+        st.write("All Days Off for sickness user",sickdaysoff)
+        st.write("Total DaysOff has beeb used until now:",usersickdayoff)
+        with open("animated_counter.js", "r") as file:
+            js_code = file.read()
+        with st.container():
+            html_content2 = html_days1(js_code,usersickdayoff)
+            html(html_content2,height=250)
 
 
    ##Query for Education adeia
