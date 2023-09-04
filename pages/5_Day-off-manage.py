@@ -74,14 +74,22 @@ def main():
     df1 = dfdata[dfdata['name'] == selected_option]
     userid=df1['id'].iloc[0]
     st.write(userid)
-    ##get user daysof total
+
+    ##get user daysoff total
+
+
     sql = f""" 
         SELECT start_time FROM `kimai2_timesheet` WHERE (activity_id=4 OR activity_id=115 OR activity_id=116) AND user={userid};
     """
     rows,columnames = run_query(conn,sql)
     dfdaysofftotal=pd.DataFrame(rows,columns=columnames)
+    dfdaysofftotal['Year'] = dfdaysofftotal['start_time'].dt.year
     st.write(dfdaysofftotal)
+
+
     ##Query for kanoniki adeia
+
+
     st.title("User Analytics Dayoff")
     sql = f"""
 
@@ -98,7 +106,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     dfdaysoff['Year'] = dfdaysoff['start_time'].dt.year
     dfdaysoff['Year'] = dfdaysoff['Year'].apply(format_year)
 
-    yearlist=['2022','2023','2024']
+    yearlist=[]
     options2 = yearlist
     selected_option = st.selectbox('Select User', options2)
     st.write(dfdaysoff)
