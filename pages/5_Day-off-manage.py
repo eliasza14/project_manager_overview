@@ -21,6 +21,9 @@ def run_query(conn,query):
         columnsnames=cur.column_names
         return cur.fetchall(),columnsnames
     
+def format_year(year):
+    return "{:d}".format(year)  
+    
 def main():
     
 
@@ -88,6 +91,8 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     st.write("Total DaysOff has beeb used until now:",useddaysoff)
 
     dfdaysoff['Year'] = dfdaysoff['start_time'].dt.year
+    dfdaysoff['Year'] = dfdaysoff['Year'].apply(format_year)
+
     yearlist=dfdaysoff['Year'].unique().tolist()
     options2 = yearlist
     selected_option = st.selectbox('Select User', options2)
