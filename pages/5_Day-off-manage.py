@@ -328,7 +328,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
     monthly_counts = monthly_counts.merge(monthly_third_counts, on='start_time', how='left').fillna(0)
 
     # Create a bar plot using Plotly Express for daysoff, sickdays, and the third category
-    fig = px.bar(monthly_counts, x='start_time', y=['Daysoff_Count', 'Sick_Count', 'Third_Count'],
+    fig = px.bar(monthly_counts, x='start_time', y=['Daysoff_Count', 'Sick_Count', 'edu_Count'],
                 labels={'start_time': 'Month', 'value': 'Count'}, title='Count of Dates by Month')
     fig.update_xaxes(type='category', tickmode='array', tickvals=list(range(1, 13)),
                     ticktext=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
