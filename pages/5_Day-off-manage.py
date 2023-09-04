@@ -273,11 +273,11 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
 
     # Assuming you have DataFrames 'dfdaysoff' and 'dfsickdays' with 'start_time' columns
     dfdaysoff['start_time'] = pd.to_datetime(dfdaysoff['start_time'])
-    dfsickdays['start_time'] = pd.to_datetime(dfsickdays['start_time'])
+    sickdaysoff['start_time'] = pd.to_datetime(sickdaysoff['start_time'])
 
     # Group by month and count the occurrences for daysoff and sickdays
     monthly_daysoff_counts = dfdaysoff.groupby(dfdaysoff['start_time'].dt.month).size().reset_index(name='Daysoff_Count')
-    monthly_sick_counts = dfsickdays.groupby(dfsickdays['start_time'].dt.month).size().reset_index(name='Sick_Count')
+    monthly_sick_counts = sickdaysoff.groupby(sickdaysoff['start_time'].dt.month).size().reset_index(name='Sick_Count')
 
     # Create a DataFrame with all months (1 to 12)
     all_months = pd.DataFrame({'start_time': range(1, 13)})
