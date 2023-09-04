@@ -76,7 +76,7 @@ def main():
     st.write(userid)
 
     ##get user daysoff total
-
+    st.title("User Dayoff Total")
 
     sql = f""" 
         SELECT start_time FROM `kimai2_timesheet` WHERE (activity_id=4 OR activity_id=115 OR activity_id=116) AND user={userid};
@@ -96,7 +96,7 @@ def main():
 
     ##Query for kanoniki adeia
 
-    st.title("User Analytics Dayoff")
+    st.title("User Dayoff")
     sql = f"""
 
 SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
