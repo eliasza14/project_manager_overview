@@ -105,8 +105,12 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid
 
     # st.write(columnames)
     sickdaysoff=pd.DataFrame(rows,columns=columnames)
+    sickdaysoff['Year'] = sickdaysoff['start_time'].dt.year
+
     usersickdayoff=len(sickdaysoff['start_time'])
     if(usersickdayoff!=0):
+        sickdaysoff=sickdaysoff[sickdaysoff['Year']==selected_option]
+
         st.title("Sickness Dayoff")
         st.write("All Days Off for sickness user",sickdaysoff)
         st.write("Total DaysOff has beeb used until now:",usersickdayoff)
