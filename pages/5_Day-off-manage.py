@@ -59,6 +59,7 @@ def main():
 
     # st.write(columnames)
     dfdata=pd.DataFrame(rows,columns=columnames)
+    dfdata=dfdata[dfdata['name']!='ADMINISTRATOR']
     st.write("Get all user list",dfdata)
 
 
