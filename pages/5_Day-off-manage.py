@@ -88,8 +88,13 @@ def main():
 
     #dfdaysoff2=dfdaysoff2[dfdaysoff2['Year']==selected_option]
 
-    ##Query for kanoniki adeia
+    ##YEAR SELECTION START
+    yearlist=dfdaysofftotal['Year'].unique().tolist()
+    options2 = yearlist
+    selected_option = st.selectbox('Select User', options2)
+    ##YEAR SELECTION END
 
+    ##Query for kanoniki adeia
 
     st.title("User Analytics Dayoff")
     sql = f"""
@@ -107,9 +112,9 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     dfdaysoff['Year'] = dfdaysoff['start_time'].dt.year
     dfdaysoff['Year'] = dfdaysoff['Year'].apply(format_year)
 
-    yearlist=dfdaysofftotal['Year'].unique().tolist()
-    options2 = yearlist
-    selected_option = st.selectbox('Select User', options2)
+    # yearlist=dfdaysofftotal['Year'].unique().tolist()
+    # options2 = yearlist
+    # selected_option = st.selectbox('Select User', options2)
     st.write(dfdaysoff)
     #dfdaysoff=dfdaysoff[dfdaysoff['Year']==selected_option]
     dfdaysoff=dfdaysofftotal[dfdaysofftotal['Year']==selected_option]
