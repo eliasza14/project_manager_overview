@@ -294,7 +294,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
     fig.update_layout(yaxis_title='Count')
 
     # Show the combined plot
-    fig.show()
+    st.plotly_chart(fig)
 
 
 
