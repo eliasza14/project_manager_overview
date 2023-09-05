@@ -111,6 +111,7 @@ def main():
     ##Query for kanoniki adeia
 
     st.title("Normal Dayoff")
+
     sql = f"""
         SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
         """
@@ -136,14 +137,13 @@ def main():
    ##Query for Asthenia adeia
     
     sql = f"""
-
-SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid};
+        SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid};
         """
     rows,columnames = run_query(conn,sql)
 
     # st.write(columnames)
     sickdaysoff=pd.DataFrame(rows,columns=columnames)
-
+    sickdaysoff=dfdaysoffYear[dfdaysoffYear['category']=='Sick']
 
     usersickdayoff=len(sickdaysoff['start_time'])
     if(usersickdayoff!=0):
