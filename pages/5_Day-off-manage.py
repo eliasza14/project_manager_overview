@@ -133,7 +133,7 @@ def main():
     #dfdaysoff=dfdaysoff[dfdaysoff['Year']==selected_option]
     dfdaysoff=dfdaysoffYear[dfdaysoffYear['category']=='Normal']
     useddaysoff=len(dfdaysoff['start_time'])
-    if(usersickdayoff!=0):
+    if(useddaysoff!=0):
         st.title("Normal Dayoff")
         st.write(dfdaysoff)
         st.write("Total DaysOff has beeb used until now:",useddaysoff)
