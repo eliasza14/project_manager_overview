@@ -110,7 +110,7 @@ def main():
 
 
     ##START Query for kanoniki adeia 
-    st.title("Normal Dayoff")
+    
 
     # sql = f"""
     #     SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
@@ -132,9 +132,11 @@ def main():
     # st.write(dfdaysoff)
     #dfdaysoff=dfdaysoff[dfdaysoff['Year']==selected_option]
     dfdaysoff=dfdaysoffYear[dfdaysoffYear['category']=='Normal']
-    st.write(dfdaysoff)
     useddaysoff=len(dfdaysoff['start_time'])
-    st.write("Total DaysOff has beeb used until now:",useddaysoff)
+    if(usersickdayoff!=0):
+        st.title("Normal Dayoff")
+        st.write(dfdaysoff)
+        st.write("Total DaysOff has beeb used until now:",useddaysoff)
     ##END Query for kanoniki adeia 
 
 
