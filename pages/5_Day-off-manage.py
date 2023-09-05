@@ -110,8 +110,7 @@ def main():
 
     st.title("Normal Dayoff")
     sql = f"""
-
-SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
+        SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
         """
     rows,columnames = run_query(conn,sql)
 
@@ -129,7 +128,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
     # selected_option = st.selectbox('Select User', options2)
     st.write(dfdaysoff)
     #dfdaysoff=dfdaysoff[dfdaysoff['Year']==selected_option]
-    dfdaysoff=dfdaysofftotal[dfdaysofftotal['Year']==selected_option]
+    dfdaysoff=dfdaysofftotal[((dfdaysofftotal['Year']==selected_option) & (dfdaysofftotal['Category'] == 'Normal'))]
     st.write(dfdaysoff)
 
    ##Query for Asthenia adeia
