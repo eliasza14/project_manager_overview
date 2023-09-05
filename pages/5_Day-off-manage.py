@@ -103,7 +103,7 @@ def main():
     ##YEAR SELECTION START
     yearlist=dfdaysofftotal['Year'].unique().tolist()
     options2 = yearlist
-    selected_option = st.selectbox('Select User', options2)
+    selected_option = st.selectbox('Select Year', options2)
     dfdaysoffYear=dfdaysofftotal[dfdaysofftotal['Year']==selected_option]
     st.write(dfdaysoffYear)
     ##YEAR SELECTION END
