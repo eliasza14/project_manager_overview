@@ -150,7 +150,7 @@ def main():
 
     usersickdayoff=len(sickdaysoff['start_time'])
     if(usersickdayoff!=0):
-        st.write(sickdaysoff)
+        # st.write(sickdaysoff)
         sickdaysoff['Year'] = sickdaysoff['start_time'].dt.year
         sickdaysoff=sickdaysoff[sickdaysoff['Year']==selected_option]
 
