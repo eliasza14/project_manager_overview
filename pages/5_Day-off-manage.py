@@ -139,13 +139,13 @@ def main():
 
 
     ##START Query for Asthenia adeia
-    sql = f"""
-        SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid};
-        """
-    rows,columnames = run_query(conn,sql)
+    # sql = f"""
+    #     SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid};
+    #     """
+    # rows,columnames = run_query(conn,sql)
 
-    # st.write(columnames)
-    sickdaysoff=pd.DataFrame(rows,columns=columnames)
+    # # st.write(columnames)
+    # sickdaysoff=pd.DataFrame(rows,columns=columnames)
     sickdaysoff=dfdaysoffYear[dfdaysoffYear['category']=='Sick']
 
     usersickdayoff=len(sickdaysoff['start_time'])
@@ -166,13 +166,14 @@ def main():
 
 
     ##START Query for Education adeia
-    sql = f"""
-        SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid};
-        """
-    rows,columnames = run_query(conn,sql)
+    # sql = f"""
+    #     SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid};
+    #     """
+    # rows,columnames = run_query(conn,sql)
 
-    # st.write(columnames)
-    edudaysoff=pd.DataFrame(rows,columns=columnames)
+    # # st.write(columnames)
+    # edudaysoff=pd.DataFrame(rows,columns=columnames)
+    edudaysoff=dfdaysoffYear[dfdaysoffYear['category']=='Educational']
     useredudayoff=len(edudaysoff['start_time'])
     if(useredudayoff!=0):
         st.title("Educational Dayoff")
