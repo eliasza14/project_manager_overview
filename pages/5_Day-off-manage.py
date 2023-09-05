@@ -108,34 +108,37 @@ def main():
     st.write(dfdaysoffYear)
     ##YEAR SELECTION END
 
-    ##Query for kanoniki adeia
 
+    ##START Query for kanoniki adeia 
     st.title("Normal Dayoff")
 
-    sql = f"""
-        SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
-        """
-    rows,columnames = run_query(conn,sql)
+    # sql = f"""
+    #     SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=4 and user={userid};
+    #     """
+    # rows,columnames = run_query(conn,sql)
 
-    # st.write(columnames)
-    dfdaysoff=pd.DataFrame(rows,columns=columnames)
-    st.write("All Days Off for current user",dfdaysoff)
-    useddaysoff=len(dfdaysoff['start_time'])
-    st.write("Total DaysOff has beeb used until now:",useddaysoff)
+    # # st.write(columnames)
+    # dfdaysoff=pd.DataFrame(rows,columns=columnames)
+    # st.write("All Days Off for current user",dfdaysoff)
+    # useddaysoff=len(dfdaysoff['start_time'])
+    # st.write("Total DaysOff has beeb used until now:",useddaysoff)
 
-    dfdaysoff['Year'] = dfdaysoff['start_time'].dt.year
-    dfdaysoff['Year'] = dfdaysoff['Year'].apply(format_year)
+    # dfdaysoff['Year'] = dfdaysoff['start_time'].dt.year
+    # dfdaysoff['Year'] = dfdaysoff['Year'].apply(format_year)
 
-    # yearlist=dfdaysofftotal['Year'].unique().tolist()
-    # options2 = yearlist
-    # selected_option = st.selectbox('Select User', options2)
-    st.write(dfdaysoff)
+    # # yearlist=dfdaysofftotal['Year'].unique().tolist()
+    # # options2 = yearlist
+    # # selected_option = st.selectbox('Select User', options2)
+    # st.write(dfdaysoff)
     #dfdaysoff=dfdaysoff[dfdaysoff['Year']==selected_option]
     dfdaysoff=dfdaysoffYear[dfdaysoffYear['category']=='Normal']
     st.write(dfdaysoff)
+    useddaysoff=len(dfdaysoff['start_time'])
+    st.write("Total DaysOff has beeb used until now:",useddaysoff)
+    ##END Query for kanoniki adeia 
 
-   ##Query for Asthenia adeia
-    
+
+    ##START Query for Asthenia adeia
     sql = f"""
         SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=115 and user={userid};
         """
@@ -159,13 +162,12 @@ def main():
         with st.container():
             html_content2 = html_days4(js_code,usersickdayoff)
             html(html_content2,height=250)
+    ##END Query for Asthenia adeia
 
 
-   ##Query for Education adeia
-    
+    ##START Query for Education adeia
     sql = f"""
-
-SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid};
+        SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid};
         """
     rows,columnames = run_query(conn,sql)
 
@@ -181,7 +183,7 @@ SELECT start_time FROM `kimai2_timesheet` WHERE activity_id=116 and user={userid
         with st.container():
             html_content2 = html_days5(js_code,useredudayoff)
             html(html_content2,height=250)
-
+    ##END Query for Education adeia
 
 
 
