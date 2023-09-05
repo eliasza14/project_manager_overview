@@ -89,7 +89,7 @@ def main():
             WHEN activity_id = 115 THEN 'Sick'
             WHEN activity_id = 116 THEN 'Educational'
             ELSE 'Other'
-        END AS condition_description
+        END AS category
         FROM `kimai2_timesheet`
         WHERE (activity_id = 4 OR activity_id = 115 OR activity_id = 116) AND user = {userid};
     """
@@ -104,6 +104,7 @@ def main():
     yearlist=dfdaysofftotal['Year'].unique().tolist()
     options2 = yearlist
     selected_option = st.selectbox('Select User', options2)
+    dfdaysoffYear=dfdaysofftotal[dfdaysofftotal['Year']==selected_option]
     ##YEAR SELECTION END
 
     ##Query for kanoniki adeia
@@ -128,7 +129,7 @@ def main():
     # selected_option = st.selectbox('Select User', options2)
     st.write(dfdaysoff)
     #dfdaysoff=dfdaysoff[dfdaysoff['Year']==selected_option]
-    dfdaysoff=dfdaysofftotal[((dfdaysofftotal['Year']==selected_option) & (dfdaysofftotal['Category'] == 'Normal'))]
+    dfdaysoff=dfdaysoffYear[dfdaysoffYear['category']=='Normal']
     st.write(dfdaysoff)
 
    ##Query for Asthenia adeia
