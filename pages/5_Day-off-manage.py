@@ -129,8 +129,8 @@ def main():
     # selected_option = st.selectbox('Select User', options2)
     st.write(dfdaysoff)
     #dfdaysoff=dfdaysoff[dfdaysoff['Year']==selected_option]
-    dfdaysoff=dfdaysoffYear[dfdaysoffYear['category']=='Normal']
-    st.write(dfdaysoff)
+    dfdaysoff2=dfdaysoffYear[dfdaysoffYear['category']=='Normal']
+    st.write(dfdaysoff2)
 
    ##Query for Asthenia adeia
     
