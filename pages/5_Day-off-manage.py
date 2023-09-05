@@ -105,6 +105,7 @@ def main():
     options2 = yearlist
     selected_option = st.selectbox('Select User', options2)
     dfdaysoffYear=dfdaysofftotal[dfdaysofftotal['Year']==selected_option]
+    st.write(dfdaysoffYear)
     ##YEAR SELECTION END
 
     ##Query for kanoniki adeia
@@ -129,8 +130,8 @@ def main():
     # selected_option = st.selectbox('Select User', options2)
     st.write(dfdaysoff)
     #dfdaysoff=dfdaysoff[dfdaysoff['Year']==selected_option]
-    dfdaysoff2=dfdaysoffYear[dfdaysoffYear['category']=='Normal']
-    st.write(dfdaysoff2)
+    dfdaysoff=dfdaysoffYear[dfdaysoffYear['category']=='Normal']
+    st.write(dfdaysoff)
 
    ##Query for Asthenia adeia
     
