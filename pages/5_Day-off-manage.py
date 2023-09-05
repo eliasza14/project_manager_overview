@@ -78,8 +78,20 @@ def main():
     ##get user daysoff total
     st.title("User Dayoff Total")
 
-    sql = f""" 
-        SELECT start_time FROM `kimai2_timesheet` WHERE (activity_id=4 OR activity_id=115 OR activity_id=116) AND user={userid};
+    # sql = f""" 
+    #     SELECT start_time FROM `kimai2_timesheet` WHERE (activity_id=4 OR activity_id=115 OR activity_id=116) AND user={userid};
+    # """
+    sql = f"""
+        SELECT
+        start_time,
+        CASE
+            WHEN activity_id = 4 THEN 'Normal'
+            WHEN activity_id = 115 THEN 'Sick'
+            WHEN activity_id = 116 THEN 'Educational'
+            ELSE 'Other'
+        END AS condition_description
+        FROM `kimai2_timesheet`
+        WHERE (activity_id = 4 OR activity_id = 115 OR activity_id = 116) AND user = 5;
     """
     rows,columnames = run_query(conn,sql)
     dfdaysofftotal=pd.DataFrame(rows,columns=columnames)
