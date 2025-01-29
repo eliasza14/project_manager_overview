@@ -345,8 +345,8 @@ def main():
         # Set axis labels and chart title
         fig.update_layout(
             xaxis_title='Months',
-            yaxis_title='Total Duration of Project:'+first_name_value2+" in Hours",
-            title='Duration of the Project per Month'
+            yaxis_title='Συνολικός Χρόνος του Project '+first_name_value2+" σε ώρες",
+            title='Διάρκεια του project ανα μήνα'
         )
 
         # Display the chart
