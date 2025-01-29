@@ -293,7 +293,46 @@ def main():
         # Get the name of each month
         dfdata3group['month_name'] = dfdata3group['month'].apply(lambda x: calendar.month_name[x])
 
-        st.write(dfdata3group)
+        # Create line chart
+        fig = go.Figure()
+
+        # Add line trace
+        fig.add_trace(go.Scatter(
+            x=dfdata3group['month_name'],
+            y=dfdata3group['duration'],
+            mode='lines',
+            name='Duration'
+        ))
+
+        # Identify the months with non-zero sum duration
+        non_zero_months = dfdata3group[dfdata3group['duration'] > 0]
+
+        # Add dots for non-zero months
+        fig.add_trace(go.Scatter(
+            x=non_zero_months['month_name'],
+            y=non_zero_months['duration'],
+            mode='markers',
+            marker=dict(
+                color='green',
+                size=10,
+                symbol='circle',
+                line=dict(
+                    width=2,
+                    color='green'
+                )
+            ),
+            name='Non-Zero Months'
+        ))
+
+        # Set axis labels and chart title
+        fig.update_layout(
+            xaxis_title='Months',
+            yaxis_title='Total Duration of Project:'+dfdata3['name']+" in Hours",
+            title='Duration of the Project per Month'
+        )
+
+        # Display the chart
+        st.plotly_chart(fig)
 
 
 
