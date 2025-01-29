@@ -257,10 +257,10 @@ def main():
 
     # st.write(columnames)
         dfdata=pd.DataFrame(rows,columns=columnames)
-        st.write("All Data from Query",dfdata)
+        # st.write("All Data from Query",dfdata)
         dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR']
-        dfdata = dfdata[dfdata['name'] != 'Out of Office']
-        st.write("All Data from Filter",dfdata)
+        dfdata = dfdata[dfdata['name'] == selected_option]
+        # st.write("All Data from Filter",dfdata)
 
         dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
 
@@ -281,11 +281,9 @@ def main():
             dfgroup2['name'][i] = '<br>'.join(dfgroup2['name'][i]).replace(',', ',<br>')
 
 
-
-
-
-
         st.write(dfgroup2)
+
+
 
 
                 
