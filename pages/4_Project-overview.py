@@ -237,6 +237,48 @@ def main():
                 pass
 
 
+            
+
+        sql2 ="""SELECT kimai2_users.alias,SUM(kimai2_timesheet.duration) as duration 
+    FROM `kimai2_timesheet`
+    INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+    WHERE DATE(start_time) >='"""+str(startdate)+"""' AND DATE(start_time) <='"""+str(enddate)+"""' 
+
+    GROUP BY kimai2_users.alias; """
+            
+        rows,columnames = run_query(conn,sql2)
+
+    # st.write(columnames)
+        dfdata=pd.DataFrame(rows,columns=columnames)
+        st.write("All Data from Query",dfdata)
+        dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR']
+        dfdata = dfdata[dfdata['name'] != 'Out of Office']
+        st.write("All Data from Filter",dfdata)
+
+        dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
+
+        dfgroup=dfdata.groupby(['alias'])['name'].count()
+
+        dfgroup2=dfdata.groupby('alias')['name'].agg(list).reset_index()
+
+
+        dfframe=dfgroup.to_frame().reset_index()
+
+        userlist=dfframe['alias'].tolist()
+
+        countlist=dfframe['name'].tolist()
+
+        # dfgroup2
+
+        for i in range(len(dfgroup2)):
+            dfgroup2['name'][i] = '<br>'.join(dfgroup2['name'][i]).replace(',', ',<br>')
+
+
+
+
+
+
+        st.write(dfgroup2)
 
 
                 
