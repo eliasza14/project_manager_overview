@@ -275,6 +275,11 @@ def main():
     
     # Apply the formatting function to the 'Year' column
         dfdata3['year'] = dfdata3['year'].apply(format_year)
+
+        options = dfdata3['year'].tolist()
+
+        # Display the dropdown menu
+        selected_option = st.selectbox('Choose Year', options)
         # dfdata3['year']=dfdata3['year'].str.replace(',', '').astype(int)
         st.write(dfdata3['year'].dtype)
 
