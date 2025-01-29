@@ -211,7 +211,7 @@ def main():
 
         # Display the dropdown menu
         selected_option = st.selectbox('Επιλέξτε χρήστη', options)
-        df1 = dfdata2[dfdata2['alias'] == selected_option and dfdata2['alias'] != "Out Of Office"]
+        df1 = dfdata2[dfdata2['alias'] == selected_option]
         # df1['duration']=df1['duration']/3600
         # df1.loc[:, 'duration'] = df1['duration'] / 3600
         first_duration_value = df1['duration'].iloc[0]
