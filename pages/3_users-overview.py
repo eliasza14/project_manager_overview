@@ -142,7 +142,7 @@ def main():
     # st.write(columnames)
         dfdata=pd.DataFrame(rows,columns=columnames)
         st.write("All Data from Query",dfdata)
-        dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR']
+        dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR' and dfdata['name'] != "Out Of Office"]
         st.write("All Data from Filter",dfdata)
 
         dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
@@ -212,7 +212,6 @@ def main():
         # Display the dropdown menu
         selected_option = st.selectbox('Επιλέξτε χρήστη', options)
         df1 = dfdata2[dfdata2['alias'] == selected_option]
-        df_filtered = df1[df1['name'] == "Out of Office"]
         # df1['duration']=df1['duration']/3600
         # df1.loc[:, 'duration'] = df1['duration'] / 3600
         first_duration_value = df1['duration'].iloc[0]
