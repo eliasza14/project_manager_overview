@@ -143,6 +143,7 @@ def main():
         dfdata=pd.DataFrame(rows,columns=columnames)
         st.write("All Data from Query",dfdata)
         dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR']
+        dfdata = dfdata[dfdata['name'] != "Out Of Office"]
         st.write("All Data from Filter",dfdata)
 
         dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
