@@ -288,12 +288,13 @@ def main():
 
         # Convert 'duration' column to numeric
         dfdata3['duration'] = (dfdata3['duration'] / 3600).astype(int)
-        st.write("After Preprocessing Data from Query",dfdata3[dfdata3['year']==selected_option])
+        dfdata3_filtered = dfdata3[dfdata3['year']==selected_option]
+        st.write("After Preprocessing Data from Query",dfdata3_filtered)
 
 
 
         # Group by month and calculate total duration
-        dfdata3group = dfdata3.groupby('month')['duration'].sum().reset_index()
+        dfdata3group = dfdata3_filtered.groupby('month')['duration'].sum().reset_index()
 
         # Create all 12 months
         all_months = list(range(1, 13))
