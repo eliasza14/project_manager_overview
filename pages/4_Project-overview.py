@@ -327,7 +327,7 @@ def main():
         # Set axis labels and chart title
         fig.update_layout(
             xaxis_title='Months',
-            yaxis_title='Total Duration of Project:'+dfdata3['name']+" in Hours",
+            yaxis_title='Total Duration of Project:'+" in Hours",
             title='Duration of the Project per Month'
         )
 
