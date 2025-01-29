@@ -248,33 +248,52 @@ def main():
         rows,columnames = run_query(conn,sql)
 
     # st.write(columnames)
-        dfdata=pd.DataFrame(rows,columns=columnames)
-        # st.write("All Data from Query",dfdata)
-        dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR']
-        dfdata = dfdata[dfdata['name'] == selected_option]
-        # st.write("All Data from Filter",dfdata)
+        dfdata3=pd.DataFrame(rows,columns=columnames)
+        st.write("All Data from Query",dfdata3)
+        
+        # Convert 'start_time' column to datetime
+        dfdata3['start_time'] = pd.to_datetime(dfdata3['start_time'])
+        dfdata3['year'] = dfdata3['start_time'].dt.year
+    
+    # Apply the formatting function to the 'Year' column
+        dfdata3['year'] = dfdata3['year'].apply(format_year)
 
-        dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
+        options = dfdata3['year'].unique().tolist()
 
-        dfgroup=dfdata.groupby(['alias'])['name'].count()
+        # Display the dropdown menu
+        selected_option = st.selectbox('Επιλέξτε έτος', options)
+        # dfdata3['year']=dfdata3['year'].str.replace(',', '').astype(int)
+        st.write(dfdata3['year'].dtype)
 
-        dfgroup2=dfdata.groupby('alias')['name'].agg(list).reset_index()
+        # Extract month from 'start_time' column
+        dfdata3['month'] = dfdata3['start_time'].dt.month
 
-
-        dfframe=dfgroup.to_frame().reset_index()
-
-        userlist=dfframe['alias'].tolist()
-
-        countlist=dfframe['name'].tolist()
-
-        # dfgroup2
-
-        for i in range(len(dfgroup2)):
-            dfgroup2['name'][i] = '<br>'.join(dfgroup2['name'][i]).replace(',', ',<br>')
+        # Convert 'duration' column to numeric
+        dfdata3['duration'] = (dfdata3['duration'] / 3600).astype(int)
+        dfdata3_filtered = dfdata3[dfdata3['year']==selected_option]
+        st.write("After Preprocessing Data from Query",dfdata3_filtered)
 
 
-        st.write(dfgroup2)
 
+        # Group by month and calculate total duration
+        dfdata3group = dfdata3_filtered.groupby('month')['duration'].sum().reset_index()
+
+        # Create all 12 months
+        all_months = list(range(1, 13))
+
+        # Add missing months to the DataFrame with duration set to 0
+        dfdata3group = dfdata3group.merge(pd.DataFrame({'month': all_months}), how='right')
+
+        # Sort the DataFrame by month
+        dfdata3group = dfdata3group.sort_values('month')
+
+        # Fill missing duration values with 0
+        dfdata3group['duration'] = dfdata3group['duration'].fillna(0)
+
+        # Get the name of each month
+        dfdata3group['month_name'] = dfdata3group['month'].apply(lambda x: calendar.month_name[x])
+
+        st.write(dfdata3group)
 
 
 
