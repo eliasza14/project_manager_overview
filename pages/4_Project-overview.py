@@ -251,34 +251,34 @@ def main():
     # st.write(columnames)
         dfdata=pd.DataFrame(rows,columns=columnames)
         st.write("All Data from Query",dfdata)
-        dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR']
-        dfdata = dfdata[dfdata['name'] != 'Out of Office']
-        st.write("All Data from Filter",dfdata)
+        # dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR']
+        # dfdata = dfdata[dfdata['name'] != 'Out of Office']
+        # st.write("All Data from Filter",dfdata)
 
-        dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
+        # dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
 
-        dfgroup=dfdata.groupby(['alias'])['name'].count()
+        # dfgroup=dfdata.groupby(['alias'])['name'].count()
 
-        dfgroup2=dfdata.groupby('alias')['name'].agg(list).reset_index()
-
-
-        dfframe=dfgroup.to_frame().reset_index()
-
-        userlist=dfframe['alias'].tolist()
-
-        countlist=dfframe['name'].tolist()
-
-        # dfgroup2
-
-        for i in range(len(dfgroup2)):
-            dfgroup2['name'][i] = '<br>'.join(dfgroup2['name'][i]).replace(',', ',<br>')
+        # dfgroup2=dfdata.groupby('alias')['name'].agg(list).reset_index()
 
 
+        # dfframe=dfgroup.to_frame().reset_index()
+
+        # userlist=dfframe['alias'].tolist()
+
+        # countlist=dfframe['name'].tolist()
+
+        # # dfgroup2
+
+        # for i in range(len(dfgroup2)):
+        #     dfgroup2['name'][i] = '<br>'.join(dfgroup2['name'][i]).replace(',', ',<br>')
 
 
 
 
-        st.write(dfgroup2)
+
+
+        # st.write(dfgroup2)
 
 
                 
