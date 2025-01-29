@@ -337,7 +337,7 @@ def main():
         fig = go.Figure()
 
 # Loop through each unique alias and create a separate line
-        for alias in dfdata3group['alias'].unique():
+        for alias in dfdata3['alias'].unique():
             df_subset = dfdata3group[dfdata3group['alias'] == alias]
     
             # Add line trace for each alias
