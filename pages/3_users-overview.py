@@ -204,13 +204,13 @@ def main():
         fig2.update_layout(title="Users Total Working Hours",yaxis=dict(autorange="reversed"))
         st.plotly_chart(fig2)
 
-        st.title("Select User from the below list:")
+        st.title("Επιλέξτε χρήστη απο την λίστα χρηστών")
             # List of options for the dropdown menu
         optionlist =dfdata2['alias'].tolist()
         options = optionlist
 
         # Display the dropdown menu
-        selected_option = st.selectbox('Choose User', options)
+        selected_option = st.selectbox('Επιλέξτε χρήστη', options)
         df1 = dfdata2[dfdata2['alias'] == selected_option]
         # df1['duration']=df1['duration']/3600
         # df1.loc[:, 'duration'] = df1['duration'] / 3600
@@ -241,11 +241,11 @@ def main():
 
 
 
-        st.title("Select Project from the below list")
+        st.title("Επιλέξτε Project απο την λίστα Project")
         
         optionlist =userdf['name'].tolist()
         options2 = optionlist
-        selected_option = st.selectbox('Choose Project', options2)
+        selected_option = st.selectbox('Επίλεξε Project:', options2)
         df2 = userdf[userdf['name'] == selected_option]
         #st.write(df2)
         first_name_value2 = df2['name'].iloc[0]
@@ -279,7 +279,7 @@ def main():
         options = dfdata3['year'].unique().tolist()
 
         # Display the dropdown menu
-        selected_option = st.selectbox('Choose Year', options)
+        selected_option = st.selectbox('Επιλέξτε έτος', options)
         # dfdata3['year']=dfdata3['year'].str.replace(',', '').astype(int)
         st.write(dfdata3['year'].dtype)
 
