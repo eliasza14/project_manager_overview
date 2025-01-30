@@ -475,7 +475,7 @@ def html_cost5(js_code,val):
                         </div>
                     <script type="text/javascript">
                     {js_code}
-                    animateCounter3test2WithEuro("counter", 0, """+str(val)+""", 1000,100);
+                    animateCounter3test2WithEuro("counter", 0, """+val+""", 1000,100);
                     </script>
                     </body>
 
