@@ -211,16 +211,20 @@ def main():
             with col2:
                 st.write(df1)
                 val=len(df1['alias'][dfdata['enabled']==1].unique())
+                
+                # st.write(val2)
+                html_content3 = html_button3(js_code,val)
+                
+                html(html_content3, height=250)
+                
+            with col3:
                 df1['value'] = pd.to_numeric(df1['value'], errors='coerce')
                 df1['duration'] = pd.to_numeric(df1['duration'], errors='coerce')
                 val2 = (df1['value'] * df1['duration']).sum()
-                st.write(val2)
-                html_content3 = html_button3(js_code,val)
                 html_content4 = html_button3(js_code, val2)
-                html(html_content3, height=250)
                 html(html_content4, height=250)
-            with col3:
                 pass
+               
                 # val=len(dfdata['name'].unique())
                 # html_content1 = html_button1(js_code,val)
                 # html(html_content1,height=250)
