@@ -403,7 +403,7 @@ def main():
         df1['month'] = df1['startime'].dt.month
 
         df1_filtered = df1[df1['year']==selected_option]
-        st.write("After Preprocessing Data from Query",df1_filtered)
+        st.write("After Preprocessing Data from Query",df1)
 
         # dfdata1group = df1_filtered.groupby(['alias', 'month'])['Total_cost'].sum().reset_index()
 
