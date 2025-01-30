@@ -191,7 +191,7 @@ def main():
                 title='% Διάρκεια ανα Project επί του Συνόλου  ',
                 hover_data=['duration'], labels={'duration':'duration'})
                 fig.update_traces(textposition='inside', textinfo='percent+label')
-                st.plotly_chart(fig)
+                st.plotly_chart(fig, use_container_width=True)
             with col2:
                 pass
 
