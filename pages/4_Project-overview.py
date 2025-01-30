@@ -212,8 +212,10 @@ def main():
 
                 val=len(df1['alias'][dfdata['enabled']==1].unique())
                 html_content3 = html_button3(js_code,val)
+                valid_aliases = df1.loc[dfdata['enabled'] == 1, 'alias'].unique()
+
                 val2 = (
-                df1[df1['alias'].isin(df1['alias'][dfdata['enabled'] == 1].unique())]
+                df1[df1['alias'].isin(valid_aliases)]
                 .groupby('alias')
                 .apply(lambda x: (x['duration'] * x['value']).sum())
                 .sum()
