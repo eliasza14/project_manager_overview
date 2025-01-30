@@ -398,7 +398,7 @@ def main():
         df4 = dfdata3[dfdata3['name'] == selected_option2]
         df4 = df4[df4['year']==selected_option]
 
-        st.write(df4)
+        st.write(dfdata3)
 
         # dfdata1group = df1_filtered.groupby(['alias', 'month'])['Total_cost'].sum().reset_index()
 
