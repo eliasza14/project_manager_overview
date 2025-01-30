@@ -192,8 +192,8 @@ def main():
                 hover_data=['duration'], labels={'duration':'duration'})
                 fig.update_traces(textposition='inside', textinfo='percent+label')
                 fig.update_layout(
-                    width=800,  # Adjust width (increase for a larger chart)
-                    height=600  # Adjust height
+                    width=8000,  # Adjust width (increase for a larger chart)
+                    height=6000  # Adjust height
                     )
                 st.plotly_chart(fig)
             with col2:
