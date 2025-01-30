@@ -241,7 +241,7 @@ def main():
                 df1['Total_cost'] = df1['duration'] * df1['value']
                 df1['Total_cost'] = df1['Total_cost'].astype(str) + " €"
                 figrate2 = px.bar(df1, y='Total_cost', x='alias', text_auto='.2s',title="Project Manager: "+str(selected_option2)+" - Cost of project per user")
-                figrate2.update_layout(barmode='stack', xaxis={'categoryorder': 'total descending'})
+                figrate2.update_layout(barmode='stack')
                 
                 
 
