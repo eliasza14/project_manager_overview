@@ -199,8 +199,8 @@ def main():
                # List of options for the dropdown menu
         optionlist =dfdata['name'].unique().tolist()
         options = optionlist
-        selected_option = st.selectbox('Select Project', options)
-        df1 = dfdata[dfdata['name'] == selected_option]
+        selected_option2 = st.selectbox('Select Project', options)
+        df1 = dfdata[dfdata['name'] == selected_option2]
         st.write(df1)
 
         with st.container():
@@ -226,7 +226,7 @@ def main():
             with col1:
                 st.write('Rate per Project for selected user')
                 # df1['cost']=df1['value'].astype(float)*df1['duration'].astype(float)
-                figrate= px.bar(df1, y='duration', x='alias', text_auto='.2s',title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
+                figrate= px.bar(df1, y='duration', x='alias', text_auto='.2s',title="Project Manager: "+str(selected_option2)+" - Hourly projects duaration")
                 figrate.update_layout(barmode='stack', xaxis={'categoryorder': 'total descending'})
 
                 st.plotly_chart(figrate)
@@ -243,7 +243,7 @@ def main():
     FROM `kimai2_timesheet`
     INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
     Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
-    WHERE kimai2_projects.name='"""+str(selected_option)+"""';"""
+    WHERE kimai2_projects.name='"""+str(selected_option2)+"""';"""
             
         rows,columnames = run_query(conn,sql)
 
@@ -369,7 +369,7 @@ def main():
         fig.update_layout(
             xaxis_title='Months',
             yaxis_title='Total Duration in Hours',
-            title='Duration of the Project per Month of Year ' + selected_option,
+            title='Duration of the Project ' + selected_option2 +  ' per Month of Year ' + selected_option,
             legend_title="Users"
         )
 
