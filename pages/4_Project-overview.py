@@ -191,12 +191,13 @@ def main():
                 title='% Διάρκεια ανα Project επί του Συνόλου  ',
                 hover_data=['duration'], labels={'duration':'duration'})
                 fig.update_traces(textposition='inside', textinfo='percent+label')
-                st.plotly_chart(fig)
+                
             with col2:
                 pass
 
                 # Display the dropdown menu
                # List of options for the dropdown menu
+        st.plotly_chart(fig)
         optionlist =dfdata['name'].unique().tolist()
         options = optionlist
         selected_option2 = st.selectbox('Select Project', options)
