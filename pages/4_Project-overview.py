@@ -393,7 +393,12 @@ def main():
         st.plotly_chart(fig)
 
 
-        st.write(dfdata3)
+        
+
+        df4 = dfdata3[dfdata3['name'] == selected_option2]
+        df4 = df4[df4['year']==selected_option]
+
+        st.write(df4)
 
         # dfdata1group = df1_filtered.groupby(['alias', 'month'])['Total_cost'].sum().reset_index()
 
