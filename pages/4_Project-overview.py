@@ -214,13 +214,13 @@ def main():
                 html_content3 = html_button3(js_code,val)
                 valid_aliases = df1.loc[dfdata['enabled'] == 1, 'alias'].unique()
 
-                val2 = (
-                df1[df1['alias'].isin(valid_aliases)]
-                .groupby('alias')
-                .apply(lambda x: (x['duration'] * x['value']).sum())
-                .sum()
-                )
-                html_content4 = html_button3(js_code, val2)
+                # val2 = (
+                # df1[df1['alias'].isin(valid_aliases)]
+                # .groupby('alias')
+                # .apply(lambda x: (x['duration'] * x['value']).sum())
+                # .sum()
+                # )
+                # html_content4 = html_button3(js_code, val2)
                 html(html_content3, height=250)
             with col3:
                 pass
