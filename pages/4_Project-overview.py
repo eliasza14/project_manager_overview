@@ -392,22 +392,17 @@ def main():
 # Display the chart
         st.plotly_chart(fig)
 
-        df4 = df1
+        sql = f""" SELECT kimai2_users.alias,kimai2_projects.name,kimai2_timesheet.start_time,kimai2_timesheet.duration, kimai2_user_preferences.value
+    FROM `kimai2_timesheet`
+    INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+    Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
+    WHERE kimai2_projects.name='"""+str(selected_option2)+"""';"""
+            
+        rows,columnames = run_query(conn,sql)
 
-        df4['year'] = df4['startime'].dt.year
-    
-    # Apply the formatting function to the 'Year' column
-        df4['year'] = df4['year'].apply(format_year)
+        df4 = pd.DataFrame(rows,columns=columnames)
 
-        # options = df1['year'].unique().tolist()
-
-        df4['month'] = df4['startime'].dt.month
-
-        # Convert 'duration' column to numeric
-        df4['duration'] = (df4['duration'] / 3600).astype(int)
-        dfdata4_filtered = (df4[df4['year']==selected_option])
-        st.write("After Preprocessing Data from Query",dfdata4_filtered)
-
+        st.write(df4)
 
 
 
