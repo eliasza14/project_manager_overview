@@ -209,7 +209,7 @@ def main():
                 pass
   
             with col2:
-                st.write(df1)
+                # st.write(df1)
                 val=len(df1['alias'][dfdata['enabled']==1].unique())
                 
                 # st.write(val2)
