@@ -171,7 +171,7 @@ function animateCounter3test2WithEuro(elementId, startValue, endValue, duration,
         element.textContent = current.toFixed(decimalPlaces) + "€";
         iteration++;
 
-        if ((increment > 0 && current >= endValue) || (increment < 0 && current <= endValue) || iteration >= iterations) {
+        if ((increment > 0 && current >= formattedVal2) || (increment < 0 && current <= formattedVal2) || iteration >= iterations) {
             clearInterval(timer);
         }
     }, interval);
