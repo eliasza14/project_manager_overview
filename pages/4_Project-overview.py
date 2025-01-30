@@ -276,7 +276,7 @@ def main():
         # Display the dropdown menu
         selected_option = st.selectbox('Επιλέξτε έτος', options)
         # dfdata3['year']=dfdata3['year'].str.replace(',', '').astype(int)
-        st.write(dfdata3['year'].dtype)
+        # st.write(dfdata3['year'].dtype)
 
         # Extract month from 'start_time' column
         dfdata3['month'] = dfdata3['start_time'].dt.month
