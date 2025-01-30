@@ -216,7 +216,8 @@ def main():
                 val2 = (df1['value'] * df1['duration']).sum()
                 st.write(val2)
                 html_content3 = html_button3(js_code,val)
-                html(html_content3, height=250)
+                html_content4 = html_button3(js_code, val2)
+                html(html_content3, html_content4, height=250)
             with col3:
                 pass
                 # val=len(dfdata['name'].unique())
