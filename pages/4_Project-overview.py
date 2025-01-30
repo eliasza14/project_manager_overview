@@ -293,73 +293,85 @@ def main():
         # Get the name of each month
         dfdata3group['month_name'] = dfdata3group['month'].apply(lambda x: calendar.month_name[x])
 
-        # Create line chart
-        fig = go.Figure()
+        # # Create line chart
+        # fig = go.Figure()
 
-        # Add line trace
-        fig.add_trace(go.Scatter(
-            x=dfdata3group['month_name'],
-            y=dfdata3group['duration'],
+        # # Add line trace
+        # fig.add_trace(go.Scatter(
+        #     x=dfdata3group['month_name'],
+        #     y=dfdata3group['duration'],
+        #     mode='lines',
+        #     name='Duration'
+        # ))
+
+        # # Identify the months with non-zero sum duration
+        # non_zero_months = dfdata3group[dfdata3group['duration'] > 0]
+
+        # # Add dots for non-zero months
+        # fig.add_trace(go.Scatter(
+        #     x=non_zero_months['month_name'],
+        #     y=non_zero_months['duration'],
+        #     mode='markers',
+        #     marker=dict(
+        #         color='green',
+        #         size=10,
+        #         symbol='circle',
+        #         line=dict(
+        #             width=2,
+        #             color='green'
+        #         )
+        #     ),
+        #     name='Non-Zero Months'
+        # ))
+
+        # # Set axis labels and chart title
+        # fig.update_layout(
+        #     xaxis_title='Months',
+        #     yaxis_title='Total Duration of Project:'+" in Hours",
+        #     title='Duration of the Project per Month'
+        # )
+
+        # # Display the chart
+        # st.plotly_chart(fig)
+
+
+        ##### Nice Try #############
+
+        for alias, df in dfdata3.items():
+    # Add line trace for each project
+            fig.add_trace(go.Scatter(
+            x=df['month_name'],
+            y=df['duration'],
             mode='lines',
-            name='Duration'
+            name=f'Duration ({alias})'
         ))
 
-        # Identify the months with non-zero sum duration
-        non_zero_months = dfdata3group[dfdata3group['duration'] > 0]
+    # Identify the months with non-zero sum duration
+        non_zero_months = df[df['duration'] > 0]
 
-        # Add dots for non-zero months
+    # Add dots for non-zero months
         fig.add_trace(go.Scatter(
             x=non_zero_months['month_name'],
             y=non_zero_months['duration'],
             mode='markers',
             marker=dict(
-                color='green',
                 size=10,
                 symbol='circle',
-                line=dict(
-                    width=2,
-                    color='green'
-                )
+                line=dict(width=2),
             ),
-            name='Non-Zero Months'
+            name=f'Non-Zero Months ({alias})'
         ))
 
-        # Set axis labels and chart title
+# Set axis labels and chart title
         fig.update_layout(
             xaxis_title='Months',
-            yaxis_title='Total Duration of Project:'+" in Hours",
-            title='Duration of the Project per Month'
+            yaxis_title='Total Duration of Project (in Hours)',
+            title='Duration of the Project per Month',
+            legend_title="Project Alias"
         )
 
-        # Display the chart
+# Display the chart in Streamlit
         st.plotly_chart(fig)
-
-
-        ##### Nice Try #############
-
-#         fig = go.Figure()
-
-# # Loop through each unique alias and create a separate line
-#         for alias in dfdata3['alias'].unique():
-#             df_subset = dfdata3group[dfdata3group['alias'] == alias]
-    
-#             # Add line trace for each alias
-#             fig.add_trace(go.Scatter(
-#             x=df_subset['month_name'],
-#             y=df_subset['duration'],
-#             mode='lines+markers',
-#             name=alias
-#         ))
-
-# # Set axis labels and chart title
-#         fig.update_layout(
-#         xaxis_title='Months',
-#         yaxis_title='Total Duration of Project (Hours)',
-#         title='Duration of the Project per Month (Grouped by Alias)'
-#     )
-
-# # Display the chart in Streamlit
-#         st.plotly_chart(fig)
 
 
 
