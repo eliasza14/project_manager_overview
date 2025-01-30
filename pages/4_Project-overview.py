@@ -334,44 +334,86 @@ def main():
         # # Display the chart
         # st.plotly_chart(fig)
 
+        # Group by alias and month and sum duration
+        dfdata3group = dfdata3_filtered.groupby(['alias', 'month'])['duration'].sum().reset_index()
 
-        ##### Nice Try #############
+# Create all 12 months DataFrame
+        all_months = pd.DataFrame({'month': list(range(1, 13))})
 
-        for alias, df in dfdata3.items():
-    # Add line trace for each project
+# Ensure every alias has all months
+        unique_aliases = dfdata3group['alias'].unique()
+        expanded_df = pd.concat([
+            all_months.assign(alias=alias) for alias in unique_aliases
+        ], ignore_index=True)
+
+# Merge to ensure all months exist for each alias, filling missing durations with 0
+        dfdata3group = expanded_df.merge(dfdata3group, on=['alias', 'month'], how='left').fillna({'duration': 0})
+
+# Get the name of each month
+        dfdata3group['month_name'] = dfdata3group['month'].apply(lambda x: calendar.month_name[x])
+
+# Create line chart
+        fig = go.Figure()
+
+# Add a line for each unique alias
+        for alias in dfdata3group['alias'].unique():
+            alias_data = dfdata3group[dfdata3group['alias'] == alias]
             fig.add_trace(go.Scatter(
-            x=df['month_name'],
-            y=df['duration'],
-            mode='lines',
-            name=f'Duration ({alias})'
-        ))
-
-    # Identify the months with non-zero sum duration
-        non_zero_months = df[df['duration'] > 0]
-
-    # Add dots for non-zero months
-        fig.add_trace(go.Scatter(
-            x=non_zero_months['month_name'],
-            y=non_zero_months['duration'],
-            mode='markers',
-            marker=dict(
-                size=10,
-                symbol='circle',
-                line=dict(width=2),
-            ),
-            name=f'Non-Zero Months ({alias})'
-        ))
+                x=alias_data['month_name'],
+                y=alias_data['duration'],
+                mode='lines+markers',
+                name=str(alias)
+            ))
 
 # Set axis labels and chart title
         fig.update_layout(
             xaxis_title='Months',
-            yaxis_title='Total Duration of Project (in Hours)',
-            title='Duration of the Project per Month',
-            legend_title="Project Alias"
+            yaxis_title='Total Duration in Hours',
+            title='Duration of the Project per Month (Grouped by Users)',
+            legend_title="Users"
         )
 
-# Display the chart in Streamlit
+# Display the chart
         st.plotly_chart(fig)
+
+
+        ##### Nice Try #############
+
+#         for alias, df in dfdata3.items():
+#     # Add line trace for each project
+#             fig.add_trace(go.Scatter(
+#             x=df['month_name'],
+#             y=df['duration'],
+#             mode='lines',
+#             name=f'Duration ({alias})'
+#         ))
+
+#     # Identify the months with non-zero sum duration
+#         non_zero_months = df[df['duration'] > 0]
+
+#     # Add dots for non-zero months
+#         fig.add_trace(go.Scatter(
+#             x=non_zero_months['month_name'],
+#             y=non_zero_months['duration'],
+#             mode='markers',
+#             marker=dict(
+#                 size=10,
+#                 symbol='circle',
+#                 line=dict(width=2),
+#             ),
+#             name=f'Non-Zero Months ({alias})'
+#         ))
+
+# # Set axis labels and chart title
+#         fig.update_layout(
+#             xaxis_title='Months',
+#             yaxis_title='Total Duration of Project (in Hours)',
+#             title='Duration of the Project per Month',
+#             legend_title="Project Alias"
+#         )
+
+# # Display the chart in Streamlit
+#         st.plotly_chart(fig)
 
 
 
