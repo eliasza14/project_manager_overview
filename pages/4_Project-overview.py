@@ -400,9 +400,9 @@ def main():
             
         rows,columnames = run_query(conn,sql5)
 
-        df4 = pd.DataFrame(rows,columns=columnames)
+        df5 = pd.DataFrame(rows,columns=columnames)
 
-        st.write(df4)
+        st.write(df5)
 
 
 
