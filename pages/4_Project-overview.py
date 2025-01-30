@@ -223,7 +223,6 @@ def main():
                 val2 = (df1['value'] * df1['duration']).sum()
                 html_content4 = html_button3(js_code, val2)
                 html(html_content4, height=250)
-                pass
                
                 # val=len(dfdata['name'].unique())
                 # html_content1 = html_button1(js_code,val)
