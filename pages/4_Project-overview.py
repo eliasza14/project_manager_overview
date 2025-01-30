@@ -212,7 +212,14 @@ def main():
 
                 val=len(df1['alias'][dfdata['enabled']==1].unique())
                 html_content3 = html_button3(js_code,val)
-                html(html_content3,height=250)
+                val2 = (
+                df1[df1['alias'].isin(df1['alias'][dfdata['enabled'] == 1].unique())]
+                .groupby('alias')
+                .apply(lambda x: (x['duration'] * x['value']).sum())
+                .sum()
+                )
+                html_content4 = html_button3(js_code, val2)
+                html(html_content3, html_content4, height=250)
             with col3:
                 pass
                 # val=len(dfdata['name'].unique())
