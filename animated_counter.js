@@ -158,9 +158,8 @@ function animateCounter3test2noEuro(elementId, startValue, endValue, duration, i
 
 function animateCounter3test2WithEuro(elementId, startValue, endValue, duration, interval) {
     let current = startValue;
-    let formattedVal2 = endValue.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    const range = formattedVal2 - startValue;
-    const decimalPlaces = (formattedVal2.toString().split('.')[1] || []).length;
+    const range = endValue - startValue;
+    const decimalPlaces = (endValue.toString().split('.')[1] || []).length;
     const element = document.getElementById(elementId);
     const iterations = Math.ceil(duration / interval);
     const increment = range / iterations;
@@ -171,7 +170,7 @@ function animateCounter3test2WithEuro(elementId, startValue, endValue, duration,
         element.textContent = current.toFixed(decimalPlaces) + "€";
         iteration++;
 
-        if ((increment > 0 && current >= formattedVal2) || (increment < 0 && current <= formattedVal2) || iteration >= iterations) {
+        if ((increment > 0 && current >= endValue) || (increment < 0 && current <= endValue) || iteration >= iterations) {
             clearInterval(timer);
         }
     }, interval);
