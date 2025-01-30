@@ -398,9 +398,9 @@ def main():
     Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
     WHERE kimai2_projects.name='"""+str(selected_option2)+"""';"""
             
-        rows,columnames = run_query(conn,sql5)
+        rows22,columnames22 = run_query(conn,sql5)
 
-        df5 = pd.DataFrame(rows,columns=columnames)
+        df5 = pd.DataFrame(rows22,columns=columnames22)
 
         st.write(df5)
 
