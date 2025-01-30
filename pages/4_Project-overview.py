@@ -392,11 +392,19 @@ def main():
 # Display the chart
         st.plotly_chart(fig)
 
-        st.write(df1)
+        df1['year'] = df1['startime'].dt.year
+    
+    # Apply the formatting function to the 'Year' column
+        df1['year'] = df1['year'].apply(format_year)
 
-        # dfdata1group = df1_filtered.groupby(['alias', 'month'])['Total_cost'].sum().reset_index()
+        # options = df1['year'].unique().tolist()
 
-        # st.write(dfdata1group)
+        df1['month'] = df1['startime'].dt.month
+
+        # Convert 'duration' column to numeric
+        df1['duration'] = (df1['duration'] / 3600).astype(int)
+        dfdata4_filtered = df1[df1['year']==selected_option]
+        st.write("After Preprocessing Data from Query",dfdata4_filtered)
 
 
 
