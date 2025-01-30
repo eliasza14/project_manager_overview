@@ -406,7 +406,7 @@ def main():
         # Convert 'duration' column to numeric
         df4['duration'] = (df4['duration'] / 3600).astype(int)
         dfdata4_filtered = (df4[df4['year']==selected_option])
-        st.write("After Preprocessing Data from Query",df4)
+        st.write("After Preprocessing Data from Query",dfdata4_filtered)
 
 
 
