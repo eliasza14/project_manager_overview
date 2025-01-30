@@ -223,7 +223,7 @@ def main():
                 df1['duration'] = pd.to_numeric(df1['duration'], errors='coerce')
                 val2 = (df1['value'] * df1['duration']).sum()
                 # val2 = f"{val2:,.2f}"
-                html_content4 = html_cost5(js_code, {val2})
+                html_content4 = html_cost5(js_code, val2)
                 html(html_content4, height=250, width=300)
                
                 # val=len(dfdata['name'].unique())
