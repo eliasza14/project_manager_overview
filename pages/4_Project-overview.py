@@ -212,15 +212,27 @@ def main():
 
                 val=len(df1['alias'][dfdata['enabled']==1].unique())
                 html_content3 = html_button3(js_code,val)
-                valid_aliases = df1.loc[dfdata['enabled'] == 1, 'alias'].unique()
+                if 'enabled' in dfdata.columns:
+    # Get unique aliases where enabled is 1
+                    valid_aliases = df1.loc[dfdata['enabled'] == 1, 'alias'].unique()
 
-                # val2 = (
-                # df1[df1['alias'].isin(valid_aliases)]
-                # .groupby('alias')
-                # .apply(lambda x: (x['duration'] * x['value']).sum())
-                # .sum()
-                # )
-                # html_content4 = html_button3(js_code, val2)
+                    if len(valid_aliases) > 0:
+        # Perform calculation only for matching aliases
+                        val2 = (
+                            df1[df1['alias'].isin(valid_aliases)]
+                            .groupby('alias')
+                            .apply(lambda x: (x['duration'] * x['value']).sum())
+                            .sum()
+                            )
+                    else:
+                        val2 = 0  # Default value if no valid aliases found
+
+    # Display result in Streamlit
+                    st.write(f"Total sum: {val2}")
+
+                else:
+                    st.error("The column 'enabled' is missing in dfdata!")
+                    # html_content4 = html_button3(js_code, val2)
                 html(html_content3, height=250)
             with col3:
                 pass
