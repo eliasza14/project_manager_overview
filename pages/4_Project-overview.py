@@ -221,7 +221,7 @@ def main():
                 df1['value'] = pd.to_numeric(df1['value'], errors='coerce')
                 df1['duration'] = pd.to_numeric(df1['duration'], errors='coerce')
                 val2 = (df1['value'] * df1['duration']).sum()
-                html_content4 = html_button3(js_code, val2)
+                html_content4 = html_cost5(js_code, val2)
                 html(html_content4, height=250)
                
                 # val=len(dfdata['name'].unique())
