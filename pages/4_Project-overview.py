@@ -405,7 +405,7 @@ def main():
         # Convert 'duration' column to numeric
         df1['duration'] = (df1['duration'] / 3600).astype(int)
         df1_filtered = df1[df1['year']==selected_option]
-        st.write("After Preprocessing Data from Query",dfdata3_filtered)
+        st.write("After Preprocessing Data from Query",df1_filtered)
 
         # dfdata1group = df1_filtered.groupby(['alias', 'month'])['Total_cost'].sum().reset_index()
 
