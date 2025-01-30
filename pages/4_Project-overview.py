@@ -392,15 +392,15 @@ def main():
 # Display the chart
         st.plotly_chart(fig)
 
-        df1['starttime'] = pd.to_datetime(df1['starttime'])
-        df1['year'] = df1['starttime'].dt.year
+        df1['startime'] = pd.to_datetime(df1['startime'])
+        df1['year'] = df1['startime'].dt.year
     
     # Apply the formatting function to the 'Year' column
         df1['year'] = df1['year'].apply(format_year)
 
         options = df1['year'].unique().tolist()
 
-        df1['month'] = df1['starttime'].dt.month
+        df1['month'] = df1['startime'].dt.month
 
         # Convert 'duration' column to numeric
         df1['duration'] = (df1['duration'] / 3600).astype(int)
