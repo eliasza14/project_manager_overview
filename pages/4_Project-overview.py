@@ -392,19 +392,21 @@ def main():
 # Display the chart
         st.plotly_chart(fig)
 
-        df1['year'] = df1['startime'].dt.year
+        df4 = df1
+
+        df4['year'] = df4['startime'].dt.year
     
     # Apply the formatting function to the 'Year' column
-        df1['year'] = df1['year'].apply(format_year)
+        df4['year'] = df4['year'].apply(format_year)
 
         # options = df1['year'].unique().tolist()
 
-        df1['month'] = df1['startime'].dt.month
+        df4['month'] = df4['startime'].dt.month
 
         # Convert 'duration' column to numeric
-        df1['duration'] = (df1['duration'] / 3600).astype(int)
-        dfdata4_filtered = (df1[df1['year']==selected_option])
-        st.write("After Preprocessing Data from Query",df1)
+        df4['duration'] = (df4['duration'] / 3600).astype(int)
+        dfdata4_filtered = (df4[df4['year']==selected_option])
+        st.write("After Preprocessing Data from Query",df4)
 
 
 
