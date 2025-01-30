@@ -239,8 +239,9 @@ def main():
                 figrate.update_layout(barmode='stack', xaxis={'categoryorder': 'total descending'})
                 df1['Total_cost'] = df1['duration'] * df1['value']
                 figrate2 = px.bar(df1, y='Total_cost', x='alias', text_auto='.2s',title="Project Manager: "+str(selected_option2)+" - Cost projects per hour")
-
+                figrate2.update_layout(barmode='stack', xaxis={'categoryorder': 'total descending'})
                 st.plotly_chart(figrate)
+                st.plotly_chart(figrate2)
 
 
 
