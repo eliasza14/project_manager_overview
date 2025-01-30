@@ -188,11 +188,9 @@ def main():
                 # st.write(dfdata.groupby('name')['duration'].sum())
 
                 fig = px.pie(dfgroup, values='duration', names='name',
-                
+                title='% Διάρκεια ανα Project επί του Συνόλου  ',
                 hover_data=['duration'], labels={'duration':'duration'})
-
                 fig.update_traces(textposition='inside', textinfo='percent+label')
-                st.title('% Διάρκεια ανα Project επί του Συνόλου')
                 st.plotly_chart(fig)
             with col2:
                 pass
