@@ -369,7 +369,7 @@ def main():
         fig.update_layout(
             xaxis_title='Months',
             yaxis_title='Total Duration in Hours',
-            title='Duration of the Project per Month (Grouped by Users)',
+            title='Duration of the Project per Month of Year ' + selected_option,
             legend_title="Users"
         )
 
