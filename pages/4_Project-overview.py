@@ -392,18 +392,8 @@ def main():
 # Display the chart
         st.plotly_chart(fig)
 
-        df1['startime'] = pd.to_datetime(df1['startime'])
-        df1['year'] = df1['startime'].dt.year
-    
-    # Apply the formatting function to the 'Year' column
-        df1['year'] = df1['year'].apply(format_year)
 
-        options = df1['year'].unique().tolist()
-
-        df1['month'] = df1['startime'].dt.month
-
-        df1_filtered = df1[df1['year']==selected_option]
-        st.write("After Preprocessing Data from Query",df1)
+        st.write(dfdata3)
 
         # dfdata1group = df1_filtered.groupby(['alias', 'month'])['Total_cost'].sum().reset_index()
 
