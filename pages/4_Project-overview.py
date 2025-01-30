@@ -211,8 +211,8 @@ def main():
             with col2:
                 st.write(df1)
                 val=len(df1['alias'][dfdata['enabled']==1].unique())
-                val2 = (df1['value'] * df1['duration']).sum()
-                st.write(val2)
+                # val2 = (df1['value'] * df1['duration']).sum()
+                st.write(df1.columns)
                 html_content3 = html_button3(js_code,val)
                 html(html_content3, height=250)
             with col3:
