@@ -407,9 +407,9 @@ def main():
         df1_filtered = df1[df1['year']==selected_option]
         st.write("After Preprocessing Data from Query",dfdata3_filtered)
 
-        dfdata1group = df1_filtered.groupby(['alias', 'month'])['Total_cost'].sum().reset_index()
+        # dfdata1group = df1_filtered.groupby(['alias', 'month'])['Total_cost'].sum().reset_index()
 
-        st.write(dfdata1group)
+        # st.write(dfdata1group)
 
 
 
