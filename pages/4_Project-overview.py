@@ -211,7 +211,7 @@ def main():
             with col2:
 
                 val=len(df1['alias'][dfdata['enabled']==1].unique())
-                val2 = df1[alias][dfdata['enabled']==1]
+                val2 = df1[alias][dfdata['enabled']==1].unique().groupby('alias')
                 st.write(val2)
                 html_content3 = html_button3(js_code,val)
                 html(html_content3, height=250)
