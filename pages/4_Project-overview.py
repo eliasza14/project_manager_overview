@@ -435,6 +435,8 @@ def main():
 
         df5 = df5[df5['year'] == selected_option]
 
+        st.write("After Preprocessing Data from Query",df5)
+
         # df5.loc[:, 'duration'] = df5['duration'] // 3600
 
         
@@ -465,7 +467,7 @@ def main():
         # Get the name of each month
         df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
         # df5_filtered = df5[df5['year']==selected_option]
-        st.write("After Preprocessing Data from Query",df5)
+        
 
 
 
