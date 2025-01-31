@@ -447,7 +447,6 @@ def main():
         # Create all 12 months
         all_months = list(range(1, 13))
 
-        unique_aliases = df5['alias'].unique()
 
 
         # Add missing months to the DataFrame with duration set to 0
@@ -463,6 +462,8 @@ def main():
 
         # Get the name of each month
         df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
+
+        df5 = df5.dropna()
 
         st.write("After Preprocessing Data from Query",df5)
         # df5_filtered = df5[df5['year']==selected_option]
