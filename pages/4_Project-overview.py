@@ -401,7 +401,7 @@ def main():
     INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
     INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
     Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
-    WHERE kimai2_projects.name='"""+str(selected_option2)+"""';"""
+    WHERE kimai2_projects.name='"""+str(selected_option2)+"""'AND kimai2_user_preferences.name = 'hourly_rate';"""
 
 
             
@@ -461,6 +461,9 @@ def main():
         # Get the name of each month
         df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
         # df5_filtered = df5[df5['year']==selected_option]
+
+
+        
         
 
 
