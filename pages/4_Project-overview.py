@@ -392,10 +392,11 @@ def main():
 # Display the chart
         st.plotly_chart(fig)
 
-        sql5 = f""" SELECT kimai2_users.alias,kimai2_projects.name,kimai2_timesheet.start_time,kimai2_timesheet.duration
+        sql5 = f""" SELECT kimai2_users.alias,kimai2_user_preferences.value,kimai2_projects.name,kimai2_timesheet.start_time,kimai2_timesheet.duration
     FROM `kimai2_timesheet`
     INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
     Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
+     INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
     WHERE kimai2_projects.name='"""+str(selected_option2)+"""';"""
             
         rows22,columnames22 = run_query(conn,sql5)
