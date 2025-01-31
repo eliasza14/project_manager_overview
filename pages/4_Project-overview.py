@@ -418,7 +418,15 @@ def main():
 
         df5 = pd.DataFrame(rows22,columns=columnames22)
 
+        df5=df5[df5['alias']!='ADMINISTRATOR']
+
+        df5.loc[:, 'duration'] = df5['duration'] // 3600
+
         st.write(df5)
+
+
+
+
 
 
 
