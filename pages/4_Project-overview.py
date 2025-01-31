@@ -420,7 +420,7 @@ def main():
 
         df5=df5[df5['alias']!='ADMINISTRATOR']
 
-        df5.loc[:, 'duration'] = df5['duration'] // 3600
+        # df5.loc[:, 'duration'] = df5['duration'] // 3600
 
         df5['month'] = df5['startime'].dt.month
 
