@@ -420,7 +420,7 @@ def main():
 
         df5=df5[df5['alias']!='ADMINISTRATOR']
 
-        df5['year'] = df5['start_time'].dt.year
+        df5['year'] = df5['startime'].dt.year
     
     # Apply the formatting function to the 'Year' column
         df5['year'] = df5['year'].apply(format_year)
