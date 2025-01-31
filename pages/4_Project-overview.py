@@ -416,7 +416,7 @@ def main():
 
         df5['duration'] = (df5['duration'] / 3600).astype(int)
 
-        st.write("for iliasza", df5)
+        
 
         
 
