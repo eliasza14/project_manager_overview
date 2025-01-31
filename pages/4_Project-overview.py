@@ -463,7 +463,7 @@ def main():
         # Get the name of each month
         df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
 
-        df5 = df5.dropna()
+        df5 = df5['alias'].dropna()
 
         df5['Total_cost'] = (df5['duration'].astype(int)) * (df5['value'].astype(int))
 
@@ -479,7 +479,7 @@ def main():
             alias_data = df5[df5['alias'] == alias]
             fig2.add_trace(go.Scatter(
                 x=alias_data['month_name'],
-                y=alias_data['duration'],
+                y=alias_data['Total_cost'],
                 mode='lines+markers',
                 name=str(alias)
             ))
