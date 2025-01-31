@@ -490,7 +490,7 @@ def main():
         # Get the name of each month
         
 
-        df5 = df5.fillna(0)
+        df5 = df5['value'].fillna(0)
 
         st.write("Heyyy", df5)
 
