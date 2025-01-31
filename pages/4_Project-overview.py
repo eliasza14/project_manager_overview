@@ -427,8 +427,9 @@ def main():
         # Convert 'duration' column to numeric
         df5['duration'] = (df5['duration'] / 3600).astype(int)
 
+        st.write(df5)
 
-        df5 = df5.groupby('month')['duration']['value']['alias'].sum().reset_index()
+        df5 = df5.groupby('month')['duration'].sum().reset_index()
 
         # Create all 12 months
         all_months = list(range(1, 13))
@@ -442,7 +443,7 @@ def main():
         # Fill missing duration values with 0
         df5['duration'] = df5['duration'].fillna(0)
 
-        st.write(df5)
+        
 
         # Get the name of each month
         df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
