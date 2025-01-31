@@ -419,7 +419,7 @@ def main():
 
         
 
-        df5['year'] = df5['startime'].dt.year
+        df5['year'] = df5['start_time'].dt.year
     
     # Apply the formatting function to the 'Year' column
         df5['year'] = df5['year'].apply(format_year)
@@ -435,7 +435,7 @@ def main():
 
         
 
-        df5['month'] = df5['startime'].dt.month
+        df5['month'] = df5['start_time'].dt.month
 
         # Convert 'duration' column to numeric
         
