@@ -445,7 +445,7 @@ def main():
         df5 = df5.groupby(['alias', 'month', 'value', 'year'])['duration'].sum().reset_index()
 
         # Create all 12 months
-        all_months = list(range(1, 13))
+        # all_months = list(range(1, 13))
 
         # Ensure every alias has all months
         unique_aliases = df5['alias'].unique()
