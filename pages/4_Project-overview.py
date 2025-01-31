@@ -459,6 +459,8 @@ def main():
 # Get the name of each month
         df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
 
+        # df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
+
 
 
 
@@ -474,7 +476,7 @@ def main():
         
 
         # Get the name of each month
-        df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
+        
 
         df5 = df5.dropna()
 
