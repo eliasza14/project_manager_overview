@@ -436,7 +436,7 @@ def main():
 
         st.write(df5)
 
-        df5 = df5.groupby('month')['duration'].sum().reset_index()
+        df5 = df5.groupby(['alias', 'month'])['duration'].sum().reset_index()
 
         # Create all 12 months
         all_months = list(range(1, 13))
