@@ -518,8 +518,8 @@ def main():
 # Set axis labels and chart title
         fig2.update_layout(
             xaxis_title='Months',
-            yaxis_title='Total Costs per month',
-            title='Duration of the Project ' + selected_option2 +  ' per Month of Year ' + selected_option,
+            yaxis_title='Total Costs per month €',
+            title='Cost of the Project ' + selected_option2 +  ' per Month of Year €' + selected_option,
             legend_title="Users"
         )
 
