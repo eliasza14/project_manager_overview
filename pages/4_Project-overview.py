@@ -417,7 +417,7 @@ def main():
 
         df5 = pd.DataFrame(rows22,columns=columnames22)
 
-        df5=df5[df5['alias']!='ADMINISTRATOR']
+        # df5=df5[df5['alias']!='ADMINISTRATOR']
 
         df5['duration'] = (df5['duration'] / 3600).astype(int)
 
@@ -443,7 +443,7 @@ def main():
 
         st.write(df5)
 
-        df5 = df5.groupby(['alias', 'month'])['duration'].sum().reset_index()
+        df5 = df5.groupby(['alias', 'month', 'value'])['duration'].sum().reset_index()
 
         # Create all 12 months
         all_months = list(range(1, 13))
