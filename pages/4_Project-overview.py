@@ -480,7 +480,7 @@ def main():
         for alias in df5['alias'].unique():
             alias_data = df5[df5['alias'] == alias]
             fig2.add_trace(go.Scatter(
-                x=all_months,
+                x=alias_data['month_name'],
                 y=alias_data['Total_cost'],
                 mode='lines+markers',
                 name=str(alias)
