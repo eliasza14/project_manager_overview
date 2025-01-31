@@ -456,7 +456,7 @@ def main():
 
 
         # Add missing months to the DataFrame with duration set to 0
-        df5 = df5.merge(pd.DataFrame({'month': all_months}), how='right').fillna({'duration': 0})
+        df5 = df5.merge(pd.DataFrame({'month': all_months}), how='left').fillna({'duration': 0})
 
         # Sort the DataFrame by month
         df5 = df5.sort_values('month')
