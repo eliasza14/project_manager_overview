@@ -415,11 +415,13 @@ def main():
 
         df5 = pd.DataFrame(rows22,columns=columnames22)
 
-        st.write("For IliasZa:", df5)
+        
 
         # df5=df5[df5['alias']!='ADMINISTRATOR']
 
         df5['duration'] = (df5['duration'] / 3600).astype(int)
+
+        st.write("for iliasza", df5)
 
         
 
@@ -428,7 +430,7 @@ def main():
     # Apply the formatting function to the 'Year' column
         df5['year'] = df5['year'].apply(format_year)
 
-        # st.write("first one", df5)
+        
         ##
 
         df5 = df5[df5['year'] == selected_option]
