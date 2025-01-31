@@ -512,7 +512,7 @@ def main():
                     y=alias_data['Total_cost'],
                     mode='lines+markers',
                     name=str(alias),
-                    text=df5['Total_cost'].astype(str) + " €"
+                    text=alias_data['Total_cost'].astype(str) + " €"
                     ))
             # st.write("Months: ", alias_data['month_name'])
 
