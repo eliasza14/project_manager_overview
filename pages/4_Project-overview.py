@@ -490,7 +490,7 @@ def main():
         # Get the name of each month
         
 
-        df5 = df5['value'].fillna(0)
+        df5 = df5.fillna(0)
 
         st.write("Heyyy", df5)
 
@@ -505,13 +505,14 @@ def main():
 
 # Add a line for each unique alias
         for alias in df5['alias'].unique():
-            alias_data = df5[df5['alias'] == alias]
-            fig2.add_trace(go.Scatter(
-                x=alias_data['month_name'],
-                y=alias_data['Total_cost'],
-                mode='lines+markers',
-                name=str(alias)
-            ))
+            if alias != 0:
+                alias_data = df5[df5['alias'] == alias]
+                fig2.add_trace(go.Scatter(
+                    x=alias_data['month_name'],
+                    y=alias_data['Total_cost'],
+                    mode='lines+markers',
+                    name=str(alias)
+                    ))
             # st.write("Months: ", alias_data['month_name'])
 
 # Set axis labels and chart title
