@@ -465,7 +465,7 @@ def main():
 
         df5 = df5['alias'].dropna()
 
-        df5['Total_cost'] = (df5['duration'].astype(int)) * (df5['value'].astype(int))
+        df5['Total_cost'] = (df5['duration'].astype(int)) * (df5['value'].astype(int)).astype(int)
 
         st.write("After Preprocessing Data from Query",df5)
         # df5_filtered = df5[df5['year']==selected_option]
