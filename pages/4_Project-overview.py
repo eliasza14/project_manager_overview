@@ -526,21 +526,6 @@ def main():
         st.plotly_chart(fig2)
 
 
-        
-        
-
-
-
-
-
-
-
-        
-
-
-
-
-
 
 
         ##### Nice Try #############
