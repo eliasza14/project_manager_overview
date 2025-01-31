@@ -447,16 +447,16 @@ def main():
         # Create all 12 months
         all_months = list(range(1, 13))
 
-        # unique_aliases2 = df5['alias'].unique()
-        # expanded_df2 = pd.concat([
-        #     all_months.assign(alias=alias) for alias in unique_aliases2
-        # ], ignore_index=True)
+        unique_aliases2 = df5['alias'].unique()
+        expanded_df2 = pd.concat([
+            all_months.assign(alias=alias) for alias in unique_aliases2
+        ], ignore_index=True)
 
 
 
 
         # Add missing months to the DataFrame with duration set to 0
-        df5 = df5.merge(pd.DataFrame({'month': all_months}), how='left').fillna({'duration': 0})
+        df5 = df5.merge(df5({'month': all_months}), how='left').fillna({'duration': 0})
 
         # Sort the DataFrame by month
         df5 = df5.sort_values('month')
