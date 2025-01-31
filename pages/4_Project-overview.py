@@ -512,7 +512,7 @@ def main():
                 mode='lines+markers',
                 name=str(alias)
             ))
-            st.write("Months: ", alias_data['month_name'])
+            # st.write("Months: ", alias_data['month_name'])
 
 # Set axis labels and chart title
         fig2.update_layout(
