@@ -265,7 +265,7 @@ def main():
 
     # st.write(columnames)
         dfdata3=pd.DataFrame(rows,columns=columnames)
-        st.write("All Data from Query",dfdata3)
+        # st.write("All Data from Query",dfdata3)
         
         # Convert 'start_time' column to datetime
         dfdata3['start_time'] = pd.to_datetime(dfdata3['start_time'])
