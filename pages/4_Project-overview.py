@@ -422,7 +422,7 @@ def main():
 
         df5.loc[:, 'duration'] = df5['duration'] // 3600
 
-        df5['month'] = df5['starttime'].dt.month
+        df5['month'] = df5['startime'].dt.month
 
         # Convert 'duration' column to numeric
         df5['duration'] = (df5['duration'] / 3600).astype(int)
