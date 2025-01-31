@@ -463,37 +463,39 @@ def main():
         # Get the name of each month
         df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
 
-        df5 = df5.dropna()
+        df5 = df5['alias'].dropna()
 
-        df5['Total_cost'] = (df5['duration'].astype(int)) * (df5['value'].astype(int))
+        st.write("Heyyy", df5)
 
-        st.write("After Preprocessing Data from Query",df5)
-        # df5_filtered = df5[df5['year']==selected_option]
+#         df5['Total_cost'] = (df5['duration'].astype(int)) * (df5['value'].astype(int))
+
+#         st.write("After Preprocessing Data from Query",df5)
+#         # df5_filtered = df5[df5['year']==selected_option]
 
 
-        # Create line chart
-        fig2 = go.Figure()
+#         # Create line chart
+#         fig2 = go.Figure()
 
-# Add a line for each unique alias
-        for alias in df5['alias'].unique():
-            alias_data = df5[df5['alias'] == alias]
-            fig2.add_trace(go.Scatter(
-                x=alias_data['month_name'],
-                y=alias_data['Total_cost'],
-                mode='lines+markers',
-                name=str(alias)
-            ))
+# # Add a line for each unique alias
+#         for alias in df5['alias'].unique():
+#             alias_data = df5[df5['alias'] == alias]
+#             fig2.add_trace(go.Scatter(
+#                 x=alias_data['month_name'],
+#                 y=alias_data['Total_cost'],
+#                 mode='lines+markers',
+#                 name=str(alias)
+#             ))
 
-# Set axis labels and chart title
-        fig2.update_layout(
-            xaxis_title='Months',
-            yaxis_title='Total Costs per month',
-            title='Duration of the Project ' + selected_option2 +  ' per Month of Year ' + selected_option,
-            legend_title="Users"
-        )
+# # Set axis labels and chart title
+#         fig2.update_layout(
+#             xaxis_title='Months',
+#             yaxis_title='Total Costs per month',
+#             title='Duration of the Project ' + selected_option2 +  ' per Month of Year ' + selected_option,
+#             legend_title="Users"
+#         )
 
-# Display the chart
-        st.plotly_chart(fig2)
+# # Display the chart
+#         st.plotly_chart(fig2)
 
 
         
