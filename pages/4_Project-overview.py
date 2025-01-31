@@ -393,77 +393,77 @@ def main():
         st.plotly_chart(fig)
 
 
-        sql6 = f"""
-        SELECT kimai2_projects.name, kimai2_users.alias,kimai2_users.enabled, SUM(kimai2_timesheet.duration) as duration,
-            MIN(kimai2_timesheet.start_time) as startime, MAX(kimai2_timesheet.start_time) as lasttime,
-            kimai2_projects.visible, kimai2_user_preferences.name as rate, kimai2_user_preferences.value
-        FROM `kimai2_timesheet`
-        INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
-        INNER JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
-        INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
-        WHERE kimai2_user_preferences.name = 'hourly_rate' AND kimai2_projects.name='"""+str(selected_option2)+"""'
-        GROUP BY kimai2_users.alias, kimai2_projects.name, kimai2_projects.visible,
-                kimai2_user_preferences.name, kimai2_user_preferences.value,kimai2_users.enabled;
-        """
+        
 
-    #     sql5 = f""" SELECT kimai2_users.alias,kimai2_user_preferences.value,kimai2_projects.name,kimai2_timesheet.start_time,kimai2_timesheet.duration
-    # FROM `kimai2_timesheet`
-    # INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
-    # Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
-    # INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
-    # WHERE kimai2_projects.name='"""+str(selected_option2)+"""';"""
+
+    #     sql6 = f"""
+    #     SELECT kimai2_projects.name, kimai2_users.alias,kimai2_users.enabled, SUM(kimai2_timesheet.duration) as duration,
+    #         MIN(kimai2_timesheet.start_time) as startime, MAX(kimai2_timesheet.start_time) as lasttime,
+    #         kimai2_projects.visible, kimai2_user_preferences.name as rate, kimai2_user_preferences.value
+    #     FROM `kimai2_timesheet`
+    #     INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+    #     INNER JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
+    #     INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
+    #     WHERE kimai2_user_preferences.name = 'hourly_rate' AND kimai2_projects.name='"""+str(selected_option2)+"""'
+    #     GROUP BY kimai2_users.alias, kimai2_projects.name, kimai2_projects.visible,
+    #             kimai2_user_preferences.name, kimai2_user_preferences.value,kimai2_users.enabled;
+    #     """
+
+
             
-        rows22,columnames22 = run_query(conn,sql6)
+    #     rows22,columnames22 = run_query(conn,sql6)
 
-        df5 = pd.DataFrame(rows22,columns=columnames22)
+    #     df5 = pd.DataFrame(rows22,columns=columnames22)
 
-        # df5=df5[df5['alias']!='ADMINISTRATOR']
+    #     # df5=df5[df5['alias']!='ADMINISTRATOR']
 
-        df5['duration'] = (df5['duration'] / 3600).astype(int)
+    #     df5['duration'] = (df5['duration'] / 3600).astype(int)
 
         
 
-        df5['year'] = df5['startime'].dt.year
+    #     df5['year'] = df5['startime'].dt.year
     
-    # Apply the formatting function to the 'Year' column
-        df5['year'] = df5['year'].apply(format_year)
+    # # Apply the formatting function to the 'Year' column
+    #     df5['year'] = df5['year'].apply(format_year)
 
-        st.write("first one", df5)
-        ##
+    #     st.write("first one", df5)
+    #     ##
 
-        df5 = df5[df5['year'] == selected_option]
+    #     df5 = df5[df5['year'] == selected_option]
 
-        # df5.loc[:, 'duration'] = df5['duration'] // 3600
-
-        
-
-        df5['month'] = df5['startime'].dt.month
-
-        # Convert 'duration' column to numeric
-        
-
-        st.write(df5)
-
-        df5 = df5.groupby(['alias', 'month', 'value'])['duration'].sum().reset_index()
-
-        # Create all 12 months
-        all_months = list(range(1, 13))
-
-        # Add missing months to the DataFrame with duration set to 0
-        df5 = df5.merge(pd.DataFrame({'month': all_months}), how='right')
-
-        # Sort the DataFrame by month
-        df5 = df5.sort_values('month')
-
-        # Fill missing duration values with 0
-        df5['duration'] = df5['duration'].fillna(0)
+    #     # df5.loc[:, 'duration'] = df5['duration'] // 3600
 
         
 
-        # Get the name of each month
-        df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
-        # df5_filtered = df5[df5['year']==selected_option]
-        st.write("After Preprocessing Data from Query",df5)
+    #     df5['month'] = df5['startime'].dt.month
+
+    #     # Convert 'duration' column to numeric
+        
+
+    #     st.write(df5)
+
+    #     df5 = df5.groupby(['alias', 'month', 'value'])['duration'].sum().reset_index()
+
+    #     # Create all 12 months
+    #     all_months = list(range(1, 13))
+
+    #     # Add missing months to the DataFrame with duration set to 0
+    #     df5 = df5.merge(pd.DataFrame({'month': all_months}), how='right')
+
+    #     # Sort the DataFrame by month
+    #     df5 = df5.sort_values('month')
+
+    #     # Fill missing duration values with 0
+    #     df5['duration'] = df5['duration'].fillna(0)
+
+        
+
+    #     # Get the name of each month
+    #     df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
+    #     # df5_filtered = df5[df5['year']==selected_option]
+    #     st.write("After Preprocessing Data from Query",df5)
+
+
 
 
 
