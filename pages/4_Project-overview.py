@@ -447,10 +447,10 @@ def main():
         # Create all 12 months
         all_months = list(range(1, 13))
 
-        unique_aliases2 = df5['alias'].unique()
-        expanded_df2 = pd.concat([
-            all_months.assign(alias=alias) for alias in unique_aliases2
-        ], ignore_index=True)
+        # unique_aliases2 = df5['alias'].unique()
+        # expanded_df2 = pd.concat([
+        #     all_months.assign(alias=alias) for alias in unique_aliases2
+        # ], ignore_index=True)
 
 
 
