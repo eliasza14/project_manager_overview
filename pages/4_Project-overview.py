@@ -392,14 +392,29 @@ def main():
 # Display the chart
         st.plotly_chart(fig)
 
-        sql5 = f""" SELECT kimai2_users.alias,kimai2_user_preferences.value,kimai2_projects.name,kimai2_timesheet.start_time,kimai2_timesheet.duration
-    FROM `kimai2_timesheet`
-    INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
-    Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
-    INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
-    WHERE kimai2_projects.name='"""+str(selected_option2)+"""';"""
+
+        sql6 = f"""
+        SELECT kimai2_projects.name, kimai2_users.alias,kimai2_users.enabled, SUM(kimai2_timesheet.duration) as duration,
+            MIN(kimai2_timesheet.start_time) as startime, MAX(kimai2_timesheet.start_time) as lasttime,
+            kimai2_projects.visible, kimai2_user_preferences.name as rate, kimai2_user_preferences.value
+        FROM `kimai2_timesheet`
+        INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+        INNER JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
+        INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
+        WHERE DATE(start_time) >= '{startdate}' AND DATE(start_time) <= '{enddate}'
+            AND kimai2_user_preferences.name = 'hourly_rate' AND ({filter_condition}) AND kimai2_projects.name='"""+str(selected_option2)+"""
+        GROUP BY kimai2_users.alias, kimai2_projects.name, kimai2_projects.visible,
+                kimai2_user_preferences.name, kimai2_user_preferences.value,kimai2_users.enabled;
+        """
+
+    #     sql5 = f""" SELECT kimai2_users.alias,kimai2_user_preferences.value,kimai2_projects.name,kimai2_timesheet.start_time,kimai2_timesheet.duration
+    # FROM `kimai2_timesheet`
+    # INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
+    # Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
+    # INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
+    # WHERE kimai2_projects.name='"""+str(selected_option2)+"""';"""
             
-        rows22,columnames22 = run_query(conn,sql5)
+        rows22,columnames22 = run_query(conn,sql6)
 
         df5 = pd.DataFrame(rows22,columns=columnames22)
 
