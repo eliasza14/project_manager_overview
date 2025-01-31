@@ -422,6 +422,16 @@ def main():
 
         df5.loc[:, 'duration'] = df5['duration'] // 3600
 
+        df5['month'] = df5['start_time'].dt.month
+
+        # Convert 'duration' column to numeric
+        df5['duration'] = (df5['duration'] / 3600).astype(int)
+        # df5_filtered = df5[df5['year']==selected_option]
+        st.write("After Preprocessing Data from Query",dfdata3_filtered)
+
+
+
+
         st.write(df5)
 
 
