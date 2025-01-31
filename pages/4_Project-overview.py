@@ -162,7 +162,7 @@ def main():
         for i in range(len(dfgroup2)):
             dfgroup2['name'][i] = '<br>'.join(dfgroup2['name'][i]).replace(',', ',<br>')
 
-        st.write(dfgroup2)
+        # st.write(dfgroup2)
         ##############containers
         with open("animated_counter.js", "r") as file:
             js_code = file.read()
