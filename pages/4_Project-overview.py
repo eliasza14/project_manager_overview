@@ -465,6 +465,8 @@ def main():
 
         df5 = df5.dropna()
 
+        df5['Total_cost'] = df5['duration'] * df5['value']
+
         st.write("After Preprocessing Data from Query",df5)
         # df5_filtered = df5[df5['year']==selected_option]
 
