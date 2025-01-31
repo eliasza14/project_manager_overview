@@ -422,17 +422,38 @@ def main():
 
         df5.loc[:, 'duration'] = df5['duration'] // 3600
 
-        df5['month'] = df5['start_time'].dt.month
+        df5['month'] = df5['starttime'].dt.month
 
         # Convert 'duration' column to numeric
         df5['duration'] = (df5['duration'] / 3600).astype(int)
-        # df5_filtered = df5[df5['year']==selected_option]
-        st.write("After Preprocessing Data from Query",dfdata3_filtered)
 
 
+        df5 = df5.groupby('month')['duration'].sum().reset_index()
 
+        # Create all 12 months
+        all_months = list(range(1, 13))
+
+        # Add missing months to the DataFrame with duration set to 0
+        df5 = df5.merge(pd.DataFrame({'month': all_months}), how='right')
+
+        # Sort the DataFrame by month
+        df5 = df5.sort_values('month')
+
+        # Fill missing duration values with 0
+        df5['duration'] = df5['duration'].fillna(0)
 
         st.write(df5)
+
+        # Get the name of each month
+        df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
+        # df5_filtered = df5[df5['year']==selected_option]
+        st.write("After Preprocessing Data from Query",df5)
+
+
+
+
+
+        
 
 
 
