@@ -463,9 +463,9 @@ def main():
         # Get the name of each month
         df5['month_name'] = df5['month'].apply(lambda x: calendar.month_name[x])
 
-        df5 = df5['alias'].dropna()
+        df5 = df5.dropna()
 
-        df5['Total_cost'] = (df5['duration'].astype(int)) * (df5['value'].astype(int)).astype(int)
+        df5['Total_cost'] = (df5['duration'].astype(int)) * (df5['value'].astype(int))
 
         st.write("After Preprocessing Data from Query",df5)
         # df5_filtered = df5[df5['year']==selected_option]
