@@ -396,8 +396,11 @@ def main():
     FROM `kimai2_timesheet`
     INNER JOIN `kimai2_users` ON kimai2_users.id=kimai2_timesheet.user
     Inner JOIN `kimai2_projects` ON kimai2_projects.id=kimai2_timesheet.project_id
-     INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
-    WHERE kimai2_projects.name='"""+str(selected_option2)+"""';"""
+    INNER JOIN `kimai2_user_preferences` ON kimai2_users.id=kimai2_user_preferences.user_id
+    WHERE kimai2_projects.name='"""+str(selected_option2)+"""' AND DATE(start_time) >= '{startdate}' AND DATE(start_time) <= '{enddate}'
+            AND kimai2_user_preferences.name = 'hourly_rate' AND ({filter_condition})
+        GROUP BY kimai2_users.alias, kimai2_projects.name, kimai2_projects.visible,
+                kimai2_user_preferences.name, kimai2_user_preferences.value,kimai2_users.enabled;"""
             
         rows22,columnames22 = run_query(conn,sql5)
 
