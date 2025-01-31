@@ -422,12 +422,14 @@ def main():
 
         df5['duration'] = (df5['duration'] // 3600).astype(int)
 
+        st.write("first one", df5)
+
         df5['year'] = df5['startime'].dt.year
     
     # Apply the formatting function to the 'Year' column
         df5['year'] = df5['year'].apply(format_year)
 
-        st.write("first one", df5)
+        
 
         df5 = df5[df5['year'] == selected_option]
 
@@ -442,7 +444,7 @@ def main():
 
         st.write(df5)
 
-        df5 = df5.groupby(['alias', 'month'])['duration'].sum()
+        df5 = df5.groupby(['alias', 'month'])['duration'].sum().reset_index()
 
         # Create all 12 months
         all_months = list(range(1, 13))
