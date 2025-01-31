@@ -420,6 +420,8 @@ def main():
 
         df5=df5[df5['alias']!='ADMINISTRATOR']
 
+        df5['duration'] = (df5['duration'] // 3600).astype(int)
+
         df5['year'] = df5['startime'].dt.year
     
     # Apply the formatting function to the 'Year' column
@@ -436,7 +438,7 @@ def main():
         df5['month'] = df5['startime'].dt.month
 
         # Convert 'duration' column to numeric
-        df5['duration'] = (df5['duration'] // 3600).astype(int)
+        
 
         st.write(df5)
 
