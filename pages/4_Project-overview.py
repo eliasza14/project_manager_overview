@@ -446,7 +446,18 @@ def main():
         df5 = df5.groupby(['alias', 'month', 'value', 'year'])['duration'].sum().reset_index()
 
         # Create all 12 months
+        all_months = list(range(1, 13))
+
+        # Add missing months to the DataFrame with duration set to 0
+        df5 = df5.merge(pd.DataFrame({'month': all_months}), how='right')
+
+        # Sort the DataFrame by month
+        df5 = df5.sort_values('month')
+
+        # Create all 12 months
         # all_months = list(range(1, 13))
+
+        all_months = pd.DataFrame({'month': list(range(1, 13))})
 
         # Ensure every alias has all months
         unique_aliases = df5['alias'].unique()
