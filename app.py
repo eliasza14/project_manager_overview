@@ -34,7 +34,7 @@ def main():
 
     # Define the sidebar form
     with st.sidebar.form("my_sidebar_form"):
-        st.write("## date2222 range Form")
+        st.write("## Φιλτράρισμα Εφαρμογής")
         startdate = st.date_input(
         "Ημερομηνία Από",
         datetime.date.today())
