@@ -36,14 +36,14 @@ def main():
     with st.sidebar.form("my_sidebar_form"):
         st.write("## date2222 range Form")
         startdate = st.date_input(
-        "Give Start Date",
+        "Ημερομηνία Από",
         datetime.date.today())
 
 
 
 
         enddate = st.date_input(
-        "Give End Date",
+        "Ημερομηνία Εώς",
         datetime.datetime.now() + datetime.timedelta(days=1))
 
         # st.write('Your birthday is:', enddate)
@@ -62,10 +62,10 @@ def main():
 
 
     if st.session_state.submitted:
-        st.write("Given startdate and endate",startdate)
-        st.write("Given startdate and endate",enddate)
+        # st.write("Given startdate and endate",startdate)
+        # st.write("Given startdate and endate",enddate)
 
-        st.write("## Results")
+        st.write("## Αποτελέσματα")
         sql = """SELECT `kimai2_teams`.name as team_name,`kimai2_users_teams`.`user_id`,`kimai2_users_teams`.`team_id`,`kimai2_users_teams`.`teamlead`,
 
 `kimai2_projects_teams`.`project_id`
@@ -92,7 +92,7 @@ WHERE kimai2_users_teams.teamlead=1;
     # st.write(columnames)
         dfdata=pd.DataFrame(rows,columns=columnames)
         dfdata = dfdata[dfdata['username']!= 'ADMINISTRATOR']
-        st.write("All Data from Query",dfdata)
+        st.write("Σύνολο δεδομένων",dfdata)
    
         # Load the tips dataset from Plotly
 
@@ -129,13 +129,13 @@ WHERE kimai2_users_teams.teamlead=1;
         st.title("Project Manager Overview")
         st.plotly_chart(fig)
 
-        st.title("Select Project Manager from the below list:")
+        st.title("Επιλέξτε Project Manager απο την παρακάτω λίστα")
         # List of options for the dropdown menu
         optionlist =dfdata['username'].unique().tolist()
         options = optionlist
 
         # Display the dropdown menu
-        selected_option = st.selectbox('Choose Project Manager', options)
+        selected_option = st.selectbox('Επιλέξτε Project Manager', options)
         df1 = dfdata[dfdata['username'] == selected_option]
         # df1['duration']=df1['duration']/3600
         df1.loc[:, 'duration'] = df1['duration'] / 3600
@@ -253,7 +253,7 @@ WHERE kimai2_users_teams.teamlead=1;
 
 
 
-        st.title("Compare Project Managers")
+        st.title("Σύγκριση Project Managers")
 
         regular_search_term =dfdata['username'].unique().tolist()
         choices2 = st.multiselect(" ",regular_search_term + ['All'])
