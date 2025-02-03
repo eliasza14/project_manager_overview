@@ -28,29 +28,29 @@ def update():
 def main():
 
     conn = init_connection()
-    st.set_page_config(page_title="Project Overview")
+    st.set_page_config(page_title="Επισκόπηση Έργου")
 
     if 'submitted' not in st.session_state:
         st.session_state.submitted = False
 
-    st.title("Project Overview")
+    st.title("Επισκόπηση Έργου")
 
     # Define the sidebar form
     with st.sidebar.form("my_sidebar_form"):
-        st.write("# Filters User Overview")
+        st.write("# Φίλτρο επισκόπησης Έργου")
         startdate = st.date_input(
-        "Give Start Date",
+        "Ημερομηνία Από",
         datetime.date.today())
 
 
 
 
         enddate = st.date_input(
-        "Give End Date",
+        "Ημερομηνία Εώς",
         datetime.datetime.now() + datetime.timedelta(days=1))
-        filter_option = st.radio("Select Filter:", ["Active", "Inactive", "Total"], index=2)  # Set default to "Total"
+        filter_option = st.radio("Επιλέξτε φίλτρο:", ["Ενεργό", "Ανενεργό", "Όλα"], index=2)  # Set default to "Total"
         st.write(filter_option)
-        st.write('Your birthday is:', enddate)
+        # st.write('Your birthday is:', enddate)
 
         
 
@@ -70,9 +70,9 @@ def main():
         st.write("Given startdate and endate",enddate)
 
         filter_values = {
-        "Active": 1,
-        "Inactive": 0,
-        "Total": "All"
+        "Ενεργό": 1,
+        "Ανενεργό": 0,
+        "Όλα": "All"
         }
 
         selected_filter_value = filter_values[filter_option]
@@ -142,7 +142,7 @@ def main():
         dfdata=pd.DataFrame(rows,columns=columnames)
         st.write("All Data from Query",dfdata)
         dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR']
-        st.write("All Data from Filter",dfdata)
+        st.write("Σύνολο Δεδομένων",dfdata)
 
         dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
 
@@ -200,7 +200,7 @@ def main():
         st.plotly_chart(fig)
         optionlist =dfdata['name'].unique().tolist()
         options = optionlist
-        selected_option2 = st.selectbox('Select Project', options)
+        selected_option2 = st.selectbox('Επιλέξτε Έργο', options)
         df1 = dfdata[dfdata['name'] == selected_option2]
         st.write(df1)
 
