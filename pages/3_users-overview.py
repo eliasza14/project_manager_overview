@@ -189,7 +189,7 @@ def main():
         # st.write(columnames)
         dfdata2=pd.DataFrame(rows,columns=columnames)
         dfdata2=dfdata2[dfdata2['alias']!='ADMINISTRATOR']
-        st.write("All Data from Filter data2",dfdata2)
+        st.write("Σύνολο δεδομένων απο το δεύτερο φιλτράρισμα",dfdata2)
         dfdata2.loc[:, 'duration'] = dfdata2['duration'] // 3600
         
         dfdata2=dfdata2.sort_values('duration', ascending=False)
@@ -232,7 +232,7 @@ def main():
         st.plotly_chart(fig3)
 
 
-        st.write('Rate per Project for selected user')
+        st.write('Ρυθμός ανά έργο για τον επιλεγμένο χρήστη')
 
         figrate= px.bar(userdf, y='cost', x='name', text_auto='.2s',title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
         figrate.update_layout(barmode='stack', xaxis={'categoryorder': 'total descending'})
