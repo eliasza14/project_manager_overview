@@ -251,7 +251,7 @@ WHERE kimai2_users_teams.teamlead=1;
         #     st.header("An owl")
         #     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 
-
+###
 
         st.title("Σύγκριση Project Managers")
 
