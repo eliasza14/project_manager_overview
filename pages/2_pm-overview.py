@@ -22,6 +22,8 @@ def update():
 
 def main():
 
+    st.session_state["pm-overview"] = "🚀 Custom Dashboard"
+
 
     conn = init_connection()
    
