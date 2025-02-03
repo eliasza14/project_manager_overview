@@ -6,6 +6,8 @@ from streamlit import session_state
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import timedelta
+import os
+import importlib.util
 
 def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])
@@ -19,6 +21,40 @@ def run_query(conn,query):
 def update():
     st.session_state.submitted = True
     
+
+# Set the directory for pages
+pages_dir = "pages"
+
+# Ensure the "pages" folder exists
+if not os.path.exists(pages_dir):
+    st.error(f"Error: The directory '{pages_dir}' does not exist.")
+    st.stop()
+
+# Get all Python files in the "pages" folder
+page_files = [f for f in os.listdir(pages_dir) if f.endswith(".py")]
+
+# Define a mapping of filenames to user-friendly names
+custom_names = {
+    "1_welcome-page.py": "📊 Dashboard",
+    "2_pm-overview.py": "📈 Analytics",
+    "3_users-overview.py": "⚙️ Settings",
+    "4_Project-overview.py": "👤 Profile",
+}
+
+# Generate sidebar display names (fallback to filename if not in custom_names)
+page_names = [custom_names.get(f, f.replace(".py", "").capitalize()) for f in page_files]
+
+# Sidebar navigation
+selected_page = st.sidebar.radio("Navigation", page_names)
+
+# Match the selected name to the corresponding Python file
+selected_file = next(f for f in page_files if custom_names.get(f, f.replace(".py", "").capitalize()) == selected_page)
+
+# Dynamically load and run the selected page
+page_path = os.path.join(pages_dir, selected_file)
+spec = importlib.util.spec_from_file_location("module.name", page_path)
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
 
 def main():
 
