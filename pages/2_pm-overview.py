@@ -22,7 +22,7 @@ def update():
 
 def main():
 
-    st.session_state["pm-overview"] = "🚀 Custom Dashboard"
+    st.session_state["pm-overview.py"] = "🚀 Custom Dashboard"
 
 
     conn = init_connection()
