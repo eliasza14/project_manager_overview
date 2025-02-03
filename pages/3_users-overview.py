@@ -169,7 +169,7 @@ def main():
 
 
 
-        st.write(dfgroup2)
+        # st.write(dfgroup2)
 
 
             # Create the pie chart using Plotly Express
