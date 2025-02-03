@@ -33,19 +33,19 @@ def main():
 
     # Define the sidebar form
     with st.sidebar.form("my_sidebar_form"):
-        st.write("## date2222 range Form")
+        st.write("## Φίλτρο Επισκόπησης project management")
         startdate = st.date_input(
-        "Give Start Date",
+        "Ημερομηνία Από",
         datetime.date.today())
 
 
 
 
         enddate = st.date_input(
-        "Give End Date",
+        "Ημερομηνία Εώς",
         datetime.datetime.now() + datetime.timedelta(days=1))
 
-        st.write('Your birthday is:', enddate)
+        # st.write('Your birthday is:', enddate)
 
         
 
