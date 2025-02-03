@@ -64,7 +64,7 @@ def main():
         # st.write("Given startdate and endate",startdate)
         # st.write("Given startdate and endate",enddate)
 
-        st.write("## Results")
+        st.write("## Αποτελέσματα")
         sql = """SELECT `kimai2_teams`.name as team_name,`kimai2_users_teams`.`user_id`,`kimai2_users_teams`.`team_id`,`kimai2_users_teams`.`teamlead`,
 
 `kimai2_projects_teams`.`project_id`
