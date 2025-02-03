@@ -253,7 +253,7 @@ WHERE kimai2_users_teams.teamlead=1;
 
 
 
-        st.title("Compare Project Managers")
+        st.title("Σύγκριση Project Managers")
 
         regular_search_term =dfdata['username'].unique().tolist()
         choices2 = st.multiselect(" ",regular_search_term + ['All'])
