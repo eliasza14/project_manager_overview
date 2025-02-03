@@ -61,8 +61,8 @@ def main():
 
 
     if st.session_state.submitted:
-        st.write("Given startdate and endate",startdate)
-        st.write("Given startdate and endate",enddate)
+        # st.write("Given startdate and endate",startdate)
+        # st.write("Given startdate and endate",enddate)
 
         st.write("## Results")
         sql = """SELECT `kimai2_teams`.name as team_name,`kimai2_users_teams`.`user_id`,`kimai2_users_teams`.`team_id`,`kimai2_users_teams`.`teamlead`,
@@ -126,7 +126,7 @@ WHERE kimai2_users_teams.teamlead=1;
         # Display the pie chart
 
 
-        st.title("Project Manager Overview")
+        st.title("Επισκόπηση Project management")
         st.plotly_chart(fig)
 
         st.title("Select Project Manager from the below list:")
