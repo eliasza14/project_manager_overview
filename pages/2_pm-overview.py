@@ -89,6 +89,7 @@ WHERE kimai2_users_teams.teamlead=1;
         rows,columnames = run_query(conn,sql)
 
     # st.write(columnames)
+    ###
         dfdata=pd.DataFrame(rows,columns=columnames)
         dfdata = dfdata[dfdata['username'] != "ADMINISTRATOR"]
         st.write("All Data from Query",dfdata)
