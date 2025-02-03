@@ -46,9 +46,9 @@ def main():
         enddate = st.date_input(
         "Ημερομηνία Εώς",
         datetime.datetime.now() + datetime.timedelta(days=1))
-        filter_option = st.radio("Select Filter:", ["Active", "Inactive", "Total"], index=2)  # Set default to "Total"
+        filter_option = st.radio("Επιλέξτε φίλτρο Project:", ["Ενεργό", "Ανενεργό", "Όλα"], index=2)  # Set default to "Total"
         st.write(filter_option)
-        st.write('Your birthday is:', enddate)
+        # st.write('Your birthday is:', enddate)
 
         
 
@@ -64,13 +64,13 @@ def main():
 
     # Display the results
     if st.session_state.submitted:
-        st.write("Given startdate and endate",startdate)
-        st.write("Given startdate and endate",enddate)
+        # st.write("Given startdate and endate",startdate)
+        # st.write("Given startdate and endate",enddate)
 
         filter_values = {
-        "Active": 1,
-        "Inactive": 0,
-        "Total": "All"
+        "Ενεργό": 1,
+        "Ανενεργό": 0,
+        "Όλα": "All"
         }
 
         selected_filter_value = filter_values[filter_option]
@@ -141,10 +141,10 @@ def main():
 
     # st.write(columnames)
         dfdata=pd.DataFrame(rows,columns=columnames)
-        st.write("All Data from Query",dfdata)
+        st.write("Σύνολο δεδομένων",dfdata)
         dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR']
         dfdata = dfdata[dfdata['name'] != 'Out of Office']
-        st.write("All Data from Filter",dfdata)
+        st.write("Σύνολο δεδομένων απο φιλτράρισμα",dfdata)
 
         dfdata.loc[:, 'duration'] = dfdata['duration'] // 3600
 
@@ -181,7 +181,7 @@ def main():
         # Display the pie chart
 
 
-        st.title("User Overview")
+        st.title("Επισκόπηση Χρηστών")
         st.plotly_chart(fig)
 
         rows,columnames = run_query(conn,sql2)
@@ -194,7 +194,7 @@ def main():
         
         dfdata2=dfdata2.sort_values('duration', ascending=False)
         
-        st.write("All Data from Query",dfdata2)
+        st.write("Συνολο αποτελεσμάτων",dfdata2)
 
 
         fig2 = go.Figure(go.Bar(
@@ -202,7 +202,7 @@ def main():
         y=dfdata2['alias'].tolist(),
         orientation='h'))
 
-        fig2.update_layout(title="Users Total Working Hours",yaxis=dict(autorange="reversed"))
+        fig2.update_layout(title="Συνολικές ώρες δουλειάς για τους χρήστες",yaxis=dict(autorange="reversed"))
         st.plotly_chart(fig2)
 
         st.title("Επιλέξτε χρήστη απο την λίστα χρηστών")
@@ -268,7 +268,7 @@ def main():
 
         # st.write(columnames)
         dfdata3=pd.DataFrame(rows,columns=columnames)
-        st.write("All Data from Query",dfdata3)
+        st.write("Σύνολο αποτελεσμάτων",dfdata3)
         
         # Convert 'start_time' column to datetime
         dfdata3['start_time'] = pd.to_datetime(dfdata3['start_time'])
@@ -290,7 +290,7 @@ def main():
         # Convert 'duration' column to numeric
         dfdata3['duration'] = (dfdata3['duration'] / 3600).astype(int)
         dfdata3_filtered = dfdata3[dfdata3['year']==selected_option]
-        st.write("After Preprocessing Data from Query",dfdata3_filtered)
+        st.write("Συνολο δεδομένων μετα απο φιλτράρισμα",dfdata3_filtered)
 
 
 
