@@ -26,25 +26,25 @@ def update():
 def main():
 
     conn = init_connection()
-    st.set_page_config(page_title="User Overview")
+    st.set_page_config(page_title="Επισκόπηση Χρηστών")
 
     if 'submitted' not in st.session_state:
         st.session_state.submitted = False
 
-    st.title("User Overview")
+    st.title("Επισκόπηση Χρηστών")
 
     # Define the sidebar form
     with st.sidebar.form("my_sidebar_form"):
-        st.write("# Filters User Overview")
+        st.write("# Φίλτρο Επισκόπησης Χρηστών")
         startdate = st.date_input(
-        "Give Start Date",
+        "Ημερομηνία Από",
         datetime.date.today())
 
 
 
 
         enddate = st.date_input(
-        "Give End Date",
+        "Ημερομηνία Εώς",
         datetime.datetime.now() + datetime.timedelta(days=1))
         filter_option = st.radio("Select Filter:", ["Active", "Inactive", "Total"], index=2)  # Set default to "Total"
         st.write(filter_option)
