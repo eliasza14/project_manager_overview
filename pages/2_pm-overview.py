@@ -26,14 +26,14 @@ def main():
     conn = init_connection()
    
   
-    st.set_page_config(page_title="Sidebar Form Example")
+    st.set_page_config(page_title="Επισκόπηση Project Managers")
     if 'submitted' not in st.session_state:
         st.session_state.submitted = False
 
 
     # Define the sidebar form
     with st.sidebar.form("my_sidebar_form"):
-        st.write("## Φίλτρο Επισκόπησης project management")
+        st.write("## Φίλτρο Επισκόπησης project Managers")
         startdate = st.date_input(
         "Ημερομηνία Από",
         datetime.date.today())
