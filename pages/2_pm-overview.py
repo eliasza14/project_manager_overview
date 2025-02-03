@@ -92,7 +92,7 @@ WHERE kimai2_users_teams.teamlead=1;
     ###
         dfdata=pd.DataFrame(rows,columns=columnames)
         dfdata = dfdata[dfdata['username'] != "ADMINISTRATOR"]
-        st.write("All Data from Query",dfdata)
+        st.write("Σύνολο δεδομένων",dfdata)
    
         # Load the tips dataset from Plotly
 
@@ -129,20 +129,20 @@ WHERE kimai2_users_teams.teamlead=1;
         st.title("Επισκόπηση Project management")
         st.plotly_chart(fig)
 
-        st.title("Select Project Manager from the below list:")
+        st.title("Επιλέξτε Project Manager απο την παρακάτω λίστα:")
         # List of options for the dropdown menu
         optionlist =dfdata['username'].unique().tolist()
         options = optionlist
 
         # Display the dropdown menu
-        selected_option = st.selectbox('Choose Project Manager', options)
+        selected_option = st.selectbox('Επιλέξτε Project Manager', options)
         df1 = dfdata[dfdata['username'] == selected_option]
         # df1['duration']=df1['duration']/3600
         df1.loc[:, 'duration'] = df1['duration'] / 3600
 
         # df = px.data.gapminder().query("continent == 'Europe' and year == 2007 and pop > 2.e6")
         fig2 = px.bar(df1, y='duration', x='project_name', text_auto='.2s',
-                    title="Project Manager: "+str(selected_option)+" - Hourly projects duaration")
+                    title="Project Manager: "+str(selected_option)+" - Hourly projects duration")
         st.plotly_chart(fig2)
 
         
