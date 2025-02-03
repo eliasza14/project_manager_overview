@@ -66,8 +66,8 @@ def main():
 
     # Display the results
     if st.session_state.submitted:
-        st.write("Given startdate and endate",startdate)
-        st.write("Given startdate and endate",enddate)
+        # st.write("Given startdate and endate",startdate)
+        # st.write("Given startdate and endate",enddate)
 
         filter_values = {
         "Ενεργό": 1,
@@ -140,7 +140,7 @@ def main():
 
     # st.write(columnames)
         dfdata=pd.DataFrame(rows,columns=columnames)
-        st.write("All Data from Query",dfdata)
+        # st.write("Σύνολο Δεδομένων",dfdata)
         dfdata=dfdata[dfdata['alias']!='ADMINISTRATOR']
         st.write("Σύνολο Δεδομένων",dfdata)
 
@@ -236,7 +236,7 @@ def main():
         with st.container():
             col1,col2 = st.columns(2)
             with col1:
-                st.write('Rate per Project for selected user')
+                st.write('Ρυθμός ανά έργο για τον επιλεγμένο χρήστη')
                 # df1['cost']=df1['value'].astype(float)*df1['duration'].astype(float)
                 figrate= px.bar(df1, y='duration', x='alias', text_auto='.2s',title="Project Manager: "+str(selected_option2)+" - Hourly projects duration")
                 figrate.update_layout(barmode='stack', xaxis={'categoryorder': 'total descending'})
@@ -287,7 +287,7 @@ def main():
         # Convert 'duration' column to numeric
         dfdata3['duration'] = (dfdata3['duration'] / 3600).astype(int)
         dfdata3_filtered = dfdata3[dfdata3['year']==selected_option]
-        st.write("After Preprocessing Data from Query",dfdata3_filtered)
+        st.write("Μετά την προεπεξεργασία δεδομένων",dfdata3_filtered)
 
 
 
@@ -518,9 +518,9 @@ def main():
 
 # Set axis labels and chart title
         fig2.update_layout(
-            xaxis_title='Months',
-            yaxis_title='Total Costs per month €',
-            title='Cost of the Project ' + selected_option2 +  ' per Month of Year €' + selected_option,
+            xaxis_title='Μήνες',
+            yaxis_title='Συνολικό κόστος ανα μήνα €',
+            title='Κόστος του έργου ' + selected_option2 +  ' ανα μήνα το έτος  €' + selected_option,
             legend_title="Users"
         )
 
