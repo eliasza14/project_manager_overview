@@ -45,7 +45,7 @@ def main():
         "Give End Date",
         datetime.datetime.now() + datetime.timedelta(days=1))
 
-        st.write('Your birthday is:', enddate)
+        # st.write('Your birthday is:', enddate)
 
         
 
