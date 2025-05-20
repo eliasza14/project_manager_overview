@@ -114,7 +114,9 @@ WHERE kimai2_users_teams.teamlead=1;
         # dfgroup2
 
         for i in range(len(dfgroup2)):
-            dfgroup2['project_name'][i] = '<br>'.join(dfgroup2['project_name'][i]).replace(',', ',<br>')
+            # dfgroup2['project_name'][i] = '<br>'.join(dfgroup2['project_name'][i]).replace(',', ',<br>')
+            dfgroup2.loc[i, 'project_name'] = '<br>'.join(dfgroup2.loc[i, 'project_name']).replace(',', ',<br>')
+
 
 
         # Create the pie chart using Plotly Express
